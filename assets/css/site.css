@@ -325,7 +325,7 @@ WHY VIETNAM NOW (Figma-locked)
 
 .ka-wyvn__top {
   display: grid;
-  grid-template-columns: 600px 1fr;
+  grid-template-columns: 480px 1fr;
   column-gap: 56px;
   align-items: start;
 }
@@ -348,6 +348,7 @@ WHY VIETNAM NOW (Figma-locked)
   line-height: 78px;
   color: var(--teal-90);
   margin: 0;
+  max-width: 460px;
 }
 
 .ka-wyvn__intro {
@@ -364,10 +365,6 @@ WHY VIETNAM NOW (Figma-locked)
   width: 480px;
   padding: 10px;
   box-sizing: border-box;
-}
-
-.ka-wyvn__h1 {
-  max-width: 460px;
 }
 
 .ka-wyvn__boat {
