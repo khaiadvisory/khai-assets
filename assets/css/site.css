@@ -356,6 +356,8 @@ WHY VIETNAM NOW (Figma-locked)
   font-weight: 400;
   font-size: 18px;
   line-height: 30px;
+  letter-spacing: 0;
+  text-align: justify;
   color: var(--charcoal);
   margin: 0;
   max-width: 556px;
