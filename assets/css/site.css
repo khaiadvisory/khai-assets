@@ -282,6 +282,23 @@ HERO (HTML embed)
   color: rgba(255,255,255,.8);
 }
 
+.ka-btn {
+  transition:
+    color 0.22s ease,
+    background-color 0.22s ease,
+    border-color 0.22s ease,
+    opacity 0.22s ease;
+}
+
+.ka-btn--ghost:hover {
+  background: rgba(255,255,255,.08);
+  border-color: rgba(255,255,255,.95);
+}
+
+.ka-btn--text:hover {
+  color: rgba(255,255,255,1);
+}
+
 @media (max-width:1120px) {
   #heroText {
     padding-top: 120px;
