@@ -199,8 +199,9 @@ HERO (HTML embed)
 .ka-hero__bg {
   position: absolute;
   inset: 0;
-  background: #1f2a44;
-  background-image: url("https://khai2-preview.carrd.co/assets/images/image01.jpg?v=a5b02c7f");
+  background-image:
+    linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
+    url("https://khai2-preview.carrd.co/assets/images/image01.jpg?v=a5b02c7f");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
