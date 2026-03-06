@@ -927,3 +927,9 @@ FOOTER (minimal)
 /* ===== Anchor jump debug patch (TEMP) ===== */
 html { scroll-behavior: auto !important; }
 body { scroll-behavior: auto !important; }
+
+/* ===== Force document scrolling ===== */
+html, body {
+  height: auto !important;
+  overflow-y: visible !important;
+}
