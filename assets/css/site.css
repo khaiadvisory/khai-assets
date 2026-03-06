@@ -257,7 +257,7 @@ HERO (HTML embed)
 .ka-hero__cta {
   display: flex;
   gap: 16px;
-  margin: 0;
+  margin-top: 4px;
   align-items: center;
 }
 
