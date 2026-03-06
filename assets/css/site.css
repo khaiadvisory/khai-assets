@@ -334,10 +334,11 @@ WHY VIETNAM NOW (Figma-locked)
   font-family: var(--font-sans);
   font-weight: 600;
   font-size: 13px;
+  line-height: 16px;
   letter-spacing: .18em;
   text-transform: uppercase;
   color: var(--teal-90);
-  margin: 0 0 10px 0;
+  margin: 0 0 16px 0;
 }
 
 .ka-wyvn__h1 {
