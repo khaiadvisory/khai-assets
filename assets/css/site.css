@@ -4,8 +4,7 @@ FONTS
 - Inter (UI / micro / nav)
 - Spectral (body text)
 ========================================================= */
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&family=Spectral:wght@400;500&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&display=swap');
 /* =========================================================
 GLOBAL TOKENS
 ========================================================= */
