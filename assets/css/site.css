@@ -231,8 +231,8 @@ HERO (HTML embed)
 .ka-hero__title {
   font-family: var(--font-serif);
   font-weight: 400;
-  font-size: 56px;
-  line-height: 1.05;
+  font-size: 68px;
+  line-height: 82px;
   margin: 12px 0 12px;
   color: #fff;
   max-width: 600px;
