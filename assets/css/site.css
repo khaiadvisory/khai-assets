@@ -226,7 +226,7 @@ HERO (HTML embed)
   font-family: var(--font-sans);
   font-weight: 600;
   font-size: 13px;
-  line-height: 1.2;
+  line-height: 18px;
   letter-spacing: .18em;
   color: rgba(255,255,255,.9);
   text-transform: uppercase;
