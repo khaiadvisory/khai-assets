@@ -366,6 +366,10 @@ WHY VIETNAM NOW (Figma-locked)
   box-sizing: border-box;
 }
 
+.ka-wyvn__h1 {
+  max-width: 460px;
+}
+
 .ka-wyvn__boat {
   width: 100%;
   height: 460px;
