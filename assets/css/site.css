@@ -211,10 +211,14 @@ HERO (HTML embed)
   position: absolute;
   z-index: 1;
   top: 180px;
-  left: 0;
+  left: 160px;
   width: 600px;
   max-width: 600px;
   color: var(--hero-text);
+
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
 
 .ka-hero__eyebrow {
@@ -225,6 +229,7 @@ HERO (HTML embed)
   letter-spacing: .18em;
   color: rgba(255,255,255,.9);
   text-transform: uppercase;
+  margin: 0;
 }
 
 .ka-hero__title {
@@ -232,7 +237,7 @@ HERO (HTML embed)
   font-weight: 400;
   font-size: 68px;
   line-height: 82px;
-  margin: 12px 0 6px;
+  margin: 0;
   color: #fff;
   max-width: 600px;
 }
@@ -245,12 +250,13 @@ HERO (HTML embed)
   line-height: 30px;
   color: rgba(255,255,255,.85);
   max-width: 600px;
+  margin: 0;
 }
 
 .ka-hero__cta {
   display: flex;
   gap: 12px;
-  margin-top: 18px;
+  margin: 0;
   align-items: center;
 }
 
