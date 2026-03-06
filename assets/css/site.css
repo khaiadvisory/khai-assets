@@ -201,12 +201,12 @@ HERO (HTML embed)
 
 /* Wrapper testo hero = 1120 centrato */
 #heroText {
-  position: relative;
+  position: absolute;
   z-index: 1;
-  width: 100%;
-  max-width: var(--container);
-  margin: 0 auto;
-  padding: 180px 16px 0;
+  top: 180px;
+  left: 160px;
+  width: 600px;
+  max-width: 600px;
   color: var(--hero-text);
 }
 
