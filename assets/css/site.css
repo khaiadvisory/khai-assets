@@ -231,12 +231,13 @@ HERO (HTML embed)
 }
 
 .ka-hero__sub {
-  font-family: var(--font-sans);
+  font-family: var(--font-serif);
+  font-style: italic;
   font-weight: 500;
-  font-size: 14px;
-  line-height: 1.6;
-  color: rgba(255,255,255,.9);
-  max-width: 520px;
+  font-size: 23px;
+  line-height: 30px;
+  color: rgba(255,255,255,.85);
+  max-width: 600px;
 }
 
 .ka-hero__cta {
