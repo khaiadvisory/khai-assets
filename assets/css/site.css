@@ -243,9 +243,9 @@ HERO (HTML embed)
 }
 
 .ka-hero__sub {
-  font-family: "Spectral", serif;
+  font-family: var(--font-body);
   font-style: italic;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 23px;
   line-height: 30px;
   color: rgba(255,255,255,.85);
