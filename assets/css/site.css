@@ -974,3 +974,6 @@ html, body {
 
 .ka-hero { outline: 2px solid red !important; }
 .ka-wyvn { outline: 2px solid blue !important; }
+.ka-wyvn__wrap {
+  outline: 2px solid green !important;
+}
