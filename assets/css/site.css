@@ -213,7 +213,7 @@ HERO (HTML embed)
 .ka-hero__eyebrow {
   font-family: var(--font-sans);
   font-weight: 600;
-  font-size: 11px;
+  font-size: 13px;
   line-height: 1.2;
   letter-spacing: .18em;
   color: rgba(255,255,255,.9);
