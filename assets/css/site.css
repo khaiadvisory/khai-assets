@@ -360,6 +360,12 @@ WHY VIETNAM NOW (Figma-locked)
   max-width: 556px;
 }
 
+.ka-wyvn__left {
+  width: 480px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
 .ka-wyvn__boat {
   width: 100%;
   height: 460px;
