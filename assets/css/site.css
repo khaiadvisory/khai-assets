@@ -379,6 +379,14 @@ WHY VIETNAM NOW (Figma-locked)
   position: relative;
 }
 
+.ka-wyvn__boat::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(47,111,122,.20);
+  pointer-events: none;
+}
+
 .ka-wyvn__drivers {
   margin-top: 48px;
   display: grid;
