@@ -204,7 +204,7 @@ HERO (HTML embed)
   position: absolute;
   z-index: 1;
   top: 180px;
-  left: 160px;
+  left: 220px;
   width: 600px;
   max-width: 600px;
   color: var(--hero-text);
