@@ -971,3 +971,6 @@ html, body {
 #home, #whyvn, #services, #owm, #whywork, #faq, #contact {
   scroll-margin-top: 120px;
 }
+
+.ka-hero { outline: 2px solid red !important; }
+.ka-wyvn { outline: 2px solid blue !important; }
