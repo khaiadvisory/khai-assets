@@ -923,3 +923,7 @@ FOOTER (minimal)
   background-position: center;
   background-repeat: no-repeat;
 }
+
+/* ===== Anchor jump debug patch (TEMP) ===== */
+html { scroll-behavior: auto !important; }
+body { scroll-behavior: auto !important; }
