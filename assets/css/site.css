@@ -977,3 +977,8 @@ html, body {
 .ka-wyvn__wrap {
   outline: 2px solid green !important;
 }
+
+.site-wrapper {
+  min-height: 0 !important;
+  height: auto !important;
+}
