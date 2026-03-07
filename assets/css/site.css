@@ -368,11 +368,6 @@ WHY VIETNAM NOW
   margin: 0 0 16px 0;
 }
 
-.ka-wyvn__left {
-  width: 480px;
-  padding: 10px 0 0 10px;
-  box-sizing: border-box;
-}
 
 .ka-wyvn__h1 {
   font-family: var(--font-serif);
@@ -384,16 +379,22 @@ WHY VIETNAM NOW
   max-width: 460px;
 }
 
+.ka-wyvn__left {
+  width: 480px;
+  padding: 10px 0 0 10px;
+  box-sizing: border-box;
+}
+
 .ka-wyvn__intro {
   font-family: var(--font-body);
-  font-weight: 400;
+  font-weight: 300;
   font-size: 18px;
   line-height: 30px;
   letter-spacing: 0;
   text-align: left;
-  color: var(--charcoal);
-  margin: 32px 0 0 0;
-  max-width: none;
+  color: rgba(31, 35, 40, 0.88);
+  margin: 20px 0 0 0;
+  max-width: 430px;
 }
 
 .ka-wyvn__boat {
