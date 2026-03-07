@@ -347,7 +347,7 @@ HERO (HTML embed)
 .ka-wyvn__wrap {
   max-width: var(--container);
   margin: 0 auto;
-  padding: 96px 0 120px;
+  padding: 72px 0 112px;
 }
 
 .ka-wyvn__top {
@@ -365,51 +365,51 @@ HERO (HTML embed)
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--teal-90);
-  margin: 0 0 16px 0;
+  margin: 0 0 14px 0;
 }
 
 .ka-wyvn__left {
   width: 464px;
-  padding: 6px 0 0 10px;
+  padding: 0 0 0 10px;
   box-sizing: border-box;
 }
 
 .ka-wyvn__h1 {
   font-family: var(--font-serif);
   font-weight: 400;
-  font-size: 72px;
-  line-height: 78px;
+  font-size: 64px;
+  line-height: 68px;
   color: var(--teal-90);
   margin: 0;
-  max-width: 460px;
+  max-width: 430px;
 }
 
 .ka-wyvn__intro {
   font-family: var(--font-body);
   font-weight: 300;
-  font-size: 16px;
-  line-height: 33px;
-  letter-spacing: 0.015em;
+  font-size: 15px;
+  line-height: 29px;
+  letter-spacing: 0.012em;
   text-align: left;
   color: rgba(31, 35, 40, 0.78);
-  margin: 14px 0 0 0;
-  max-width: 400px;
+  margin: 16px 0 0 0;
+  max-width: 392px;
 }
 
 /* Vertical insights */
 .ka-wyvn__insights {
-  margin-top: 30px;
-  padding-top: 4px;
+  margin-top: 22px;
+  padding-top: 0;
   display: grid;
   gap: 0;
 }
 
 .ka-insight {
   display: grid;
-  grid-template-columns: 40px 1fr;
-  column-gap: 16px;
+  grid-template-columns: 30px 1fr;
+  column-gap: 12px;
   align-items: start;
-  padding: 14px 0 14px 0;
+  padding: 12px 0;
   border-top: 1px solid rgba(47, 111, 122, 0.12);
 }
 
@@ -426,35 +426,35 @@ HERO (HTML embed)
   font-family: var(--font-sans);
   font-weight: 600;
   font-size: 10px;
-  line-height: 13px;
+  line-height: 12px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(47, 111, 122, 0.38);
+  color: rgba(47, 111, 122, 0.34);
 }
 
 .ka-insight__title {
   font-family: var(--font-serif);
   font-weight: 400;
-  font-size: 24px;
-  line-height: 28px;
+  font-size: 20px;
+  line-height: 24px;
   color: var(--teal-head-85);
-  margin: 0 0 6px 0;
+  margin: 0 0 4px 0;
 }
 
 .ka-insight__body {
   font-family: var(--font-body);
   font-weight: 300;
-  font-size: 15px;
-  line-height: 27px;
-  letter-spacing: 0.01em;
-  color: rgba(31, 35, 40, 0.74);
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0.008em;
+  color: rgba(31, 35, 40, 0.72);
   margin: 0;
   max-width: 286px;
 }
 
 .ka-wyvn__boat {
   width: 600px;
-  height: 690px;
+  height: 634px;
   border-radius: 5px;
   overflow: hidden;
   position: relative;
@@ -470,7 +470,7 @@ HERO (HTML embed)
 }
 
 .ka-wyvn__focus {
-  margin-top: 120px;
+  margin-top: 112px;
   display: grid;
   grid-template-columns: 448px 616px;
   gap: 56px;
@@ -510,12 +510,12 @@ HERO (HTML embed)
 
 @media (max-width: 1120px) {
   .ka-wyvn__wrap {
-    padding: 64px 16px 96px;
+    padding: 56px 16px 96px;
   }
 
   .ka-wyvn__top {
     grid-template-columns: 1fr;
-    row-gap: 32px;
+    row-gap: 28px;
   }
 
   .ka-wyvn__left {
@@ -523,18 +523,24 @@ HERO (HTML embed)
     padding: 0;
   }
 
+  .ka-wyvn__h1 {
+    font-size: 56px;
+    line-height: 60px;
+    max-width: none;
+  }
+
   .ka-wyvn__intro {
     max-width: none;
   }
 
   .ka-wyvn__insights {
-    margin-top: 28px;
+    margin-top: 24px;
   }
 
   .ka-insight {
-    grid-template-columns: 32px 1fr;
-    column-gap: 12px;
-    padding: 14px 0;
+    grid-template-columns: 28px 1fr;
+    column-gap: 10px;
+    padding: 12px 0;
   }
 
   .ka-insight__body {
