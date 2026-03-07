@@ -239,7 +239,13 @@
     if (!href || href.length < 2) return;
 
     var id = href.slice(1);
-    if (!findTarget(id)) return;
+    var target = findTarget(id);
+    if (!target) return;
+    
+    if (isAlreadyAtTarget(target)) {
+      e.preventDefault();
+      return;
+    }
 
     e.preventDefault();
     history.replaceState(null, '', '#' + id);
