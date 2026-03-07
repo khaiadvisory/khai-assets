@@ -184,23 +184,36 @@
   function getCurrentSectionId() {
   var y = window.pageYOffset || 0;
 
-  // Top page: consideriamo attiva la home
+  // Se siamo praticamente in top pagina, la sezione attiva è Home
   if (y <= 8) return 'home';
 
   var ids = ['home', 'whyvn', 'services', 'owm', 'whywork', 'faq', 'contact'];
-  var probeY = isDesktop() ? 120 : 96; // linea virtuale vicino al top viewport
+  var probeY = isDesktop() ? 120 : 96; // linea di controllo nel viewport
 
-  for (var i = ids.length - 1; i >= 0; i--) {
+  // La sezione attiva è quella che contiene la probe line
+  for (var i = 0; i < ids.length; i++) {
     var el = findTarget(ids[i]);
     if (!el) continue;
 
     var rect = el.getBoundingClientRect();
-    if (rect.top <= probeY) {
+
+    if (rect.top <= probeY && rect.bottom > probeY) {
       return ids[i];
     }
   }
 
-  return null;
+  // Fallback: scegliamo la sezione più vicina sopra la probe line
+  for (var j = ids.length - 1; j >= 0; j--) {
+    var fallbackEl = findTarget(ids[j]);
+    if (!fallbackEl) continue;
+
+    var fallbackRect = fallbackEl.getBoundingClientRect();
+    if (fallbackRect.top <= probeY) {
+      return ids[j];
+    }
+  }
+
+  return 'home';
 }
 
 function isAlreadyAtTargetId(id) {
