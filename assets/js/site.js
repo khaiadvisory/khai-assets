@@ -22,7 +22,7 @@
   var SCROLL_DELTA = 8;
 
   // Versioning / cache-busting marker
-  var SITE_JS_VERSION = 'debug-03';
+  var SITE_JS_VERSION = 'debug-04';
 
   // Espone subito la versione caricata
   window.__KHAI_NAV_VERSION = SITE_JS_VERSION;
@@ -441,7 +441,7 @@
   }
 
 
-       /* =========================================================
+        /* =========================================================
      13. EVENT LISTENERS GLOBALI
      ========================================================= */
 
@@ -469,21 +469,19 @@
     }
   });
 
-  // Click su link anchor interni
+  // Click navbar gestiti solo via data-nav-target
   document.addEventListener('click', function (e) {
-    var a = e.target.closest('a[href^="#"]');
+    var a = e.target.closest('a[data-nav-target]');
     if (!a) return;
 
-    var href = a.getAttribute('href');
-    if (!href || href.length < 2) return;
+    var id = a.getAttribute('data-nav-target');
+    if (!id) return;
 
-    var id = href.slice(1);
     var target = findTarget(id);
     if (!target) return;
 
     debugNavClick('before click decision', {
       version: window.__KHAI_NAV_VERSION,
-      href: href,
       id: id,
       locationHash: location.hash,
       currentSectionId: getCurrentSectionId(),
@@ -491,6 +489,13 @@
       pageYOffset: window.pageYOffset || 0,
       ranges: getSectionRanges()
     });
+
+    // Blocca qualsiasi comportamento nativo / altri handler
+    e.preventDefault();
+    e.stopPropagation();
+    if (typeof e.stopImmediatePropagation === 'function') {
+      e.stopImmediatePropagation();
+    }
 
     // Se clicchi la sezione già attiva, non succede niente
     if (isAlreadyAtTargetId(id)) {
@@ -500,12 +505,8 @@
         pageYOffset: window.pageYOffset || 0,
         ranges: getSectionRanges()
       });
-
-      e.preventDefault();
       return;
     }
-
-    e.preventDefault();
 
     if (location.hash !== '#' + id) {
       history.replaceState(null, '', '#' + id);
