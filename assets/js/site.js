@@ -29,15 +29,21 @@
   console.log('[KHAI NAV DEBUG] site.js version = ' + SITE_JS_VERSION);
 
 
-  /* =========================================================
+    /* =========================================================
      2. STATO RUNTIME
      ========================================================= */
 
   // Ultima posizione verticale registrata
   var lastY = window.pageYOffset || 0;
 
-  // True quando il cursore è nella reveal zone top
+  // True quando la navbar è stata richiamata via hover/reveal
   var hoverReveal = false;
+
+  // True mentre il cursore è sopra l'header/navbar
+  var navHoverActive = false;
+
+  // Timer per evitare chiusure troppo brusche
+  var revealHideTimer = null;
 
   // True mentre è in corso l'animazione smooth scroll
   var isAnimating = false;
@@ -418,37 +424,83 @@
   }
 
 
-   /* =========================================================
+    /* =========================================================
      11. REVEAL ZONE DESKTOP
      ========================================================= */
 
-  function bindRevealZone() {
-    var zone = document.querySelector('.nav-reveal-zone');
-    if (!zone) return;
+  function clearRevealHideTimer() {
+    if (revealHideTimer) {
+      clearTimeout(revealHideTimer);
+      revealHideTimer = null;
+    }
+  }
 
-    zone.addEventListener('mouseenter', function () {
+  function scheduleRevealHide() {
+    clearRevealHideTimer();
+
+    revealHideTimer = setTimeout(function () {
       if (!isDesktop()) return;
       if ((window.pageYOffset || 0) <= 8) return;
       if (anchorJumpLock || isAnimating) return;
-
-      hoverReveal = true;
-      showNav();
-    });
-
-    zone.addEventListener('mouseleave', function () {
-      if (!isDesktop()) return;
-      if ((window.pageYOffset || 0) <= 8) return;
-      if (anchorJumpLock || isAnimating) return;
+      if (navHoverActive) return;
 
       hoverReveal = false;
 
-      // Fuori dalla home, quando esci dalla trigger zone,
-      // la navbar torna a scomparire
       if (getCurrentSectionId() !== 'home') {
         hideNav();
       } else {
         showNav();
       }
+    }, 180);
+  }
+
+  function bindRevealZone() {
+    var zone = document.querySelector('.nav-reveal-zone');
+    var header = document.querySelector('.site-header');
+
+    if (!zone || !header) return;
+
+    // Entrando nella trigger zone: mostra navbar
+    zone.addEventListener('mouseenter', function () {
+      if (!isDesktop()) return;
+      if ((window.pageYOffset || 0) <= 8) return;
+      if (anchorJumpLock || isAnimating) return;
+
+      clearRevealHideTimer();
+      hoverReveal = true;
+      showNav();
+    });
+
+    // Uscendo dalla trigger zone: non chiudere subito,
+    // potremmo stare entrando nell'header
+    zone.addEventListener('mouseleave', function () {
+      if (!isDesktop()) return;
+      if ((window.pageYOffset || 0) <= 8) return;
+      if (anchorJumpLock || isAnimating) return;
+
+      scheduleRevealHide();
+    });
+
+    // Finché il cursore è sopra la navbar, resta aperta
+    header.addEventListener('mouseenter', function () {
+      if (!isDesktop()) return;
+      if ((window.pageYOffset || 0) <= 8) return;
+      if (anchorJumpLock || isAnimating) return;
+
+      clearRevealHideTimer();
+      navHoverActive = true;
+      hoverReveal = true;
+      showNav();
+    });
+
+    // Quando esci dalla navbar, chiudi con un piccolo delay
+    header.addEventListener('mouseleave', function () {
+      if (!isDesktop()) return;
+      if ((window.pageYOffset || 0) <= 8) return;
+      if (anchorJumpLock || isAnimating) return;
+
+      navHoverActive = false;
+      scheduleRevealHide();
     });
   }
 
@@ -459,6 +511,7 @@
     if (anchorJumpLock || isAnimating) return;
 
     if (e.clientY <= REVEAL_ZONE) {
+      clearRevealHideTimer();
       hoverReveal = true;
       showNav();
     }
