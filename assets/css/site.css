@@ -347,7 +347,7 @@ HERO (HTML embed)
 .ka-wyvn__wrap {
   max-width: var(--container);
   margin: 0 auto;
-  padding: 96px 0 104px;
+  padding: 96px 0 112px;
 }
 
 .ka-wyvn__top {
@@ -398,7 +398,7 @@ HERO (HTML embed)
 
 .ka-wyvn__boat {
   width: 600px;
-  height: 580px;
+  height: 564px;
   border-radius: 5px;
   overflow: hidden;
   position: relative;
@@ -415,12 +415,12 @@ HERO (HTML embed)
 
 /* Strategic strip */
 .ka-wyvn__drivers {
-  margin-top: 72px;
-  padding-top: 28px;
-  border-top: 1px solid rgba(47, 111, 122, 0.18);
+  margin-top: 60px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(47, 111, 122, 0.14);
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  column-gap: 40px;
+  column-gap: 48px;
   row-gap: 24px;
   align-items: start;
 }
@@ -432,36 +432,36 @@ HERO (HTML embed)
 .ka-driver__index {
   font-family: var(--font-sans);
   font-weight: 600;
-  font-size: 12px;
+  font-size: 11px;
   line-height: 14px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(47, 111, 122, 0.68);
-  margin: 0 0 12px 0;
+  color: rgba(47, 111, 122, 0.42);
+  margin: 0 0 14px 0;
 }
 
 .ka-driver__title {
   font-family: var(--font-serif);
   font-weight: 400;
-  font-size: 28px;
-  line-height: 32px;
+  font-size: 29px;
+  line-height: 35px;
   color: var(--teal-head-85);
-  margin: 0 0 10px 0;
+  margin: 0 0 14px 0;
 }
 
 .ka-driver__body {
   font-family: var(--font-body);
   font-weight: 300;
   font-size: 16px;
-  line-height: 28px;
+  line-height: 30px;
   letter-spacing: 0.01em;
-  color: rgba(31, 35, 40, 0.76);
+  color: rgba(31, 35, 40, 0.74);
   margin: 0;
-  max-width: 300px;
+  max-width: 316px;
 }
 
 .ka-wyvn__focus {
-  margin-top: 96px;
+  margin-top: 104px;
   display: grid;
   grid-template-columns: 448px 616px;
   gap: 56px;
@@ -525,9 +525,9 @@ HERO (HTML embed)
 
   .ka-wyvn__drivers {
     grid-template-columns: 1fr;
-    row-gap: 28px;
-    margin-top: 56px;
-    padding-top: 24px;
+    row-gap: 32px;
+    margin-top: 52px;
+    padding-top: 22px;
   }
 
   .ka-driver__body {
@@ -537,6 +537,7 @@ HERO (HTML embed)
   .ka-wyvn__focus {
     grid-template-columns: 1fr;
     gap: 32px;
+    margin-top: 88px;
   }
 
   .ka-wyvn__focusMedia {
