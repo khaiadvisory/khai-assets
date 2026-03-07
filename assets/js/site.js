@@ -1,5 +1,5 @@
 (function () {
-     /* =========================================================
+       /* =========================================================
      1. CONFIG / COSTANTI PRINCIPALI
      ========================================================= */
 
@@ -22,9 +22,9 @@
   var SCROLL_DELTA = 8;
 
   // Versioning / cache-busting marker
-  var SITE_JS_VERSION = 'debug-02';
+  var SITE_JS_VERSION = 'debug-03';
 
-  // Espone subito la versione in console e nel window object
+  // Espone subito la versione caricata
   window.__KHAI_NAV_VERSION = SITE_JS_VERSION;
   console.log('[KHAI NAV DEBUG] site.js version = ' + SITE_JS_VERSION);
 
@@ -182,48 +182,71 @@
   }
 
 
-     /* =========================================================
+      /* =========================================================
      8. CONTROLLO: SIAMO GIÀ NELLA SEZIONE TARGET?
      ========================================================= */
 
-  function getAllSectionRects() {
-    var ids = ['home', 'whyvn', 'services', 'owm', 'whywork', 'faq', 'contact'];
-    var probeY = isDesktop() ? 120 : 96;
-    var out = [];
+  function getSectionIds() {
+    return ['home', 'whyvn', 'services', 'owm', 'whywork', 'faq', 'contact'];
+  }
+
+  function getAnchorY(id) {
+    var el = findTarget(id);
+    if (!el) return null;
+
+    var y = el.getBoundingClientRect().top + (window.pageYOffset || 0);
+    return y < 0 ? 0 : y;
+  }
+
+  function getSectionRanges() {
+    var ids = getSectionIds();
+    var ranges = [];
 
     for (var i = 0; i < ids.length; i++) {
-      var el = findTarget(ids[i]);
-      if (!el) continue;
+      var start = getAnchorY(ids[i]);
+      if (start === null) continue;
 
-      var rect = el.getBoundingClientRect();
-      out.push({
+      var end = Infinity;
+
+      for (var j = i + 1; j < ids.length; j++) {
+        var nextStart = getAnchorY(ids[j]);
+        if (nextStart !== null) {
+          end = nextStart;
+          break;
+        }
+      }
+
+      ranges.push({
         id: ids[i],
-        top: rect.top,
-        bottom: rect.bottom,
-        containsProbe: rect.top <= probeY && rect.bottom > probeY
+        start: start,
+        end: end
       });
     }
 
-    return out;
+    return ranges;
   }
 
   function getCurrentSectionId() {
     var y = window.pageYOffset || 0;
 
+    // In top pagina consideriamo Home attiva
     if (y <= 8) return 'home';
 
-    var probeY = isDesktop() ? 120 : 96;
-    var rects = getAllSectionRects();
+    // Usiamo una probe line assoluta nel documento
+    var probeOffset = isDesktop() ? 120 : 96;
+    var probeDocY = y + probeOffset;
+    var ranges = getSectionRanges();
 
-    for (var i = 0; i < rects.length; i++) {
-      if (rects[i].containsProbe) {
-        return rects[i].id;
+    for (var i = 0; i < ranges.length; i++) {
+      if (probeDocY >= ranges[i].start && probeDocY < ranges[i].end) {
+        return ranges[i].id;
       }
     }
 
-    for (var j = rects.length - 1; j >= 0; j--) {
-      if (rects[j].top <= probeY) {
-        return rects[j].id;
+    // Fallback: ultima sezione il cui start è sopra la probe line
+    for (var j = ranges.length - 1; j >= 0; j--) {
+      if (probeDocY >= ranges[j].start) {
+        return ranges[j].id;
       }
     }
 
@@ -418,7 +441,7 @@
   }
 
 
-         /* =========================================================
+       /* =========================================================
      13. EVENT LISTENERS GLOBALI
      ========================================================= */
 
@@ -428,17 +451,17 @@
     console.groupEnd();
   }
 
-  window.addEventListener('hashchange', jumpToHash);
-
+  // Load iniziale
   window.addEventListener('load', function () {
     bindRevealZone();
     syncInitialNavState();
 
     debugNavClick('load state', {
+      version: window.__KHAI_NAV_VERSION,
       locationHash: location.hash,
       currentSectionId: getCurrentSectionId(),
       pageYOffset: window.pageYOffset || 0,
-      rects: getAllSectionRects()
+      ranges: getSectionRanges()
     });
 
     if (location.hash) {
@@ -446,6 +469,7 @@
     }
   });
 
+  // Click su link anchor interni
   document.addEventListener('click', function (e) {
     var a = e.target.closest('a[href^="#"]');
     if (!a) return;
@@ -458,21 +482,23 @@
     if (!target) return;
 
     debugNavClick('before click decision', {
+      version: window.__KHAI_NAV_VERSION,
       href: href,
       id: id,
       locationHash: location.hash,
       currentSectionId: getCurrentSectionId(),
       alreadyAtTarget: isAlreadyAtTargetId(id),
       pageYOffset: window.pageYOffset || 0,
-      rects: getAllSectionRects()
+      ranges: getSectionRanges()
     });
 
+    // Se clicchi la sezione già attiva, non succede niente
     if (isAlreadyAtTargetId(id)) {
       debugNavClick('blocked: already at target', {
         id: id,
         currentSectionId: getCurrentSectionId(),
         pageYOffset: window.pageYOffset || 0,
-        rects: getAllSectionRects()
+        ranges: getSectionRanges()
       });
 
       e.preventDefault();
@@ -490,7 +516,7 @@
       currentSectionId: getCurrentSectionId(),
       locationHash: location.hash,
       pageYOffset: window.pageYOffset || 0,
-      rects: getAllSectionRects()
+      ranges: getSectionRanges()
     });
 
     jumpToHash();
