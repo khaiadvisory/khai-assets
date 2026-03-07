@@ -22,7 +22,7 @@
   var SCROLL_DELTA = 8;
 
   // Versioning / cache-busting marker
-  var SITE_JS_VERSION = 'debug-04';
+  var SITE_JS_VERSION = 'debug-05';
 
   // Espone subito la versione caricata
   window.__KHAI_NAV_VERSION = SITE_JS_VERSION;
@@ -258,7 +258,7 @@
     return getCurrentSectionId() === id;
   }
   
-    /* =========================================================
+      /* =========================================================
      9. JUMP A HASH / LANDING SU SEZIONE
      ========================================================= */
 
@@ -295,7 +295,35 @@
     hoverReveal = false;
     anchorJumpLock = true;
 
-    // Landing anchor: navbar nascosta
+    // HOME = caso speciale:
+    // la navbar deve restare sempre visibile e fissa
+    if (id === 'home') {
+      showNav();
+
+      animateScrollTo(0, function () {
+        showNav();
+        lastY = window.pageYOffset || 0;
+
+        console.group('[KHAI NAV DEBUG] jumpToHash finished (home)');
+        console.log({
+          id: id,
+          finalPageYOffset: window.pageYOffset || 0,
+          currentSectionId: getCurrentSectionId(),
+          bodyPaddingTop: document.body.style.paddingTop || '(empty)',
+          bodyClasses: document.body.className
+        });
+        console.groupEnd();
+
+        setTimeout(function () {
+          showNav();
+          anchorJumpLock = false;
+        }, 140);
+      });
+
+      return;
+    }
+
+    // Tutte le altre sezioni: navbar nascosta al landing
     hideNav();
 
     // Aspettiamo 2 frame per stabilizzare il layout
@@ -335,7 +363,6 @@
           });
           console.groupEnd();
 
-          // Piccolo ritardo prima di sbloccare navbar logic
           setTimeout(function () {
             anchorJumpLock = false;
           }, 140);
