@@ -377,7 +377,7 @@
     });
   }
 
-  /* =========================================================
+   /* =========================================================
      10. LOGICA NAVBAR SU SCROLL
      ========================================================= */
 
@@ -394,25 +394,35 @@
     }
 
     if (isDesktop()) {
-      // In top page la navbar deve essere visibile
+      // In top page la navbar deve essere sempre visibile e stabile
       if (y <= 8) {
+        clearRevealHideTimer();
+        hoverReveal = false;
+        navHoverActive = false;
         showNav();
         lastY = y;
         return;
       }
 
+      // Hover reale nel DOM: più affidabile degli stati storici
+      var liveHover = isHeaderHovered() || isRevealZoneHovered() || navHoverActive;
+
       // Scroll up => mostra navbar
       if (delta < 0) {
+        clearRevealHideTimer();
         showNav();
       }
-      // Scroll down => nasconde navbar, salvo hoverReveal attivo
-      else if (!hoverReveal) {
-        hideNav();
+      // Scroll down => nasconde navbar se non siamo davvero in hover
+      else {
+        if (!liveHover) {
+          clearRevealHideTimer();
+          hoverReveal = false;
+          navHoverActive = false;
+          hideNav();
+        }
       }
     } else {
       // Mobile: niente hover logic
-      // top o scroll up => mostra
-      // scroll down => nasconde
       if (y <= 8 || delta < 0) {
         showNav();
       } else {
@@ -424,7 +434,7 @@
   }
 
 
-    /* =========================================================
+     /* =========================================================
      11. REVEAL ZONE DESKTOP
      ========================================================= */
 
@@ -435,6 +445,16 @@
     }
   }
 
+  function isHeaderHovered() {
+    var header = document.querySelector('.site-header');
+    return !!(header && header.matches(':hover'));
+  }
+
+  function isRevealZoneHovered() {
+    var zone = document.querySelector('.nav-reveal-zone');
+    return !!(zone && zone.matches(':hover'));
+  }
+
   function scheduleRevealHide() {
     clearRevealHideTimer();
 
@@ -442,9 +462,14 @@
       if (!isDesktop()) return;
       if ((window.pageYOffset || 0) <= 8) return;
       if (anchorJumpLock || isAnimating) return;
-      if (navHoverActive) return;
+
+      // Se il cursore è davvero ancora sulla zona/header, non chiudere
+      if (isHeaderHovered() || isRevealZoneHovered() || navHoverActive) {
+        return;
+      }
 
       hoverReveal = false;
+      navHoverActive = false;
 
       if (getCurrentSectionId() !== 'home') {
         hideNav();
