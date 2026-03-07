@@ -354,7 +354,7 @@ HERO (HTML embed)
    Block 1: Intro frame
    ----------------------------------------- */
 .ka-wyvn__hero {
-  min-height: 928px;
+  min-height: 840px;
   display: flex;
   align-items: flex-start;
 }
@@ -408,7 +408,7 @@ HERO (HTML embed)
 
 .ka-wyvn__boat {
   width: 600px;
-  height: 528px;
+  height: 500px;
   border-radius: 5px;
   overflow: hidden;
   position: relative;
@@ -427,7 +427,7 @@ HERO (HTML embed)
    Block 2: Continuation
    ----------------------------------------- */
 .ka-wyvn__continuation {
-  margin-top: 32px;
+  margin-top: 8px;
 }
 
 .ka-wyvn__drivers {
