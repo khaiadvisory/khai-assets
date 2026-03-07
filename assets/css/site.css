@@ -66,6 +66,16 @@ NAVBAR
   border-bottom: 1px solid rgba(31, 35, 40, 0.08);
 }
 
+.site-header {
+  transform: translateY(0);
+  transition: transform 0.28s ease, border-color 0.22s ease, background-color 0.22s ease;
+  will-change: transform;
+}
+
+body.nav-hidden .site-header {
+  transform: translateY(calc(-1 * var(--nav-h)));
+}
+
 .site-header__inner {
   width: 1120px;
   height: 100%;
