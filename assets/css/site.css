@@ -384,10 +384,10 @@ WHY VIETNAM NOW (Figma-locked)
   font-size: 18px;
   line-height: 30px;
   letter-spacing: 0;
-  text-align: justify;
+  text-align: left;
   color: var(--charcoal);
   margin: 0;
-  max-width: 556px;
+  max-width: none;
 }
 
 .ka-wyvn__left {
