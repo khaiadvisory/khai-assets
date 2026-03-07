@@ -1,5 +1,5 @@
 (function () {
-   /* =========================================================
+     /* =========================================================
      1. CONFIG / COSTANTI PRINCIPALI
      ========================================================= */
 
@@ -21,9 +21,12 @@
   // Soglia minima per considerare lo scroll "reale"
   var SCROLL_DELTA = 8;
 
-  // Debug build marker: serve per verificare che il browser carichi davvero
-  // questa versione aggiornata di site.js
-  console.log('[KHAI NAV DEBUG] site.js version = debug-01');
+  // Versioning / cache-busting marker
+  var SITE_JS_VERSION = 'debug-02';
+
+  // Espone subito la versione in console e nel window object
+  window.__KHAI_NAV_VERSION = SITE_JS_VERSION;
+  console.log('[KHAI NAV DEBUG] site.js version = ' + SITE_JS_VERSION);
 
 
   /* =========================================================
@@ -179,41 +182,48 @@
   }
 
 
-   /* =========================================================
+     /* =========================================================
      8. CONTROLLO: SIAMO GIÀ NELLA SEZIONE TARGET?
      ========================================================= */
 
-  // Non confrontiamo solo scrollY:
-  // la sezione attiva è quella che contiene una linea di controllo nel viewport
-  function getCurrentSectionId() {
-    var y = window.pageYOffset || 0;
-
-    // Se siamo praticamente in top pagina, la sezione attiva è Home
-    if (y <= 8) return 'home';
-
+  function getAllSectionRects() {
     var ids = ['home', 'whyvn', 'services', 'owm', 'whywork', 'faq', 'contact'];
-    var probeY = isDesktop() ? 120 : 96; // linea di controllo nel viewport
+    var probeY = isDesktop() ? 120 : 96;
+    var out = [];
 
-    // La sezione attiva è quella che contiene la probe line
     for (var i = 0; i < ids.length; i++) {
       var el = findTarget(ids[i]);
       if (!el) continue;
 
       var rect = el.getBoundingClientRect();
+      out.push({
+        id: ids[i],
+        top: rect.top,
+        bottom: rect.bottom,
+        containsProbe: rect.top <= probeY && rect.bottom > probeY
+      });
+    }
 
-      if (rect.top <= probeY && rect.bottom > probeY) {
-        return ids[i];
+    return out;
+  }
+
+  function getCurrentSectionId() {
+    var y = window.pageYOffset || 0;
+
+    if (y <= 8) return 'home';
+
+    var probeY = isDesktop() ? 120 : 96;
+    var rects = getAllSectionRects();
+
+    for (var i = 0; i < rects.length; i++) {
+      if (rects[i].containsProbe) {
+        return rects[i].id;
       }
     }
 
-    // Fallback: scegliamo la sezione più vicina sopra la probe line
-    for (var j = ids.length - 1; j >= 0; j--) {
-      var fallbackEl = findTarget(ids[j]);
-      if (!fallbackEl) continue;
-
-      var fallbackRect = fallbackEl.getBoundingClientRect();
-      if (fallbackRect.top <= probeY) {
-        return ids[j];
+    for (var j = rects.length - 1; j >= 0; j--) {
+      if (rects[j].top <= probeY) {
+        return rects[j].id;
       }
     }
 
@@ -408,7 +418,7 @@
   }
 
 
-       /* =========================================================
+         /* =========================================================
      13. EVENT LISTENERS GLOBALI
      ========================================================= */
 
@@ -418,10 +428,8 @@
     console.groupEnd();
   }
 
-  // Cambio hash manuale / browser navigation
   window.addEventListener('hashchange', jumpToHash);
 
-  // Load iniziale
   window.addEventListener('load', function () {
     bindRevealZone();
     syncInitialNavState();
@@ -430,8 +438,7 @@
       locationHash: location.hash,
       currentSectionId: getCurrentSectionId(),
       pageYOffset: window.pageYOffset || 0,
-      bodyPaddingTop: document.body.style.paddingTop || '(empty)',
-      bodyClasses: document.body.className
+      rects: getAllSectionRects()
     });
 
     if (location.hash) {
@@ -439,7 +446,6 @@
     }
   });
 
-  // Click su link anchor interni
   document.addEventListener('click', function (e) {
     var a = e.target.closest('a[href^="#"]');
     if (!a) return;
@@ -457,23 +463,16 @@
       locationHash: location.hash,
       currentSectionId: getCurrentSectionId(),
       alreadyAtTarget: isAlreadyAtTargetId(id),
-      targetExists: !!target,
-      targetRectTop: target.getBoundingClientRect().top,
-      targetRectBottom: target.getBoundingClientRect().bottom,
       pageYOffset: window.pageYOffset || 0,
-      bodyPaddingTop: document.body.style.paddingTop || '(empty)',
-      bodyClasses: document.body.className
+      rects: getAllSectionRects()
     });
 
-    // Blocca solo se la sezione attiva reale coincide col link cliccato
     if (isAlreadyAtTargetId(id)) {
       debugNavClick('blocked: already at target', {
         id: id,
         currentSectionId: getCurrentSectionId(),
-        locationHash: location.hash,
         pageYOffset: window.pageYOffset || 0,
-        bodyPaddingTop: document.body.style.paddingTop || '(empty)',
-        bodyClasses: document.body.className
+        rects: getAllSectionRects()
       });
 
       e.preventDefault();
@@ -482,7 +481,6 @@
 
     e.preventDefault();
 
-    // Aggiorna hash solo se cambia davvero
     if (location.hash !== '#' + id) {
       history.replaceState(null, '', '#' + id);
     }
@@ -492,14 +490,12 @@
       currentSectionId: getCurrentSectionId(),
       locationHash: location.hash,
       pageYOffset: window.pageYOffset || 0,
-      bodyPaddingTop: document.body.style.paddingTop || '(empty)',
-      bodyClasses: document.body.className
+      rects: getAllSectionRects()
     });
 
     jumpToHash();
   }, true);
 
-  // Scroll / mousemove / resize
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('mousemove', onMouseMove, { passive: true });
   window.addEventListener('resize', onResize);
