@@ -1,18 +1,48 @@
 (function () {
+  /* =========================================================
+     1. CONFIG / COSTANTI PRINCIPALI
+     ========================================================= */
+
+  // Altezza navbar desktop
   var NAV_H = 96;
+
+  // Fascia invisibile in alto che fa riapparire la navbar su desktop
   var REVEAL_ZONE = 24;
+
+  // Soglia desktop/mobile
   var DESKTOP_MIN = 1024;
 
+  // Parametri smooth scroll anchor
   var MIN_DURATION = 620;
   var MAX_DURATION = 1350;
   var DISTANCE_DIVISOR = 1.9;
   var REINFORCE_MS = 160;
+
+  // Soglia minima per considerare lo scroll "reale"
   var SCROLL_DELTA = 8;
 
+
+  /* =========================================================
+     2. STATO RUNTIME
+     ========================================================= */
+
+  // Ultima posizione verticale registrata
   var lastY = window.pageYOffset || 0;
+
+  // True quando il cursore è nella reveal zone top
   var hoverReveal = false;
+
+  // True mentre è in corso l'animazione smooth scroll
   var isAnimating = false;
+
+  // Lock temporaneo durante i salti anchor
+  // Serve per evitare che la navbar cambi stato durante il landing
   var anchorJumpLock = false;
+
+
+  /* =========================================================
+     3. UTILITY DI BASE
+     ========================================================= */
 
   function isDesktop() {
     return window.innerWidth >= DESKTOP_MIN;
@@ -27,6 +57,12 @@
     return document.getElementById(id);
   }
 
+
+  /* =========================================================
+     4. EASING + DURATA ANIMAZIONE SCROLL
+     ========================================================= */
+
+  // Easing morbido, più "editorial / luxury"
   function easeInOutExpoSoft(t) {
     if (t === 0) return 0;
     if (t === 1) return 1;
@@ -35,6 +71,7 @@
       : (2 - Math.pow(2, -20 * t + 10)) / 2;
   }
 
+  // Durata dinamica in base alla distanza
   function getDuration(distance) {
     return clamp(
       MIN_DURATION + Math.abs(distance) / DISTANCE_DIVISOR,
@@ -43,18 +80,29 @@
     );
   }
 
+
+  /* =========================================================
+     5. STATO VISIVO NAVBAR
+     ========================================================= */
+
+  // Mostra navbar e ripristina lo spazio top del body
   function showNav() {
     document.body.classList.remove('nav-hidden');
     document.body.classList.add('nav-revealed');
     document.body.style.paddingTop = NAV_H + 'px';
   }
 
+  // Nasconde navbar e rimuove lo spazio top del body
   function hideNav() {
     document.body.classList.remove('nav-revealed');
     document.body.classList.add('nav-hidden');
     document.body.style.paddingTop = '0px';
   }
 
+  // Stato iniziale:
+  // - in top page: navbar visibile
+  // - su desktop fuori top: navbar nascosta
+  // - su mobile fuori top: navbar visibile
   function syncInitialNavState() {
     var y = window.pageYOffset || 0;
 
@@ -69,6 +117,11 @@
       showNav();
     }
   }
+
+
+  /* =========================================================
+     6. SMOOTH SCROLL VERSO TARGET
+     ========================================================= */
 
   function animateScrollTo(targetY, onDone) {
     var startY = window.pageYOffset || 0;
@@ -101,6 +154,7 @@
 
     requestAnimationFrame(step);
 
+    // micro-rinforzo finale contro eventuali rounding glitches
     setTimeout(function () {
       if (!isAnimating) {
         window.scrollTo(0, targetY);
@@ -108,24 +162,60 @@
     }, REINFORCE_MS);
   }
 
+
+  /* =========================================================
+     7. CALCOLO POSIZIONE SEZIONE TARGET
+     ========================================================= */
+
+  // Restituisce la Y assoluta del top della sezione nel documento
   function getRawTargetY(el) {
     var y = el.getBoundingClientRect().top + (window.pageYOffset || 0);
     if (y < 0) y = 0;
     return y;
   }
 
+
+  /* =========================================================
+     8. CONTROLLO: SIAMO GIÀ NELLA SEZIONE TARGET?
+     ========================================================= */
+
+  // Non confrontiamo solo scrollY:
+  // verifichiamo se la sezione è già quella "attiva" nel viewport alto
+  function isAlreadyAtTarget(el) {
+    if (!el) return false;
+
+    var rect = el.getBoundingClientRect();
+    var topTolerance = 140;
+    var bottomTolerance = window.innerHeight * 0.45;
+
+    return rect.top >= 0 &&
+           rect.top <= topTolerance &&
+           rect.bottom > bottomTolerance;
+  }
+
+
+  /* =========================================================
+     9. JUMP A HASH / LANDING SU SEZIONE
+     ========================================================= */
+
   function jumpToHash() {
     var id = (location.hash || '').slice(1);
     var el = findTarget(id);
     if (!el) return;
 
+    // Se siamo già nella sezione corretta, non facciamo nulla
+    if (isAlreadyAtTarget(el)) {
+      return;
+    }
+
     hoverReveal = false;
     anchorJumpLock = true;
 
-    // Anchor landing must always end with navbar hidden
+    // Landing anchor: navbar nascosta
     hideNav();
 
-    // Wait for layout to settle after padding-top change
+    // Aspettiamo 2 frame per stabilizzare il layout
+    // dopo il cambio di padding-top del body
     requestAnimationFrame(function () {
       requestAnimationFrame(function () {
         var target = findTarget(id);
@@ -139,6 +229,7 @@
         animateScrollTo(y, function () {
           lastY = window.pageYOffset || 0;
 
+          // Piccolo ritardo prima di sbloccare navbar logic
           setTimeout(function () {
             anchorJumpLock = false;
           }, 140);
@@ -147,30 +238,43 @@
     });
   }
 
+
+  /* =========================================================
+     10. LOGICA NAVBAR SU SCROLL
+     ========================================================= */
+
   function onScroll() {
     var y = window.pageYOffset || 0;
     var delta = y - lastY;
 
     if (Math.abs(delta) < SCROLL_DELTA) return;
 
+    // Durante anchor jump / animazione non tocchiamo navbar state
     if (anchorJumpLock || isAnimating) {
       lastY = y;
       return;
     }
 
     if (isDesktop()) {
+      // In top page la navbar deve essere visibile
       if (y <= 8) {
         showNav();
         lastY = y;
         return;
       }
 
+      // Scroll up => mostra navbar
       if (delta < 0) {
         showNav();
-      } else if (!hoverReveal) {
+      }
+      // Scroll down => nasconde navbar, salvo hoverReveal attivo
+      else if (!hoverReveal) {
         hideNav();
       }
     } else {
+      // Mobile: niente hover logic
+      // top o scroll up => mostra
+      // scroll down => nasconde
       if (y <= 8 || delta < 0) {
         showNav();
       } else {
@@ -180,6 +284,11 @@
 
     lastY = y;
   }
+
+
+  /* =========================================================
+     11. REVEAL ZONE DESKTOP
+     ========================================================= */
 
   function bindRevealZone() {
     var zone = document.querySelector('.nav-reveal-zone');
@@ -203,6 +312,7 @@
     });
   }
 
+  // Fallback: se il mouse entra nei primi 24px, mostra navbar
   function onMouseMove(e) {
     if (!isDesktop()) return;
     if ((window.pageYOffset || 0) <= 8) return;
@@ -214,14 +324,26 @@
     }
   }
 
+
+  /* =========================================================
+     12. RESIZE
+     ========================================================= */
+
   function onResize() {
     hoverReveal = false;
     syncInitialNavState();
     lastY = window.pageYOffset || 0;
   }
 
+
+  /* =========================================================
+     13. EVENT LISTENERS GLOBALI
+     ========================================================= */
+
+  // Cambio hash manuale / browser navigation
   window.addEventListener('hashchange', jumpToHash);
 
+  // Load iniziale
   window.addEventListener('load', function () {
     bindRevealZone();
     syncInitialNavState();
@@ -231,6 +353,7 @@
     }
   });
 
+  // Click su link anchor interni
   document.addEventListener('click', function (e) {
     var a = e.target.closest('a[href^="#"]');
     if (!a) return;
@@ -241,18 +364,26 @@
     var id = href.slice(1);
     var target = findTarget(id);
     if (!target) return;
-    
+
+    // Se siamo già nella sezione attiva, non facciamo nulla
     if (isAlreadyAtTarget(target)) {
       e.preventDefault();
       return;
     }
 
     e.preventDefault();
-    history.replaceState(null, '', '#' + id);
+
+    // Aggiorna hash solo se cambia davvero
+    if (location.hash !== '#' + id) {
+      history.replaceState(null, '', '#' + id);
+    }
+
     jumpToHash();
   }, true);
 
+  // Scroll / mousemove / resize
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('mousemove', onMouseMove, { passive: true });
   window.addEventListener('resize', onResize);
+
 })();
