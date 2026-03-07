@@ -7,11 +7,12 @@
   var MAX_DURATION = 1350;
   var DISTANCE_DIVISOR = 1.9;
   var REINFORCE_MS = 160;
+  var SCROLL_DELTA = 8;
 
   var lastY = window.pageYOffset || 0;
   var hoverReveal = false;
   var isAnimating = false;
-  var anchorLandingLock = false;
+  var anchorJumpLock = false;
 
   function isDesktop() {
     return window.innerWidth >= DESKTOP_MIN;
@@ -42,10 +43,6 @@
     );
   }
 
-  function navIsShown() {
-    return !document.body.classList.contains('nav-hidden');
-  }
-
   function showNav() {
     document.body.classList.remove('nav-hidden');
     document.body.classList.add('nav-revealed');
@@ -58,8 +55,17 @@
     document.body.style.paddingTop = '0px';
   }
 
-  function syncNavForTop() {
-    if ((window.pageYOffset || 0) <= 8) {
+  function syncInitialNavState() {
+    var y = window.pageYOffset || 0;
+
+    if (y <= 8) {
+      showNav();
+      return;
+    }
+
+    if (isDesktop()) {
+      hideNav();
+    } else {
       showNav();
     }
   }
@@ -96,18 +102,16 @@
     requestAnimationFrame(step);
 
     setTimeout(function () {
-      if (!isAnimating) window.scrollTo(0, targetY);
+      if (!isAnimating) {
+        window.scrollTo(0, targetY);
+      }
     }, REINFORCE_MS);
   }
 
-  function getAnchorOffset(rawY) {
-    var currentY = window.pageYOffset || 0;
-    var fromTop = currentY < 40;
-    var goingDown = rawY > currentY;
-
-    if (fromTop) return 0;
-    if (goingDown) return 0;
-    return NAV_H;
+  function getRawTargetY(el) {
+    var y = el.getBoundingClientRect().top + (window.pageYOffset || 0);
+    if (y < 0) y = 0;
+    return y;
   }
 
   function jumpToHash() {
@@ -115,21 +119,31 @@
     var el = findTarget(id);
     if (!el) return;
 
-    var rawY = el.getBoundingClientRect().top + (window.pageYOffset || 0);
-    var offset = getAnchorOffset(rawY);
-    var y = rawY - offset;
-    if (y < 0) y = 0;
+    hoverReveal = false;
+    anchorJumpLock = true;
 
-    if (isDesktop()) {
-      hideNav();
-      anchorLandingLock = true;
-    }
+    // Anchor landing must always end with navbar hidden
+    hideNav();
 
-    animateScrollTo(y, function () {
-      lastY = window.pageYOffset || 0;
-      setTimeout(function () {
-        anchorLandingLock = false;
-      }, 120);
+    // Wait for layout to settle after padding-top change
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        var target = findTarget(id);
+        if (!target) {
+          anchorJumpLock = false;
+          return;
+        }
+
+        var y = getRawTargetY(target);
+
+        animateScrollTo(y, function () {
+          lastY = window.pageYOffset || 0;
+
+          setTimeout(function () {
+            anchorJumpLock = false;
+          }, 140);
+        });
+      });
     });
   }
 
@@ -137,16 +151,16 @@
     var y = window.pageYOffset || 0;
     var delta = y - lastY;
 
-    if (Math.abs(delta) < 6) return;
+    if (Math.abs(delta) < SCROLL_DELTA) return;
+
+    if (anchorJumpLock || isAnimating) {
+      lastY = y;
+      return;
+    }
 
     if (isDesktop()) {
       if (y <= 8) {
         showNav();
-        lastY = y;
-        return;
-      }
-
-      if (anchorLandingLock || isAnimating) {
         lastY = y;
         return;
       }
@@ -174,6 +188,7 @@
     zone.addEventListener('mouseenter', function () {
       if (!isDesktop()) return;
       if ((window.pageYOffset || 0) <= 8) return;
+      if (anchorJumpLock || isAnimating) return;
 
       hoverReveal = true;
       showNav();
@@ -181,18 +196,17 @@
 
     zone.addEventListener('mouseleave', function () {
       if (!isDesktop()) return;
+      if ((window.pageYOffset || 0) <= 8) return;
+      if (anchorJumpLock || isAnimating) return;
 
       hoverReveal = false;
-
-      if ((window.pageYOffset || 0) > 8) {
-        hideNav();
-      }
     });
   }
 
   function onMouseMove(e) {
     if (!isDesktop()) return;
     if ((window.pageYOffset || 0) <= 8) return;
+    if (anchorJumpLock || isAnimating) return;
 
     if (e.clientY <= REVEAL_ZONE) {
       hoverReveal = true;
@@ -202,29 +216,15 @@
 
   function onResize() {
     hoverReveal = false;
-    syncNavForTop();
-
-    if ((window.pageYOffset || 0) > 8) {
-      if (isDesktop()) {
-        hideNav();
-      } else {
-        showNav();
-      }
-    }
+    syncInitialNavState();
+    lastY = window.pageYOffset || 0;
   }
 
   window.addEventListener('hashchange', jumpToHash);
 
   window.addEventListener('load', function () {
     bindRevealZone();
-
-    if ((window.pageYOffset || 0) <= 8) {
-      showNav();
-    } else if (isDesktop()) {
-      hideNav();
-    } else {
-      showNav();
-    }
+    syncInitialNavState();
 
     if (location.hash) {
       jumpToHash();
