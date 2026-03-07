@@ -434,7 +434,7 @@
   }
 
 
-     /* =========================================================
+       /* =========================================================
      11. REVEAL ZONE DESKTOP
      ========================================================= */
 
@@ -455,6 +455,25 @@
     return !!(zone && zone.matches(':hover'));
   }
 
+  function shouldKeepNavVisibleFromPointer(e) {
+    if (!e) return false;
+
+    // Mouse fuori dal viewport verso l'alto:
+    // la navbar deve restare visibile
+    if (e.clientY < 0) return true;
+
+    // Mouse ancora dentro / sopra la trigger zone
+    if (e.clientY <= REVEAL_ZONE) return true;
+
+    // Mouse sopra l'header/navbar
+    if (isHeaderHovered()) return true;
+
+    // Mouse sopra la reveal zone
+    if (isRevealZoneHovered()) return true;
+
+    return false;
+  }
+
   function scheduleRevealHide() {
     clearRevealHideTimer();
 
@@ -463,7 +482,6 @@
       if ((window.pageYOffset || 0) <= 8) return;
       if (anchorJumpLock || isAnimating) return;
 
-      // Se il cursore è davvero ancora sulla zona/header, non chiudere
       if (isHeaderHovered() || isRevealZoneHovered() || navHoverActive) {
         return;
       }
@@ -496,14 +514,14 @@
       showNav();
     });
 
-    // Uscendo dalla trigger zone: non chiudere subito,
-    // potremmo stare entrando nell'header
+    // Uscendo dalla trigger zone: non chiudere subito.
+    // La chiusura sarà decisa dal mousemove in base alla Y reale del cursore.
     zone.addEventListener('mouseleave', function () {
       if (!isDesktop()) return;
       if ((window.pageYOffset || 0) <= 8) return;
       if (anchorJumpLock || isAnimating) return;
 
-      scheduleRevealHide();
+      clearRevealHideTimer();
     });
 
     // Finché il cursore è sopra la navbar, resta aperta
@@ -518,28 +536,36 @@
       showNav();
     });
 
-    // Quando esci dalla navbar, chiudi con un piccolo delay
+    // Quando esci dalla navbar, non chiudere subito:
+    // decide il mousemove se il cursore è davvero sceso sotto la trigger zone
     header.addEventListener('mouseleave', function () {
       if (!isDesktop()) return;
       if ((window.pageYOffset || 0) <= 8) return;
       if (anchorJumpLock || isAnimating) return;
 
       navHoverActive = false;
-      scheduleRevealHide();
+      clearRevealHideTimer();
     });
   }
 
-  // Fallback: se il mouse entra nei primi 24px, mostra navbar
+  // Mousemove = sorgente principale di stabilità desktop
   function onMouseMove(e) {
     if (!isDesktop()) return;
     if ((window.pageYOffset || 0) <= 8) return;
     if (anchorJumpLock || isAnimating) return;
 
-    if (e.clientY <= REVEAL_ZONE) {
+    // Se il cursore è nella zona alta o sopra l'header,
+    // la navbar resta visibile
+    if (shouldKeepNavVisibleFromPointer(e)) {
       clearRevealHideTimer();
       hoverReveal = true;
       showNav();
+      return;
     }
+
+    // La navbar si richiude solo quando il mouse è realmente
+    // rientrato nel viewport sotto la trigger zone
+    scheduleRevealHide();
   }
 
 
