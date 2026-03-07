@@ -378,12 +378,12 @@ function isAlreadyAtTargetId(id) {
     var target = findTarget(id);
     if (!target) return;
 
-    // Se siamo già nella sezione attiva, non facciamo nulla
-    if (isAlreadyAtTarget(target)) {
+    // Se clicchi la sezione già attiva, non succede niente
+    if (isAlreadyAtTargetId(id)) {
       e.preventDefault();
       return;
     }
-
+    
     e.preventDefault();
 
     // Aggiorna hash solo se cambia davvero
