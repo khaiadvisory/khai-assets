@@ -408,7 +408,7 @@
   }
 
 
-    /* =========================================================
+      /* =========================================================
      13. EVENT LISTENERS GLOBALI
      ========================================================= */
 
@@ -465,7 +465,21 @@
       bodyClasses: document.body.className
     });
 
-    // Se clicchi la sezione già attiva, non succede niente
+    // BLOCCO 1: se l'hash è già lo stesso del link cliccato, non fare nulla
+    // Questo risolve in modo robusto il caso: "sono già su #whyvn e clicco Why Vietnam Now?"
+    if (location.hash === '#' + id) {
+      debugNavClick('blocked: same hash already active', {
+        id: id,
+        locationHash: location.hash,
+        currentSectionId: getCurrentSectionId(),
+        pageYOffset: window.pageYOffset || 0
+      });
+
+      e.preventDefault();
+      return;
+    }
+
+    // BLOCCO 2: fallback logico se la sezione attiva rilevata coincide col target
     if (isAlreadyAtTargetId(id)) {
       debugNavClick('blocked: already at target', {
         id: id,
