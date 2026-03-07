@@ -417,8 +417,8 @@ WHY VIETNAM NOW (Figma-locked)
 .ka-wyvn__drivers {
   margin-top: 48px;
   display: grid;
-  grid-template-columns: repeat(3, 336px);
-  gap: 56px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px;
 }
 
 .ka-driver__line {
