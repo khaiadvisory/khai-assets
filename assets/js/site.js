@@ -494,7 +494,7 @@
       } else {
         showNav();
       }
-    }, 180);
+    }, 150);
   }
 
   function bindRevealZone() {
