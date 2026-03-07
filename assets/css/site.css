@@ -413,36 +413,51 @@ HERO (HTML embed)
   display: block;
 }
 
+/* Strategic strip */
 .ka-wyvn__drivers {
-  margin-top: 64px;
+  margin-top: 72px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(47, 111, 122, 0.18);
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 40px;
+  column-gap: 40px;
+  row-gap: 24px;
+  align-items: start;
 }
 
-.ka-driver__line {
-  width: 32px;
-  height: 2px;
-  background: rgba(47, 111, 122, 0.60);
-  margin: 0 0 18px 0;
+.ka-driver {
+  min-width: 0;
+}
+
+.ka-driver__index {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(47, 111, 122, 0.68);
+  margin: 0 0 12px 0;
 }
 
 .ka-driver__title {
   font-family: var(--font-serif);
   font-weight: 400;
-  font-size: 24px;
-  line-height: 28px;
+  font-size: 28px;
+  line-height: 32px;
   color: var(--teal-head-85);
-  margin: 0 0 14px 0;
+  margin: 0 0 10px 0;
 }
 
 .ka-driver__body {
   font-family: var(--font-body);
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 30px;
-  color: var(--muted);
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 28px;
+  letter-spacing: 0.01em;
+  color: rgba(31, 35, 40, 0.76);
   margin: 0;
+  max-width: 300px;
 }
 
 .ka-wyvn__focus {
@@ -510,7 +525,13 @@ HERO (HTML embed)
 
   .ka-wyvn__drivers {
     grid-template-columns: 1fr;
-    gap: 32px;
+    row-gap: 28px;
+    margin-top: 56px;
+    padding-top: 24px;
+  }
+
+  .ka-driver__body {
+    max-width: none;
   }
 
   .ka-wyvn__focus {
