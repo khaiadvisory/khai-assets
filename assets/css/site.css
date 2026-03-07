@@ -68,12 +68,19 @@ NAVBAR
 
 .site-header {
   transform: translateY(0);
-  transition: transform 0.28s ease, border-color 0.22s ease, background-color 0.22s ease;
+  transition:
+    transform 0.24s ease,
+    background-color 0.24s ease,
+    border-color 0.24s ease;
   will-change: transform;
 }
 
 body.nav-hidden .site-header {
   transform: translateY(calc(-1 * var(--nav-h)));
+}
+
+body.nav-revealed .site-header {
+  transform: translateY(0);
 }
 
 .site-header__inner {
@@ -195,6 +202,16 @@ body.nav-hidden .site-header {
   height: 100%;
   margin: 0 auto;
   position: relative;
+}
+
+.nav-reveal-zone {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 24px;
+  z-index: 10001;
+  background: transparent;
 }
 
 /* =========================================================
