@@ -347,7 +347,7 @@ HERO (HTML embed)
 .ka-wyvn__wrap {
   max-width: var(--container);
   margin: 0 auto;
-  padding: 96px 0 112px;
+  padding: 96px 0 128px;
 }
 
 .ka-wyvn__top {
@@ -415,7 +415,7 @@ HERO (HTML embed)
 
 /* Strategic strip */
 .ka-wyvn__drivers {
-  margin-top: 60px;
+  margin-top: 132px;
   padding-top: 24px;
   border-top: 1px solid rgba(47, 111, 122, 0.14);
   display: grid;
@@ -461,7 +461,7 @@ HERO (HTML embed)
 }
 
 .ka-wyvn__focus {
-  margin-top: 104px;
+  margin-top: 112px;
   display: grid;
   grid-template-columns: 448px 616px;
   gap: 56px;
@@ -526,7 +526,7 @@ HERO (HTML embed)
   .ka-wyvn__drivers {
     grid-template-columns: 1fr;
     row-gap: 32px;
-    margin-top: 52px;
+    margin-top: 72px;
     padding-top: 22px;
   }
 
