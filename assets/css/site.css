@@ -350,11 +350,21 @@ HERO (HTML embed)
   padding: 96px 0 128px;
 }
 
+/* -----------------------------------------
+   Block 1: Intro frame
+   ----------------------------------------- */
+.ka-wyvn__hero {
+  min-height: 928px;
+  display: flex;
+  align-items: flex-start;
+}
+
 .ka-wyvn__top {
   display: grid;
   grid-template-columns: 464px 600px;
   column-gap: 56px;
   align-items: start;
+  width: 100%;
 }
 
 .ka-micro {
@@ -398,7 +408,7 @@ HERO (HTML embed)
 
 .ka-wyvn__boat {
   width: 600px;
-  height: 564px;
+  height: 528px;
   border-radius: 5px;
   overflow: hidden;
   position: relative;
@@ -413,9 +423,14 @@ HERO (HTML embed)
   display: block;
 }
 
-/* Strategic strip */
+/* -----------------------------------------
+   Block 2: Continuation
+   ----------------------------------------- */
+.ka-wyvn__continuation {
+  margin-top: 32px;
+}
+
 .ka-wyvn__drivers {
-  margin-top: 132px;
   padding-top: 24px;
   border-top: 1px solid rgba(47, 111, 122, 0.14);
   display: grid;
@@ -499,9 +514,16 @@ HERO (HTML embed)
   margin: 0;
 }
 
+/* -----------------------------------------
+   Responsive
+   ----------------------------------------- */
 @media (max-width: 1120px) {
   .ka-wyvn__wrap {
     padding: 64px 16px 96px;
+  }
+
+  .ka-wyvn__hero {
+    min-height: auto;
   }
 
   .ka-wyvn__top {
@@ -523,10 +545,13 @@ HERO (HTML embed)
     height: 420px;
   }
 
+  .ka-wyvn__continuation {
+    margin-top: 56px;
+  }
+
   .ka-wyvn__drivers {
     grid-template-columns: 1fr;
     row-gap: 32px;
-    margin-top: 72px;
     padding-top: 22px;
   }
 
