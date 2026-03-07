@@ -1,5 +1,5 @@
 (function () {
-  /* =========================================================
+   /* =========================================================
      1. CONFIG / COSTANTI PRINCIPALI
      ========================================================= */
 
@@ -20,6 +20,10 @@
 
   // Soglia minima per considerare lo scroll "reale"
   var SCROLL_DELTA = 8;
+
+  // Debug build marker: serve per verificare che il browser carichi davvero
+  // questa versione aggiornata di site.js
+  console.log('[KHAI NAV DEBUG] site.js version = debug-01');
 
 
   /* =========================================================
@@ -220,7 +224,8 @@
     if (!id) return false;
     return getCurrentSectionId() === id;
   }
-  /* =========================================================
+  
+    /* =========================================================
      9. JUMP A HASH / LANDING SU SEZIONE
      ========================================================= */
 
@@ -228,8 +233,29 @@
     var id = (location.hash || '').slice(1);
     var el = findTarget(id);
     if (!el) return;
-    
+
+    console.group('[KHAI NAV DEBUG] jumpToHash start');
+    console.log({
+      id: id,
+      currentSectionId: getCurrentSectionId(),
+      alreadyAtTarget: isAlreadyAtTargetId(id),
+      pageYOffset: window.pageYOffset || 0,
+      elementTop: el.getBoundingClientRect().top,
+      elementBottom: el.getBoundingClientRect().bottom,
+      bodyPaddingTop: document.body.style.paddingTop || '(empty)',
+      bodyClasses: document.body.className
+    });
+    console.groupEnd();
+
     if (isAlreadyAtTargetId(id)) {
+      console.group('[KHAI NAV DEBUG] jumpToHash aborted: already at target');
+      console.log({
+        id: id,
+        currentSectionId: getCurrentSectionId(),
+        pageYOffset: window.pageYOffset || 0,
+        locationHash: location.hash
+      });
+      console.groupEnd();
       return;
     }
 
@@ -251,8 +277,30 @@
 
         var y = getRawTargetY(target);
 
+        console.group('[KHAI NAV DEBUG] jump target computed');
+        console.log({
+          id: id,
+          rawTargetY: y,
+          currentPageYOffset: window.pageYOffset || 0,
+          targetRectTop: target.getBoundingClientRect().top,
+          targetRectBottom: target.getBoundingClientRect().bottom,
+          bodyPaddingTop: document.body.style.paddingTop || '(empty)',
+          bodyClasses: document.body.className
+        });
+        console.groupEnd();
+
         animateScrollTo(y, function () {
           lastY = window.pageYOffset || 0;
+
+          console.group('[KHAI NAV DEBUG] jumpToHash finished');
+          console.log({
+            id: id,
+            finalPageYOffset: window.pageYOffset || 0,
+            currentSectionId: getCurrentSectionId(),
+            bodyPaddingTop: document.body.style.paddingTop || '(empty)',
+            bodyClasses: document.body.className
+          });
+          console.groupEnd();
 
           // Piccolo ritardo prima di sbloccare navbar logic
           setTimeout(function () {
@@ -262,7 +310,6 @@
       });
     });
   }
-
 
   /* =========================================================
      10. LOGICA NAVBAR SU SCROLL
@@ -361,9 +408,15 @@
   }
 
 
-  /* =========================================================
+    /* =========================================================
      13. EVENT LISTENERS GLOBALI
      ========================================================= */
+
+  function debugNavClick(label, data) {
+    console.group('[KHAI NAV DEBUG] ' + label);
+    console.log(data);
+    console.groupEnd();
+  }
 
   // Cambio hash manuale / browser navigation
   window.addEventListener('hashchange', jumpToHash);
@@ -372,6 +425,14 @@
   window.addEventListener('load', function () {
     bindRevealZone();
     syncInitialNavState();
+
+    debugNavClick('load state', {
+      locationHash: location.hash,
+      currentSectionId: getCurrentSectionId(),
+      pageYOffset: window.pageYOffset || 0,
+      bodyPaddingTop: document.body.style.paddingTop || '(empty)',
+      bodyClasses: document.body.className
+    });
 
     if (location.hash) {
       jumpToHash();
@@ -390,18 +451,50 @@
     var target = findTarget(id);
     if (!target) return;
 
+    debugNavClick('before click decision', {
+      href: href,
+      id: id,
+      locationHash: location.hash,
+      currentSectionId: getCurrentSectionId(),
+      alreadyAtTarget: isAlreadyAtTargetId(id),
+      targetExists: !!target,
+      targetRectTop: target.getBoundingClientRect().top,
+      targetRectBottom: target.getBoundingClientRect().bottom,
+      pageYOffset: window.pageYOffset || 0,
+      bodyPaddingTop: document.body.style.paddingTop || '(empty)',
+      bodyClasses: document.body.className
+    });
+
     // Se clicchi la sezione già attiva, non succede niente
     if (isAlreadyAtTargetId(id)) {
+      debugNavClick('blocked: already at target', {
+        id: id,
+        currentSectionId: getCurrentSectionId(),
+        locationHash: location.hash,
+        pageYOffset: window.pageYOffset || 0,
+        bodyPaddingTop: document.body.style.paddingTop || '(empty)',
+        bodyClasses: document.body.className
+      });
+
       e.preventDefault();
       return;
     }
-    
+
     e.preventDefault();
 
     // Aggiorna hash solo se cambia davvero
     if (location.hash !== '#' + id) {
       history.replaceState(null, '', '#' + id);
     }
+
+    debugNavClick('jumpToHash will run', {
+      id: id,
+      currentSectionId: getCurrentSectionId(),
+      locationHash: location.hash,
+      pageYOffset: window.pageYOffset || 0,
+      bodyPaddingTop: document.body.style.paddingTop || '(empty)',
+      bodyClasses: document.body.className
+    });
 
     jumpToHash();
   }, true);
