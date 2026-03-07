@@ -418,7 +418,7 @@
   }
 
 
-  /* =========================================================
+   /* =========================================================
      11. REVEAL ZONE DESKTOP
      ========================================================= */
 
@@ -441,6 +441,14 @@
       if (anchorJumpLock || isAnimating) return;
 
       hoverReveal = false;
+
+      // Fuori dalla home, quando esci dalla trigger zone,
+      // la navbar torna a scomparire
+      if (getCurrentSectionId() !== 'home') {
+        hideNav();
+      } else {
+        showNav();
+      }
     });
   }
 
