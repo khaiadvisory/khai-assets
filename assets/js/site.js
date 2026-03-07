@@ -175,52 +175,51 @@
   }
 
 
-  /* =========================================================
+   /* =========================================================
      8. CONTROLLO: SIAMO GIÀ NELLA SEZIONE TARGET?
      ========================================================= */
 
   // Non confrontiamo solo scrollY:
-  // verifichiamo se la sezione è già quella "attiva" nel viewport alto
+  // la sezione attiva è quella che contiene una linea di controllo nel viewport
   function getCurrentSectionId() {
-  var y = window.pageYOffset || 0;
+    var y = window.pageYOffset || 0;
 
-  // Se siamo praticamente in top pagina, la sezione attiva è Home
-  if (y <= 8) return 'home';
+    // Se siamo praticamente in top pagina, la sezione attiva è Home
+    if (y <= 8) return 'home';
 
-  var ids = ['home', 'whyvn', 'services', 'owm', 'whywork', 'faq', 'contact'];
-  var probeY = isDesktop() ? 120 : 96; // linea di controllo nel viewport
+    var ids = ['home', 'whyvn', 'services', 'owm', 'whywork', 'faq', 'contact'];
+    var probeY = isDesktop() ? 120 : 96; // linea di controllo nel viewport
 
-  // La sezione attiva è quella che contiene la probe line
-  for (var i = 0; i < ids.length; i++) {
-    var el = findTarget(ids[i]);
-    if (!el) continue;
+    // La sezione attiva è quella che contiene la probe line
+    for (var i = 0; i < ids.length; i++) {
+      var el = findTarget(ids[i]);
+      if (!el) continue;
 
-    var rect = el.getBoundingClientRect();
+      var rect = el.getBoundingClientRect();
 
-    if (rect.top <= probeY && rect.bottom > probeY) {
-      return ids[i];
+      if (rect.top <= probeY && rect.bottom > probeY) {
+        return ids[i];
+      }
     }
+
+    // Fallback: scegliamo la sezione più vicina sopra la probe line
+    for (var j = ids.length - 1; j >= 0; j--) {
+      var fallbackEl = findTarget(ids[j]);
+      if (!fallbackEl) continue;
+
+      var fallbackRect = fallbackEl.getBoundingClientRect();
+      if (fallbackRect.top <= probeY) {
+        return ids[j];
+      }
+    }
+
+    return 'home';
   }
 
-  // Fallback: scegliamo la sezione più vicina sopra la probe line
-  for (var j = ids.length - 1; j >= 0; j--) {
-    var fallbackEl = findTarget(ids[j]);
-    if (!fallbackEl) continue;
-
-    var fallbackRect = fallbackEl.getBoundingClientRect();
-    if (fallbackRect.top <= probeY) {
-      return ids[j];
-    }
+  function isAlreadyAtTargetId(id) {
+    if (!id) return false;
+    return getCurrentSectionId() === id;
   }
-
-  return 'home';
-}
-
-function isAlreadyAtTargetId(id) {
-  if (!id) return false;
-  return getCurrentSectionId() === id;
-}
-
   /* =========================================================
      9. JUMP A HASH / LANDING SU SEZIONE
      ========================================================= */
