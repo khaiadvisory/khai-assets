@@ -398,18 +398,18 @@ HERO (HTML embed)
 
 /* Vertical insights */
 .ka-wyvn__insights {
-  margin-top: 44px;
-  padding-top: 8px;
+  margin-top: 30px;
+  padding-top: 4px;
   display: grid;
   gap: 0;
 }
 
 .ka-insight {
   display: grid;
-  grid-template-columns: 44px 1fr;
-  column-gap: 18px;
+  grid-template-columns: 40px 1fr;
+  column-gap: 16px;
   align-items: start;
-  padding: 18px 0 20px 0;
+  padding: 14px 0 14px 0;
   border-top: 1px solid rgba(47, 111, 122, 0.12);
 }
 
@@ -418,43 +418,43 @@ HERO (HTML embed)
 }
 
 .ka-insight__meta {
-  padding-top: 3px;
+  padding-top: 2px;
 }
 
 .ka-insight__index {
   display: inline-block;
   font-family: var(--font-sans);
   font-weight: 600;
-  font-size: 11px;
-  line-height: 14px;
+  font-size: 10px;
+  line-height: 13px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(47, 111, 122, 0.42);
+  color: rgba(47, 111, 122, 0.38);
 }
 
 .ka-insight__title {
   font-family: var(--font-serif);
   font-weight: 400;
-  font-size: 28px;
-  line-height: 32px;
+  font-size: 24px;
+  line-height: 28px;
   color: var(--teal-head-85);
-  margin: 0 0 8px 0;
+  margin: 0 0 6px 0;
 }
 
 .ka-insight__body {
   font-family: var(--font-body);
   font-weight: 300;
-  font-size: 16px;
-  line-height: 29px;
+  font-size: 15px;
+  line-height: 27px;
   letter-spacing: 0.01em;
   color: rgba(31, 35, 40, 0.74);
   margin: 0;
-  max-width: 300px;
+  max-width: 286px;
 }
 
 .ka-wyvn__boat {
   width: 600px;
-  height: 760px;
+  height: 690px;
   border-radius: 5px;
   overflow: hidden;
   position: relative;
@@ -528,13 +528,13 @@ HERO (HTML embed)
   }
 
   .ka-wyvn__insights {
-    margin-top: 36px;
+    margin-top: 28px;
   }
 
   .ka-insight {
-    grid-template-columns: 36px 1fr;
-    column-gap: 14px;
-    padding: 16px 0 18px 0;
+    grid-template-columns: 32px 1fr;
+    column-gap: 12px;
+    padding: 14px 0;
   }
 
   .ka-insight__body {
@@ -543,7 +543,7 @@ HERO (HTML embed)
 
   .ka-wyvn__boat {
     width: 100%;
-    height: 460px;
+    height: 420px;
   }
 
   .ka-wyvn__focus {
