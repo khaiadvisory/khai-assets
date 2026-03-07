@@ -181,18 +181,32 @@
 
   // Non confrontiamo solo scrollY:
   // verifichiamo se la sezione è già quella "attiva" nel viewport alto
-  function isAlreadyAtTarget(el) {
-    if (!el) return false;
+  function getCurrentSectionId() {
+  var y = window.pageYOffset || 0;
+
+  // Top page: consideriamo attiva la home
+  if (y <= 8) return 'home';
+
+  var ids = ['home', 'whyvn', 'services', 'owm', 'whywork', 'faq', 'contact'];
+  var probeY = isDesktop() ? 120 : 96; // linea virtuale vicino al top viewport
+
+  for (var i = ids.length - 1; i >= 0; i--) {
+    var el = findTarget(ids[i]);
+    if (!el) continue;
 
     var rect = el.getBoundingClientRect();
-    var topTolerance = 140;
-    var bottomTolerance = window.innerHeight * 0.45;
-
-    return rect.top >= 0 &&
-           rect.top <= topTolerance &&
-           rect.bottom > bottomTolerance;
+    if (rect.top <= probeY) {
+      return ids[i];
+    }
   }
 
+  return null;
+}
+
+function isAlreadyAtTargetId(id) {
+  if (!id) return false;
+  return getCurrentSectionId() === id;
+}
 
   /* =========================================================
      9. JUMP A HASH / LANDING SU SEZIONE
@@ -202,9 +216,8 @@
     var id = (location.hash || '').slice(1);
     var el = findTarget(id);
     if (!el) return;
-
-    // Se siamo già nella sezione corretta, non facciamo nulla
-    if (isAlreadyAtTarget(el)) {
+    
+    if (isAlreadyAtTargetId(id)) {
       return;
     }
 
