@@ -352,7 +352,7 @@ HERO (HTML embed)
 
 .ka-wyvn__top {
   display: grid;
-  grid-template-columns: 480px 584px;
+  grid-template-columns: 464px 600px;
   column-gap: 56px;
   align-items: start;
 }
@@ -369,7 +369,7 @@ HERO (HTML embed)
 }
 
 .ka-wyvn__left {
-  width: 480px;
+  width: 464px;
   padding: 6px 0 0 10px;
   box-sizing: border-box;
 }
@@ -387,18 +387,18 @@ HERO (HTML embed)
 .ka-wyvn__intro {
   font-family: var(--font-body);
   font-weight: 300;
-  font-size: 17px;
-  line-height: 32px;
-  letter-spacing: 0.01em;
+  font-size: 16px;
+  line-height: 33px;
+  letter-spacing: 0.015em;
   text-align: left;
-  color: rgba(31, 35, 40, 0.82);
-  margin: 16px 0 0 0;
-  max-width: 418px;
+  color: rgba(31, 35, 40, 0.78);
+  margin: 14px 0 0 0;
+  max-width: 400px;
 }
 
 .ka-wyvn__boat {
-  width: 584px;
-  height: 560px;
+  width: 600px;
+  height: 580px;
   border-radius: 5px;
   overflow: hidden;
   position: relative;
