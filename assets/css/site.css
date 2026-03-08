@@ -657,25 +657,26 @@ SERVICES (Figma-aligned)
 }
 
 .ka-process {
-  margin-top: 62px;
+  margin-top: 100px;
   position: relative;
-  height: 66px;
+  height: 72px;
+  --ka-process-center-y: 24px;
 }
 
 .ka-process__line {
   position: absolute;
-  top: 24px;
   left: 16.6667%;
   right: 16.6667%;
+  top: var(--ka-process-center-y);
   height: 1px;
-  background: rgba(47, 111, 122, 0.22);
+  background: rgba(47, 111, 122, 0.20);
   transform: translateY(-0.5px);
 }
 
 .ka-process__row {
   position: relative;
   z-index: 1;
-  height: 66px;
+  height: 72px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   column-gap: 24px;
@@ -684,34 +685,40 @@ SERVICES (Figma-aligned)
 
 .ka-step {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+  height: 72px;
 }
 
 .ka-step__num {
-  order: 1;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
   font-family: var(--font-sans);
-  font-weight: 600;
+  font-weight: 500;
   font-size: 13px;
   line-height: 16px;
   letter-spacing: 0.18em;
-  color: rgba(47, 111, 122, 0.9);
-  margin: 0 0 7px 0;
+  color: rgba(47, 111, 122, 0.90);
+  margin: 0;
 }
 
 .ka-step__node {
-  order: 2;
+  position: absolute;
+  left: 50%;
+  top: var(--ka-process-center-y);
   width: 8px;
   height: 8px;
   border-radius: 999px;
-  background: rgba(47, 111, 122, 0.9);
-  margin: 0 0 7px 0;
+  background: rgba(47, 111, 122, 0.60);
+  transform: translate(-50%, -50%);
+  margin: 0;
 }
 
 .ka-step__label {
-  order: 3;
+  position: absolute;
+  left: 50%;
+  top: 38px;
+  transform: translateX(-50%);
   font-family: var(--font-sans);
   font-weight: 500;
   font-size: 14px;
@@ -719,10 +726,11 @@ SERVICES (Figma-aligned)
   letter-spacing: 0.05em;
   color: #1F2328;
   margin: 0;
+  white-space: nowrap;
 }
 
 .ka-services__cards {
-  margin-top: 24px;
+  margin-top: 20px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
