@@ -646,14 +646,14 @@ SERVICES (Figma-aligned)
 
 .ka-services__intro {
   font-family: var(--font-body);
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 30px;
-  letter-spacing: 0;
-  color: var(--charcoal);
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 29px;
+  letter-spacing: 0.012em;
+  color: rgba(31, 35, 40, 0.78);
   margin: 0;
   max-width: 464px;
-  padding-top: 4px;
+  padding-top: 6px;
 }
 
 .ka-process {
@@ -666,7 +666,7 @@ SERVICES (Figma-aligned)
   position: absolute;
   left: 0;
   right: 0;
-  top: 32px;
+  top: 31px;
   height: 1px;
   background: rgba(47,111,122,.22);
 }
@@ -696,16 +696,16 @@ SERVICES (Figma-aligned)
   line-height: 14px;
   letter-spacing: .16em;
   color: var(--teal-90);
-  margin: 0 0 10px 0;
+  margin: 0 0 9px 0;
 }
 
 .ka-step__node {
   order: 2;
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
   border-radius: 999px;
   background: rgba(47,111,122,.68);
-  margin: 0 0 7px 0;
+  margin: 0 0 8px 0;
 }
 
 .ka-step__label {
@@ -772,17 +772,19 @@ SERVICES (Figma-aligned)
   list-style: disc;
   list-style-position: outside;
   font-family: var(--font-body);
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 30px;
-  color: var(--charcoal);
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 29px;
+  letter-spacing: 0.012em;
+  color: rgba(31, 35, 40, 0.78);
 }
 
 .ka-card__bullets li {
   display: list-item;
-  margin: 0 0 2px 0;
+  margin: 0 0 1px 0;
   padding-left: 0;
 }
+
 .ka-card__deliverable {
   margin-top: auto;
   padding-top: 22px;
