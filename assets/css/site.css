@@ -665,7 +665,7 @@ SERVICES (Figma-aligned)
   position: absolute;
   left: 0;
   right: 0;
-  top: 29px;
+  top: 32px;
   height: 1px;
   background: rgba(47,111,122,.22);
 }
@@ -695,7 +695,7 @@ SERVICES (Figma-aligned)
   line-height: 14px;
   letter-spacing: .16em;
   color: var(--teal-90);
-  margin: 0 0 6px 0;
+  margin: 0 0 10px 0;
 }
 
 .ka-step__node {
@@ -704,7 +704,7 @@ SERVICES (Figma-aligned)
   height: 7px;
   border-radius: 999px;
   background: rgba(47,111,122,.68);
-  margin: 0 0 8px 0;
+  margin: 0 0 7px 0;
 }
 
 .ka-step__label {
@@ -767,18 +767,21 @@ SERVICES (Figma-aligned)
 
 .ka-card__bullets {
   margin: 0;
-  padding-left: 16px;
+  padding-left: 18px;
+  list-style: disc;
+  list-style-position: outside;
   font-family: var(--font-body);
   font-weight: 400;
-  font-size: 15px;
-  line-height: 24px;
+  font-size: 18px;
+  line-height: 30px;
   color: var(--charcoal);
 }
 
 .ka-card__bullets li {
+  display: list-item;
   margin: 0 0 2px 0;
+  padding-left: 0;
 }
-
 .ka-card__deliverable {
   margin-top: auto;
   padding-top: 22px;
