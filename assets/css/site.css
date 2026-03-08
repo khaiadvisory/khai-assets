@@ -484,10 +484,14 @@ HERO (HTML embed)
   overflow: hidden;
   position: relative;
   background: #d9d9d9;
-  background-image: url("https://khai2-preview.carrd.co/assets/images/image01.jpg?v=77adeb83");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+}
+
+.ka-wyvn__focusImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
 }
 
 .ka-wyvn__focusTitle {
