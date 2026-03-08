@@ -479,9 +479,9 @@ HERO (HTML embed)
 }
 
 .ka-wyvn__focusMedia {
-  width: 720px;
+  width: 820px;
   max-width: 100%;
-  height: 380px;
+  height: 360px;
   border-radius: 5px;
   overflow: hidden;
   position: relative;
@@ -497,13 +497,12 @@ HERO (HTML embed)
 }
 
 .ka-wyvn__focusCard {
-  width: 620px;
-  max-width: calc(100% - 40px);
-  margin-top: 18px;
+  width: 700px;
+  max-width: calc(100% - 32px);
+  margin-top: 20px;
   padding: 0;
   background: transparent;
-  text-align: center;
-  position: static;
+  text-align: left;
 }
 
 .ka-wyvn__focusCard .ka-micro {
@@ -513,11 +512,11 @@ HERO (HTML embed)
 .ka-wyvn__focusTitle {
   font-family: var(--font-serif);
   font-weight: 400;
-  font-size: 24px;
-  line-height: 30px;
+  font-size: 25px;
+  line-height: 31px;
   color: var(--teal-head-85);
-  margin: 0 auto 12px;
-  max-width: 560px;
+  margin: 0 0 12px 0;
+  max-width: 620px;
 }
 
 .ka-wyvn__focusBody {
@@ -527,55 +526,12 @@ HERO (HTML embed)
   line-height: 29px;
   letter-spacing: 0.012em;
   color: rgba(31, 35, 40, 0.78);
-  margin: 0 auto;
-  max-width: 584px;
+  margin: 0;
+  max-width: 640px;
   text-align: left;
 }
 
 @media (max-width: 1120px) {
-  .ka-wyvn__wrap {
-    padding: 56px 16px 96px;
-  }
-
-  .ka-wyvn__top {
-    grid-template-columns: 1fr;
-    row-gap: 28px;
-  }
-
-  .ka-wyvn__left {
-    width: 100%;
-    padding: 0;
-  }
-
-  .ka-wyvn__h1 {
-    font-size: 56px;
-    line-height: 60px;
-    max-width: none;
-  }
-
-  .ka-wyvn__intro {
-    max-width: none;
-  }
-
-  .ka-wyvn__insights {
-    margin-top: 24px;
-  }
-
-  .ka-insight {
-    grid-template-columns: 28px 1fr;
-    column-gap: 10px;
-    padding: 12px 0;
-  }
-
-  .ka-insight__body {
-    max-width: none;
-  }
-
-  .ka-wyvn__boat {
-    width: 100%;
-    height: 420px;
-  }
-
   .ka-wyvn__focus {
     margin-top: 72px;
   }
