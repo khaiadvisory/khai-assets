@@ -613,7 +613,7 @@ SERVICES (Figma-aligned)
 .ka-services__wrap {
   max-width: var(--container);
   margin: 0 auto;
-  padding: 96px 0 128px;
+  padding: 96px 0 136px;
 }
 
 .ka-services__head {
@@ -657,24 +657,25 @@ SERVICES (Figma-aligned)
 }
 
 .ka-process {
-  margin-top: 42px;
+  margin-top: 62px;
   position: relative;
-  height: 82px;
+  height: 66px;
 }
 
 .ka-process__line {
   position: absolute;
-  left: 0;
-  right: 0;
-  top: 31px;
+  top: 24px;
+  left: 16.6667%;
+  right: 16.6667%;
   height: 1px;
-  background: rgba(47,111,122,.22);
+  background: rgba(47, 111, 122, 0.22);
+  transform: translateY(-0.5px);
 }
 
 .ka-process__row {
   position: relative;
   z-index: 1;
-  height: 82px;
+  height: 66px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   column-gap: 24px;
@@ -682,6 +683,7 @@ SERVICES (Figma-aligned)
 }
 
 .ka-step {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -691,38 +693,40 @@ SERVICES (Figma-aligned)
 .ka-step__num {
   order: 1;
   font-family: var(--font-sans);
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 14px;
-  letter-spacing: .16em;
-  color: var(--teal-90);
-  margin: 0 0 9px 0;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 16px;
+  letter-spacing: 0.18em;
+  color: rgba(47, 111, 122, 0.9);
+  margin: 0 0 7px 0;
 }
 
 .ka-step__node {
   order: 2;
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
   border-radius: 999px;
-  background: rgba(47,111,122,.68);
-  margin: 0 0 8px 0;
+  background: rgba(47, 111, 122, 0.9);
+  margin: 0 0 7px 0;
 }
 
 .ka-step__label {
   order: 3;
-  font-family: var(--font-body);
+  font-family: var(--font-sans);
   font-weight: 500;
-  font-size: 18px;
-  line-height: 22px;
-  color: var(--charcoal);
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.05em;
+  color: #1F2328;
   margin: 0;
 }
 
 .ka-services__cards {
-  margin-top: 34px;
+  margin-top: 24px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
+  align-items: stretch;
 }
 
 .ka-card {
