@@ -867,49 +867,76 @@ OWM (Our Working Model)
 .ka-owm__wrap {
   max-width: var(--container);
   margin: 0 auto;
-  padding: 88px 0;
+  padding: 88px 0 104px;
 }
 
-.ka-owm__top {
+.ka-owm__head {
   display: grid;
-  grid-template-columns: 600px 1fr;
+  grid-template-columns: 600px 464px;
   column-gap: 56px;
   align-items: start;
+}
+
+.ka-owm__left {
+  min-width: 0;
+}
+
+.ka-owm__eyebrow {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 16px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--teal-90);
+  margin: 0 0 16px 0;
 }
 
 .ka-owm__title {
   font-family: var(--font-serif);
   font-weight: 400;
-  font-size: 56px;
-  line-height: 1.05;
+  font-size: 72px;
+  line-height: 78px;
+  letter-spacing: 0;
   color: var(--teal-90);
   margin: 0;
+  max-width: 600px;
 }
 
 .ka-owm__intro {
   font-family: var(--font-body);
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 30px;
-  color: var(--charcoal);
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 29px;
+  letter-spacing: 0.012em;
+  color: rgba(31, 35, 40, 0.78);
   margin: 0;
-  max-width: 556px;
+  max-width: 464px;
+  padding-top: 6px;
 }
 
 .ka-owm__media {
-  margin-top: 40px;
+  margin-top: 32px;
   width: 100%;
   height: 460px;
-  border-radius: 2px;
-  background: #D9D9D9;
+  border-radius: 5px;
   overflow: hidden;
+  background: #D9D9D9;
+  background-image: url("https://khai2-preview.carrd.co/assets/images/image01.jpg?v=f785f62a");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .ka-owm__grid {
   margin-top: 48px;
   display: grid;
-  grid-template-columns: repeat(3, 336px);
+  grid-template-columns: repeat(3, 1fr);
   gap: 56px;
+}
+
+.ka-owm__item {
+  min-width: 0;
 }
 
 .ka-owm__h3 {
@@ -923,11 +950,45 @@ OWM (Our Working Model)
 
 .ka-owm__p {
   font-family: var(--font-body);
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 30px;
-  color: var(--muted);
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 29px;
+  letter-spacing: 0.012em;
+  color: rgba(31, 35, 40, 0.78);
   margin: 0;
+}
+
+@media (max-width: 1120px) {
+  .ka-owm__wrap {
+    padding: 64px 16px 88px;
+  }
+
+  .ka-owm__head {
+    grid-template-columns: 1fr;
+    row-gap: 22px;
+  }
+
+  .ka-owm__title {
+    font-size: 56px;
+    line-height: 1.05;
+    max-width: none;
+  }
+
+  .ka-owm__intro {
+    max-width: 100%;
+    padding-top: 0;
+  }
+
+  .ka-owm__media {
+    margin-top: 28px;
+    height: 320px;
+  }
+
+  .ka-owm__grid {
+    margin-top: 32px;
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
 }
 
 /* =========================================================
