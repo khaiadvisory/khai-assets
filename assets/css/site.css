@@ -486,7 +486,6 @@ HERO (HTML embed)
   overflow: hidden;
   position: relative;
   background: #d9d9d9;
-  z-index: 1;
 }
 
 .ka-wyvn__focusImg {
@@ -505,7 +504,6 @@ HERO (HTML embed)
   background: transparent;
   text-align: center;
   position: static;
-  z-index: auto;
 }
 
 .ka-wyvn__focusCard .ka-micro {
@@ -521,7 +519,6 @@ HERO (HTML embed)
   margin: 0 auto 12px;
   max-width: 560px;
 }
-
 
 .ka-wyvn__focusBody {
   font-family: var(--font-body);
@@ -584,16 +581,16 @@ HERO (HTML embed)
   }
 
   .ka-wyvn__focusMedia {
-  width: 100%;
-  height: 280px;
-}
+    width: 100%;
+    height: 280px;
+  }
 
   .ka-wyvn__focusCard {
-  width: calc(100% - 24px);
-  max-width: 100%;
-  margin-top: -20px;
-  padding: 18px 18px 0;
-}
+    width: calc(100% - 24px);
+    max-width: 100%;
+    margin-top: 18px;
+    padding: 0;
+  }
 
   .ka-wyvn__focusTitle {
     font-size: 22px;
