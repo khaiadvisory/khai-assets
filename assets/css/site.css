@@ -479,9 +479,9 @@ HERO (HTML embed)
 }
 
 .ka-wyvn__focusMedia {
-  width: 880px;
+  width: 760px;
   max-width: 100%;
-  height: 312px;
+  height: 360px;
   border-radius: 5px;
   overflow: hidden;
   position: relative;
@@ -497,9 +497,9 @@ HERO (HTML embed)
 }
 
 .ka-wyvn__focusCard {
-  width: 640px;
+  width: 720px;
   max-width: 100%;
-  margin-top: 24px;
+  margin-top: 26px;
   text-align: center;
 }
 
@@ -514,8 +514,9 @@ HERO (HTML embed)
   line-height: 30px;
   color: var(--teal-head-85);
   margin: 0 auto 14px;
-  max-width: 560px;
+  max-width: 640px;
 }
+
 
 .ka-wyvn__focusBody {
   font-family: var(--font-body);
@@ -525,7 +526,7 @@ HERO (HTML embed)
   letter-spacing: 0.012em;
   color: rgba(31, 35, 40, 0.78);
   margin: 0 auto;
-  max-width: 640px;
+  max-width: 720px;
   text-align: left;
 }
 
@@ -579,7 +580,7 @@ HERO (HTML embed)
 
   .ka-wyvn__focusMedia {
     width: 100%;
-    height: 260px;
+    height: 280px;
   }
 
   .ka-wyvn__focusCard {
