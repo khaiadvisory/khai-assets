@@ -613,7 +613,7 @@ SERVICES (Figma-aligned)
 .ka-services__wrap {
   max-width: var(--container);
   margin: 0 auto;
-  padding: 96px 0;
+  padding: 96px 0 128px;
 }
 
 .ka-services__head {
@@ -649,10 +649,11 @@ SERVICES (Figma-aligned)
   font-weight: 400;
   font-size: 18px;
   line-height: 30px;
+  letter-spacing: 0;
   color: var(--charcoal);
   margin: 0;
   max-width: 464px;
-  padding-top: 2px;
+  padding-top: 4px;
 }
 
 .ka-process {
