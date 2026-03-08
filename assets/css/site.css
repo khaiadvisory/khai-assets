@@ -888,11 +888,11 @@ SERVICES (Figma-aligned)
 .ka-owm__listlead,
 .ka-owm__list {
   font-family: var(--font-body);
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 30px;
-  letter-spacing: 0;
-  color: var(--charcoal);
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 29px;
+  letter-spacing: 0.012em;
+  color: rgba(31, 35, 40, 0.78);
 }
 
 .ka-owm__introtext p {
@@ -904,7 +904,7 @@ SERVICES (Figma-aligned)
 }
 
 .ka-owm__listlead {
-  margin: 30px 0 6px 0;
+  margin: 28px 0 6px 0;
 }
 
 .ka-owm__list {
@@ -916,7 +916,7 @@ SERVICES (Figma-aligned)
 .ka-owm__list li {
   position: relative;
   margin: 0;
-  padding-left: 16px;
+  padding-left: 14px;
 }
 
 .ka-owm__list li::before {
@@ -927,7 +927,7 @@ SERVICES (Figma-aligned)
 }
 
 .ka-owm__closing {
-  margin-top: 30px !important;
+  margin-top: 28px !important;
 }
 
 .ka-owm__titlecol {
@@ -975,21 +975,32 @@ SERVICES (Figma-aligned)
 }
 
 .ka-owm__grid {
-  margin-top: 32px;
+  margin-top: 36px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 56px;
+  gap: 40px;
 }
 
 .ka-owm__item {
   min-width: 0;
+  padding-top: 18px;
+  position: relative;
+}
+
+.ka-owm__item::before {
+  content: "";
+  display: block;
+  width: 36px;
+  height: 2px;
+  background: rgba(47, 111, 122, 0.32);
+  margin-bottom: 14px;
 }
 
 .ka-owm__h3 {
   font-family: var(--font-serif);
   font-weight: 400;
-  font-size: 24px;
-  line-height: 28px;
+  font-size: 28px;
+  line-height: 32px;
   color: var(--teal-head-85);
   margin: 0 0 10px 0;
 }
@@ -1002,6 +1013,7 @@ SERVICES (Figma-aligned)
   letter-spacing: 0.012em;
   color: rgba(31, 35, 40, 0.78);
   margin: 0;
+  max-width: 320px;
 }
 
 /* -----------------------------------------
@@ -1034,6 +1046,10 @@ SERVICES (Figma-aligned)
     margin-top: 28px;
     grid-template-columns: 1fr;
     gap: 28px;
+  }
+
+  .ka-owm__item {
+    padding-top: 14px;
   }
 }
 
