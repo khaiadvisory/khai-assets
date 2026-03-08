@@ -720,11 +720,11 @@ SERVICES (Figma-aligned)
   top: 38px;
   transform: translateX(-50%);
   font-family: var(--font-sans);
-  font-weight: 500;
+  font-weight: 400;
   font-size: 14px;
   line-height: 17px;
   letter-spacing: 0.05em;
-  color: #1F2328;
+  color: rgba(31, 35, 40, 0.88);
   margin: 0;
   white-space: nowrap;
 }
