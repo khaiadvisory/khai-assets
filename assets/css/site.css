@@ -497,8 +497,8 @@ HERO (HTML embed)
 }
 
 .ka-wyvn__focusCard {
-  width: 700px;
-  max-width: calc(100% - 32px);
+  width: 820px;
+  max-width: 100%;
   margin-top: 20px;
   padding: 0;
   background: transparent;
@@ -529,34 +529,6 @@ HERO (HTML embed)
   margin: 0;
   max-width: 640px;
   text-align: left;
-}
-
-@media (max-width: 1120px) {
-  .ka-wyvn__focus {
-    margin-top: 72px;
-  }
-
-  .ka-wyvn__focusMedia {
-    width: 100%;
-    height: 280px;
-  }
-
-  .ka-wyvn__focusCard {
-    width: calc(100% - 24px);
-    max-width: 100%;
-    margin-top: 18px;
-    padding: 0;
-  }
-
-  .ka-wyvn__focusTitle {
-    font-size: 22px;
-    line-height: 28px;
-    max-width: 100%;
-  }
-
-  .ka-wyvn__focusBody {
-    max-width: 100%;
-  }
 }
 
 /* =========================================================
