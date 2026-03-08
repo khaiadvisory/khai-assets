@@ -470,15 +470,12 @@ HERO (HTML embed)
 }
 
 .ka-wyvn__focus {
-  margin-top: 112px;
-  display: grid;
-  grid-template-columns: 448px 616px;
-  gap: 56px;
-  align-items: start;
+  width: 100%;
+  margin-top: 88px;
 }
 
 .ka-wyvn__focusMedia {
-  width: 448px;
+  width: 100%;
   height: 340px;
   border-radius: 5px;
   overflow: hidden;
@@ -494,21 +491,16 @@ HERO (HTML embed)
   display: block;
 }
 
+.ka-wyvn__focusCard {
+  width: 616px;
+  margin-top: 28px;
+}
+
 .ka-wyvn__focusTitle {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  font-size: 32px;
-  line-height: 38px;
-  color: rgba(15, 76, 92, 0.90);
-  margin: 0 0 14px 0;
+  margin: 10px 0 14px;
 }
 
 .ka-wyvn__focusBody {
-  font-family: var(--font-body);
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 30px;
-  color: var(--muted);
   margin: 0;
 }
 
@@ -557,14 +549,19 @@ HERO (HTML embed)
   }
 
   .ka-wyvn__focus {
-    grid-template-columns: 1fr;
-    gap: 32px;
-    margin-top: 88px;
-  }
+  margin-top: 72px;
+}
 
-  .ka-wyvn__focusMedia {
-    width: 100%;
-  }
+.ka-wyvn__focusMedia {
+  width: 100%;
+  height: 280px;
+}
+
+.ka-wyvn__focusCard {
+  width: 100%;
+  margin-top: 22px;
+}
+  
 }
 
 /* =========================================================
