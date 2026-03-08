@@ -347,7 +347,7 @@ HERO (HTML embed)
 .ka-wyvn__wrap {
   max-width: var(--container);
   margin: 0 auto;
-  padding: 72px 0 112px;
+  padding: 88px 0;
 }
 
 .ka-wyvn__top {
@@ -613,7 +613,7 @@ SERVICES (Figma-aligned)
 .ka-services__wrap {
   max-width: var(--container);
   margin: 0 auto;
-  padding: 96px 0 136px;
+  padding: 88px 0;
 }
 
 .ka-services__head {
@@ -867,7 +867,7 @@ OWM (Our Working Model)
 .ka-owm__wrap {
   max-width: var(--container);
   margin: 0 auto;
-  padding: 96px 0;
+  padding: 88px 0;
 }
 
 .ka-owm__top {
@@ -941,7 +941,7 @@ WHY WORK WITH US (3 cards)
 .ka-whywork__wrap {
   max-width: var(--container);
   margin: 0 auto;
-  padding: 96px 0;
+  padding: 88px 0;
 }
 
 .ka-whywork__head {
@@ -1011,7 +1011,7 @@ FAQ (details/summary)
 .ka-faq__wrap {
   max-width: var(--container);
   margin: 0 auto;
-  padding: 96px 0;
+  padding: 88px 0;
 }
 
 .ka-faq__title {
@@ -1061,7 +1061,7 @@ CONTACT
 .ka-contact__wrap {
   max-width: var(--container);
   margin: 0 auto;
-  padding: 96px 0 140px;
+  padding: 88px 0 140px;
   text-align: center;
 }
 
