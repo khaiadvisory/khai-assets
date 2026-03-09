@@ -1256,7 +1256,7 @@ OWM (range-based desktop-first pattern)
 }
 
 /* =========================================================
-WHY WORK WITH US (range-based desktop-first pattern)
+WHY WORK WITH US
 ========================================================= */
 .ka-whywork {
   background: var(--paper);
@@ -1269,60 +1269,203 @@ WHY WORK WITH US (range-based desktop-first pattern)
   padding: 88px 0;
 }
 
-.ka-whywork__head {
-  display: grid;
-  grid-template-columns: minmax(0, 600px) minmax(0, 1fr);
-  column-gap: clamp(32px, 4vw, var(--split-gap));
-  align-items: start;
+.ka-whywork__top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.ka-whywork__micro {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 16px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--teal-90);
+  margin: 0;
 }
 
 .ka-whywork__title {
   font-family: var(--font-serif);
   font-weight: 400;
-  font-size: 56px;
-  line-height: 1.05;
+  font-size: 60px;
+  line-height: 0.96;
+  letter-spacing: 0;
   color: var(--teal-90);
-  margin: 0;
+  text-align: center;
+  margin: 12px 0 18px 0;
+  max-width: 520px;
 }
 
-.ka-whywork__intro {
+.ka-whywork__introLead {
   font-family: var(--font-body);
-  font-size: 18px;
-  line-height: 30px;
-  color: var(--charcoal);
+  font-weight: 400;
+  font-style: italic;
+  font-size: 15px;
+  line-height: 29px;
+  letter-spacing: 0.012em;
+  color: rgba(31, 35, 40, 0.78);
+  text-align: center;
   margin: 0;
-  max-width: 556px;
+  max-width: 420px;
 }
 
-.ka-whywork__cards {
-  margin-top: 32px;
+.ka-whywork__introBody {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 29px;
+  letter-spacing: 0.012em;
+  color: rgba(31, 35, 40, 0.78);
+  text-align: center;
+  margin: 6px 0 0 0;
+  max-width: 420px;
+}
+
+.ka-whywork__imageWrap {
+  width: 100%;
+  margin-top: 26px;
+  border-radius: 5px;
+  overflow: hidden;
+  background: #d9d9d9;
+  line-height: 0;
+}
+
+.ka-whywork__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1120 / 430;
+  object-fit: cover;
+  object-position: center;
+}
+
+.ka-whywork__bottom {
+  margin-top: 44px;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(18px, 2vw, var(--grid-gap));
+  grid-template-columns: minmax(0, 1fr) 320px;
+  column-gap: 56px;
+  align-items: start;
 }
 
-.ka-whycard {
-  background: #FBFAF7;
-  border: 1px solid rgba(47,111,122,.20);
-  border-radius: 16px;
-  padding: 24px;
+.ka-whywork__bottomLeft {
+  min-width: 0;
 }
 
-.ka-whycard__title {
+.ka-whywork__micro--bottom {
+  margin-bottom: 12px;
+}
+
+.ka-whywork__positioningTitle {
   font-family: var(--font-serif);
   font-weight: 400;
-  font-size: 24px;
-  line-height: 28px;
-  color: rgba(15,76,92,.90);
-  margin: 0 0 12px 0;
+  font-size: 44px;
+  line-height: 0.96;
+  letter-spacing: 0;
+  color: var(--teal-90);
+  margin: 0;
+  max-width: 420px;
 }
 
-.ka-whycard__body {
+.ka-whywork__bottomRight {
+  min-width: 0;
+  text-align: right;
+  padding-top: 4px;
+}
+
+.ka-whywork__positioningBody,
+.ka-whywork__positioningNote {
   font-family: var(--font-body);
-  font-size: 18px;
-  line-height: 30px;
-  color: var(--muted);
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 29px;
+  letter-spacing: 0.012em;
+  color: rgba(31, 35, 40, 0.78);
   margin: 0;
+}
+
+.ka-whywork__positioningNote {
+  margin-top: 10px;
+}
+
+@media (max-width: 1279px) {
+  .ka-whywork__title {
+    font-size: 54px;
+  }
+
+  .ka-whywork__bottom {
+    grid-template-columns: minmax(0, 1fr) 300px;
+    column-gap: 44px;
+  }
+
+  .ka-whywork__positioningTitle {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 899px) {
+  .ka-whywork__wrap {
+    padding: 72px 0 84px;
+  }
+
+  .ka-whywork__title {
+    font-size: 48px;
+    max-width: 460px;
+  }
+
+  .ka-whywork__introLead,
+  .ka-whywork__introBody {
+    max-width: 520px;
+  }
+
+  .ka-whywork__imageWrap {
+    margin-top: 24px;
+  }
+
+  .ka-whywork__image {
+    aspect-ratio: 16 / 10;
+  }
+
+  .ka-whywork__bottom {
+    margin-top: 36px;
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+  }
+
+  .ka-whywork__bottomRight {
+    text-align: left;
+    padding-top: 0;
+  }
+
+  .ka-whywork__positioningTitle {
+    font-size: 38px;
+    max-width: none;
+  }
+}
+
+@media (max-width: 719px) {
+  .ka-whywork__wrap {
+    padding: 64px 0 76px;
+  }
+
+  .ka-whywork__title {
+    font-size: 42px;
+    max-width: 340px;
+  }
+
+  .ka-whywork__introLead,
+  .ka-whywork__introBody,
+  .ka-whywork__positioningBody,
+  .ka-whywork__positioningNote {
+    font-size: 15px;
+    line-height: 27px;
+  }
+
+  .ka-whywork__positioningTitle {
+    font-size: 34px;
+  }
 }
 
 /* =========================================================
