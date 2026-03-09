@@ -1266,7 +1266,13 @@ WHY WORK WITH US
 .ka-whywork__wrap {
   width: var(--wrap-w);
   margin: 0 auto;
-  padding: 88px 0;
+  padding: 88px 0 96px;
+}
+
+.ka-whywork__subsection--intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .ka-whywork__top {
@@ -1326,31 +1332,34 @@ WHY WORK WITH US
 
 .ka-whywork__imageWrap {
   width: 100%;
-  margin-top: 26px;
-  border-radius: 5px;
-  overflow: hidden;
-  background: #d9d9d9;
+  margin-top: 24px;
   line-height: 0;
+  overflow: hidden;
+  border-radius: 5px;
+  background: #d9d9d9;
 }
 
 .ka-whywork__image {
   display: block;
   width: 100%;
-  height: auto;
-  aspect-ratio: 1120 / 430;
+  height: 320px;
   object-fit: cover;
   object-position: center;
 }
 
-.ka-whywork__bottom {
+.ka-whywork__subsection--positioning {
   margin-top: 44px;
+}
+
+.ka-whywork__bottom {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 320px;
   column-gap: 56px;
   align-items: start;
 }
 
-.ka-whywork__bottomLeft {
+.ka-whywork__bottomLeft,
+.ka-whywork__bottomRight {
   min-width: 0;
 }
 
@@ -1370,7 +1379,6 @@ WHY WORK WITH US
 }
 
 .ka-whywork__bottomRight {
-  min-width: 0;
   text-align: right;
   padding-top: 4px;
 }
@@ -1393,6 +1401,14 @@ WHY WORK WITH US
 @media (max-width: 1279px) {
   .ka-whywork__title {
     font-size: 54px;
+  }
+
+  .ka-whywork__image {
+    height: 312px;
+  }
+
+  .ka-whywork__subsection--positioning {
+    margin-top: 40px;
   }
 
   .ka-whywork__bottom {
@@ -1425,11 +1441,15 @@ WHY WORK WITH US
   }
 
   .ka-whywork__image {
+    height: auto;
     aspect-ratio: 16 / 10;
   }
 
-  .ka-whywork__bottom {
+  .ka-whywork__subsection--positioning {
     margin-top: 36px;
+  }
+
+  .ka-whywork__bottom {
     grid-template-columns: 1fr;
     row-gap: 20px;
   }
