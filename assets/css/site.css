@@ -960,12 +960,14 @@ SERVICES (Figma-aligned)
    ----------------------------------------- */
 .ka-owm__visualblock {
   margin-top: 64px;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
 }
 
 .ka-owm__media {
-  width: 100%;
+  width: 100vw;
   height: 520px;
-  border-radius: 5px;
+  border-radius: 0;
   overflow: hidden;
   background: #D9D9D9;
   background-image: url("https://raw.githubusercontent.com/khaiadvisory/khai-assets/refs/heads/main/assets/assets/images/OWMcut.jpg?v=2") !important;
@@ -975,7 +977,8 @@ SERVICES (Figma-aligned)
 }
 
 .ka-owm__grid {
-  margin-top: 36px;
+  max-width: var(--container);
+  margin: 36px auto 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 40px;
@@ -1014,6 +1017,10 @@ SERVICES (Figma-aligned)
   color: rgba(31, 35, 40, 0.78);
   margin: 0;
   max-width: 320px;
+}
+
+.ka-owm {
+  overflow-x: clip;
 }
 
 /* -----------------------------------------
