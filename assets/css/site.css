@@ -1394,8 +1394,7 @@ WHY WORK WITH US
 
 .ka-whywork__positioningBody {
   text-align: right;
-  max-width: 420px;
-  margin: 0 0 18px auto;
+  margin: 0 0 18px 0;
 }
 
 .ka-whywork__positioningNote {
@@ -1406,10 +1405,8 @@ WHY WORK WITH US
   letter-spacing: 0.012em;
   color: rgba(31, 35, 40, 0.78);
   text-align: right;
-  margin: 0 0 0 auto;
-  max-width: 420px;
+  margin: 0;
 }
-
 @media (max-width: 1279px) {
   .ka-whywork__title {
     font-size: 54px;
@@ -1632,11 +1629,10 @@ FOOTER (minimal)
     padding-bottom: 84px;
   }
 
-  .ka-whywork__positioningBody,
+.ka-whywork__positioningBody,
 .ka-whywork__positioningNote {
   text-align: left;
-  margin-left: 0;
-  margin-right: 0;
+  margin: 0;
   max-width: none;
 }
 
