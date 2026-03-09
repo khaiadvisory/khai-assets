@@ -959,7 +959,7 @@ SERVICES (Figma-aligned)
    Subsection 2
    ----------------------------------------- */
 .ka-owm__visualblock {
-  margin-top: 64px;
+  margin-top: 56px;
   width: 100vw;
   margin-left: calc(50% - 50vw);
 }
@@ -1018,7 +1018,7 @@ SERVICES (Figma-aligned)
   letter-spacing: 0.012em;
   color: rgba(31, 35, 40, 0.78);
   margin: 0;
-  max-width: 320px;
+  max-width: 336px;
 }
 
 .ka-owm {
