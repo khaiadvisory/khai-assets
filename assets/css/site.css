@@ -1497,124 +1497,67 @@ WHY WORK WITH US
   }
 }
 
-/* =========================================================
-FAQ
-========================================================= */
-.ka-faq {
-  background: var(--paper);
-  width: 100%;
-}
+<section class="ka-faq">
+  <div class="ka-faq__wrap">
 
-.ka-faq__wrap {
-  width: var(--wrap-w);
-  margin: 0 auto;
-  padding: 96px 0;
-}
+    <div class="ka-faq__head">
+      <div class="ka-faq__micro">FREQUENTLY ASKED QUESTIONS</div>
+      <h2 class="ka-faq__title">FAQ</h2>
+    </div>
 
-.ka-faq__head {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
+    <div class="ka-faq__list">
 
-.ka-faq__micro {
-  font-family: var(--font-sans);
-  font-weight: 600;
-  font-size: 13px;
-  line-height: 16px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--teal-90);
-  margin: 0;
-}
+      <details class="ka-faq__item">
+        <summary class="ka-faq__summary">
+          <span class="ka-faq__question">Do you guarantee closing deals?</span>
+          <span class="ka-faq__icon" aria-hidden="true"></span>
+        </summary>
+        <div class="ka-faq__panel">
+          <p class="ka-faq__answer">
+            No. We facilitate structured market entry and strategic positioning. Final agreements depend on both parties.
+          </p>
+        </div>
+      </details>
 
-.ka-faq__title {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  font-size: 56px;
-  line-height: 1.05;
-  letter-spacing: 0;
-  color: var(--teal-90);
-  text-align: center;
-  margin: 10px 0 0 0;
-}
+      <details class="ka-faq__item">
+        <summary class="ka-faq__summary">
+          <span class="ka-faq__question">Are you a local operator in Vietnam?</span>
+          <span class="ka-faq__icon" aria-hidden="true"></span>
+        </summary>
+        <div class="ka-faq__panel">
+          <p class="ka-faq__answer">
+            We operate as a European strategic coordinator and work through a curated network of trusted local professionals.
+          </p>
+        </div>
+      </details>
 
-.ka-faq__list {
-  width: min(820px, 100%);
-  margin: 48px auto 0;
-}
+      <details class="ka-faq__item">
+        <summary class="ka-faq__summary">
+          <span class="ka-faq__question">Do you provide legal or accounting services directly?</span>
+          <span class="ka-faq__icon" aria-hidden="true"></span>
+        </summary>
+        <div class="ka-faq__panel">
+          <p class="ka-faq__answer">
+            When required, we coordinate with licensed legal, tax, and accounting professionals.
+          </p>
+        </div>
+      </details>
 
-.ka-faq__item {
-  border-top: 1px solid rgba(31, 35, 40, 0.20);
-  padding: 24px 0;
-}
+      <details class="ka-faq__item">
+        <summary class="ka-faq__summary">
+          <span class="ka-faq__question">Do you represent companies locally in Vietnam?</span>
+          <span class="ka-faq__icon" aria-hidden="true"></span>
+        </summary>
+        <div class="ka-faq__panel">
+          <p class="ka-faq__answer">
+            We remain an independent advisory and coordinate local execution through qualified partners where appropriate.
+          </p>
+        </div>
+      </details>
 
-.ka-faq__item:last-child {
-  border-bottom: 1px solid rgba(31, 35, 40, 0.20);
-}
-
-.ka-faq__question {
-  font-family: var(--font-body);
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 30px;
-  letter-spacing: 0;
-  color: var(--charcoal);
-  margin: 0;
-}
-
-.ka-faq__answer {
-  font-family: var(--font-body);
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 30px;
-  letter-spacing: 0;
-  color: var(--muted);
-  margin: 10px 0 0 0;
-}
-
-@media (max-width: 899px) {
-  .ka-faq__wrap {
-    padding: 72px 0 84px;
-  }
-
-  .ka-faq__title {
-    font-size: 48px;
-  }
-
-  .ka-faq__list {
-    margin-top: 40px;
-  }
-
-  .ka-faq__item {
-    padding: 22px 0;
-  }
-}
-
-@media (max-width: 719px) {
-  .ka-faq__wrap {
-    padding: 64px 0 76px;
-  }
-
-  .ka-faq__title {
-    font-size: 42px;
-  }
-
-  .ka-faq__list {
-    margin-top: 32px;
-  }
-
-  .ka-faq__question,
-  .ka-faq__answer {
-    font-size: 17px;
-    line-height: 28px;
-  }
-
-  .ka-faq__item {
-    padding: 20px 0;
-  }
-}
+    </div>
+  </div>
+</section>
 
 /* =========================================================
 CONTACT
