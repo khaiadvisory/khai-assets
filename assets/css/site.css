@@ -52,6 +52,24 @@ html {
   scroll-padding-top: 96px;
 }
 
+/* =========================================================
+SECTION SUBHEADING (GLOBAL)
+========================================================= */
+.ka-section-sub {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-style: italic;
+  font-size: 25px;
+  line-height: 32px;
+  letter-spacing: 0;
+  color: var(--muted);
+  margin: 0;
+}
+
+.ka-section-sub--center {
+  text-align: center;
+}
+
 body {
   padding-top: var(--nav-h);
   background: var(--paper);
@@ -1306,16 +1324,7 @@ WHY WORK WITH US
 }
 
 .ka-whywork__introLead {
-  font-family: var(--font-body);
-  font-weight: 400;
-  font-style: italic;
-  font-size: 15px;
-  line-height: 29px;
-  letter-spacing: 0.012em;
-  color: rgba(31, 35, 40, 0.78);
-  text-align: center;
-  margin: 0;
-  max-width: 420px;
+  max-width: 520px;
 }
 
 .ka-whywork__introBody {
