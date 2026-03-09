@@ -12,8 +12,12 @@ GLOBAL TOKENS
   /* layout */
   --nav-h: 96px;
   --container: 1120px;
-  --container-pad: 32px;
-  --container-safe: min(100% - (var(--container-pad) * 2), var(--container));
+  --site-pad: 0px;
+  --wrap-w: min(calc(100vw - (var(--site-pad) * 2)), var(--container));
+
+  /* shared spacing */
+  --split-gap: 56px;
+  --grid-gap: 24px;
 
   /* fonts */
   --font-serif: "DM Serif Display", serif;
@@ -86,7 +90,7 @@ body.nav-revealed .site-header {
 }
 
 .site-header__inner {
-  width: var(--container-safe);
+  width: var(--wrap-w);
   height: 100%;
   margin: 0 auto;
   display: flex;
@@ -202,7 +206,7 @@ body.nav-revealed .site-header {
 }
 
 .ka-container {
-  width: var(--container-safe);
+  width: var(--wrap-w);
   height: 100%;
   margin: 0 auto;
   position: relative;
@@ -607,7 +611,7 @@ HERO (HTML embed)
 }
 
 /* =========================================================
-SERVICES (desktop-preserving adaptive system)
+SERVICES (range-based desktop-first pattern)
 ========================================================= */
 .ka-services {
   background: var(--paper);
@@ -615,15 +619,15 @@ SERVICES (desktop-preserving adaptive system)
 }
 
 .ka-services__wrap {
-  width: var(--container-safe);
+  width: var(--wrap-w);
   margin: 0 auto;
   padding: 88px 0 104px;
 }
 
 .ka-services__head {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(380px, 464px);
-  column-gap: clamp(32px, 4vw, 56px);
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 464px);
+  column-gap: clamp(32px, 4vw, var(--split-gap));
   align-items: start;
 }
 
@@ -683,7 +687,7 @@ SERVICES (desktop-preserving adaptive system)
   height: 72px;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  column-gap: clamp(16px, 2vw, 24px);
+  column-gap: clamp(16px, 2vw, var(--grid-gap));
   align-items: start;
 }
 
@@ -737,7 +741,7 @@ SERVICES (desktop-preserving adaptive system)
   margin-top: 20px;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(18px, 2vw, 24px);
+  gap: clamp(18px, 2vw, var(--grid-gap));
   align-items: stretch;
 }
 
@@ -776,8 +780,8 @@ SERVICES (desktop-preserving adaptive system)
 .ka-card__title {
   font-family: var(--font-serif);
   font-weight: 400;
-  font-size: clamp(23px, 2vw, 26px);
-  line-height: 1.15;
+  font-size: 26px;
+  line-height: 30px;
   color: var(--teal-head-85);
   margin: 0 0 14px 0;
 }
@@ -811,9 +815,10 @@ SERVICES (desktop-preserving adaptive system)
   color: var(--teal-90);
 }
 
-@media (max-width: 1280px) {
+/* ---------- desktop narrow ---------- */
+@media (max-width: 1279px) {
   .ka-services__head {
-    grid-template-columns: minmax(0, 1fr) minmax(340px, 420px);
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
   }
 
   .ka-services__title {
@@ -821,19 +826,12 @@ SERVICES (desktop-preserving adaptive system)
     line-height: 72px;
   }
 
-  .ka-process {
-    margin-top: 72px;
-  }
-}
-
-@media (max-width: 1180px) {
-  .ka-services__title {
-    font-size: 60px;
-    line-height: 66px;
-  }
-
   .ka-services__intro {
     max-width: 420px;
+  }
+
+  .ka-process {
+    margin-top: 72px;
   }
 
   .ka-card {
@@ -841,9 +839,10 @@ SERVICES (desktop-preserving adaptive system)
   }
 }
 
-@media (max-width: 1120px) {
+/* ---------- tablet landscape / transition ---------- */
+@media (max-width: 899px) {
   .ka-services__wrap {
-    padding: 64px 0 76px;
+    padding: 72px 0 84px;
   }
 
   .ka-services__head {
@@ -862,12 +861,34 @@ SERVICES (desktop-preserving adaptive system)
   }
 
   .ka-process {
-    margin-top: 28px;
+    margin-top: 36px;
     height: auto;
   }
 
   .ka-process__line {
     display: none;
+  }
+
+  .ka-process__row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    height: 72px;
+    column-gap: 16px;
+  }
+
+  .ka-services__cards {
+    margin-top: 28px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ka-card {
+    min-height: auto;
+  }
+}
+
+/* ---------- stacked mobile ---------- */
+@media (max-width: 719px) {
+  .ka-services__wrap {
+    padding: 64px 0 76px;
   }
 
   .ka-process__row {
@@ -885,12 +906,7 @@ SERVICES (desktop-preserving adaptive system)
   }
 
   .ka-services__cards {
-    margin-top: 28px;
     grid-template-columns: 1fr;
-  }
-
-  .ka-card {
-    min-height: auto;
   }
 }
 
@@ -1337,4 +1353,49 @@ html, body {
 .site-wrapper {
   min-height: 0 !important;
   height: auto !important;
+}
+
+/* =========================================================
+GLOBAL VIEWPORT FRAMEWORK
+========================================================= */
+@media (max-width: 1439px) {
+  :root {
+    --site-pad: 32px;
+  }
+}
+
+@media (max-width: 1279px) {
+  :root {
+    --site-pad: 24px;
+    --split-gap: 40px;
+    --grid-gap: 20px;
+  }
+
+  .site-nav {
+    gap: 18px;
+  }
+}
+
+@media (max-width: 1119px) {
+  :root {
+    --site-pad: 20px;
+  }
+
+  .site-header__inner {
+    gap: 18px;
+  }
+
+  .nav-right {
+    gap: 16px;
+  }
+
+  .site-nav {
+    gap: 14px;
+  }
+}
+
+@media (max-width: 899px) {
+  :root {
+    --site-pad: 16px;
+  }
 }
