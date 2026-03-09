@@ -607,7 +607,7 @@ HERO (HTML embed)
 }
 
 /* =========================================================
-SERVICES (Figma-aligned)
+SERVICES (desktop-preserving adaptive system)
 ========================================================= */
 .ka-services {
   background: var(--paper);
@@ -615,15 +615,15 @@ SERVICES (Figma-aligned)
 }
 
 .ka-services__wrap {
-  max-width: var(--container);
+  width: var(--container-safe);
   margin: 0 auto;
   padding: 88px 0 104px;
 }
 
 .ka-services__head {
   display: grid;
-  grid-template-columns: 600px 464px;
-  column-gap: 56px;
+  grid-template-columns: minmax(0, 1fr) minmax(380px, 464px);
+  column-gap: clamp(32px, 4vw, 56px);
   align-items: start;
 }
 
@@ -682,8 +682,8 @@ SERVICES (Figma-aligned)
   z-index: 1;
   height: 72px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  column-gap: 24px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: clamp(16px, 2vw, 24px);
   align-items: start;
 }
 
@@ -736,8 +736,8 @@ SERVICES (Figma-aligned)
 .ka-services__cards {
   margin-top: 20px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(18px, 2vw, 24px);
   align-items: stretch;
 }
 
@@ -776,8 +776,8 @@ SERVICES (Figma-aligned)
 .ka-card__title {
   font-family: var(--font-serif);
   font-weight: 400;
-  font-size: 26px;
-  line-height: 30px;
+  font-size: clamp(23px, 2vw, 26px);
+  line-height: 1.15;
   color: var(--teal-head-85);
   margin: 0 0 14px 0;
 }
@@ -811,9 +811,39 @@ SERVICES (Figma-aligned)
   color: var(--teal-90);
 }
 
+@media (max-width: 1280px) {
+  .ka-services__head {
+    grid-template-columns: minmax(0, 1fr) minmax(340px, 420px);
+  }
+
+  .ka-services__title {
+    font-size: 66px;
+    line-height: 72px;
+  }
+
+  .ka-process {
+    margin-top: 72px;
+  }
+}
+
+@media (max-width: 1180px) {
+  .ka-services__title {
+    font-size: 60px;
+    line-height: 66px;
+  }
+
+  .ka-services__intro {
+    max-width: 420px;
+  }
+
+  .ka-card {
+    min-height: 400px;
+  }
+}
+
 @media (max-width: 1120px) {
   .ka-services__wrap {
-    padding: 64px 16px;
+    padding: 64px 0 76px;
   }
 
   .ka-services__head {
@@ -828,6 +858,7 @@ SERVICES (Figma-aligned)
 
   .ka-services__intro {
     max-width: 100%;
+    padding-top: 0;
   }
 
   .ka-process {
@@ -846,8 +877,11 @@ SERVICES (Figma-aligned)
   }
 
   .ka-step {
-    align-items: flex-start;
-    text-align: left;
+    height: 60px;
+  }
+
+  .ka-step__label {
+    top: 34px;
   }
 
   .ka-services__cards {
