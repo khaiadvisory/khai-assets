@@ -1844,7 +1844,7 @@ FOOTER
 
 .ka-footer__grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 320px;
+  grid-template-columns: minmax(0, 1fr) 292px;
   column-gap: 56px;
   align-items: start;
   padding-top: 28px;
@@ -1867,7 +1867,7 @@ FOOTER
   justify-content: flex-start;
   text-decoration: none;
   line-height: 0;
-  margin: 0 0 18px 0;
+  margin: 0 0 22px 0;
 }
 
 .ka-footer__brand img {
@@ -1892,8 +1892,8 @@ FOOTER
   flex-direction: column;
   align-items: flex-end;
   text-align: right;
-  gap: 46px;
-  padding-top: 10px;
+  gap: 28px;
+  padding-top: 20px;
 }
 
 .ka-footer__link,
