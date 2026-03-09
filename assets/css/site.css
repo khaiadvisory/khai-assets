@@ -1420,7 +1420,7 @@ WHY WORK WITH US
   }
 
   .ka-whywork__subsection--positioning {
-    margin-top: 44px;
+    margin-top: 56px;
   }
 
   .ka-whywork__bottom {
@@ -1458,7 +1458,7 @@ WHY WORK WITH US
   }
 
   .ka-whywork__subsection--positioning {
-    margin-top: 36px;
+    margin-top: 44px;
   }
 
   .ka-whywork__bottom {
@@ -1631,6 +1631,14 @@ FOOTER (minimal)
     padding-top: 72px;
     padding-bottom: 84px;
   }
+
+  .ka-whywork__positioningBody,
+.ka-whywork__positioningNote {
+  text-align: left;
+  margin-left: 0;
+  margin-right: 0;
+  max-width: none;
+}
 
   .ka-contact__wrap {
     padding-bottom: 112px;
