@@ -1537,17 +1537,6 @@ GLOBAL VIEWPORT FRAMEWORK
     --site-pad: 28px;
   }
 
-  .site-header__inner {
-    gap: 16px;
-  }
-
-  .nav-right {
-    gap: 14px;
-  }
-
-  .site-nav {
-    gap: 12px;
-  }
 }
 
 @media (max-width: 899px) {
