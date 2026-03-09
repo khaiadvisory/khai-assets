@@ -1612,12 +1612,6 @@ FOOTER (minimal)
   color: rgba(0,0,0,.55);
 }
 
-@media (max-width: 1279px) {
-  .ka-whywork__head {
-    grid-template-columns: minmax(0, 520px) minmax(0, 1fr);
-  }
-}
-
 @media (max-width: 899px) {
   .ka-whywork__wrap,
   .ka-faq__wrap,
@@ -1628,15 +1622,6 @@ FOOTER (minimal)
 
   .ka-contact__wrap {
     padding-bottom: 112px;
-  }
-
-  .ka-whywork__head {
-    grid-template-columns: 1fr;
-    row-gap: 18px;
-  }
-
-  .ka-whywork__cards {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .ka-footer__wrap {
@@ -1656,9 +1641,6 @@ FOOTER (minimal)
     padding-bottom: 96px;
   }
 
-  .ka-whywork__cards {
-    grid-template-columns: 1fr;
-  }
 }
 
 /* ===== Anchor jump debug patch (TEMP) ===== */
