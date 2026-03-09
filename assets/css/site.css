@@ -70,9 +70,6 @@ NAVBAR
   height: 96px;
   background: #F6F5F2;
   border-bottom: 1px solid rgba(31, 35, 40, 0.08);
-}
-
-.site-header {
   transform: translateY(0);
   transition:
     transform 0.24s ease,
@@ -227,6 +224,14 @@ body.nav-revealed .site-header {
     height: 88px;
   }
 
+  body {
+    padding-top: 88px;
+  }
+
+  html {
+    scroll-padding-top: 88px;
+  }
+
   .site-header__inner {
     gap: 14px;
   }
@@ -268,14 +273,6 @@ body.nav-revealed .site-header {
     font-size: 12px;
     letter-spacing: 0.03em;
   }
-}
-
-body {
-  padding-top: 88px;
-}
-
-html {
-  scroll-padding-top: 88px;
 }
 
 /* =========================================================
