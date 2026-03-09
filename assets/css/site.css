@@ -1498,7 +1498,7 @@ WHY WORK WITH US
 }
 
 /* =========================================================
-FAQ (details/summary)
+FAQ
 ========================================================= */
 .ka-faq {
   background: var(--paper);
@@ -1508,7 +1508,25 @@ FAQ (details/summary)
 .ka-faq__wrap {
   width: var(--wrap-w);
   margin: 0 auto;
-  padding: 88px 0;
+  padding: 96px 0;
+}
+
+.ka-faq__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.ka-faq__micro {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 16px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--teal-90);
+  margin: 0;
 }
 
 .ka-faq__title {
@@ -1516,35 +1534,86 @@ FAQ (details/summary)
   font-weight: 400;
   font-size: 56px;
   line-height: 1.05;
+  letter-spacing: 0;
   color: var(--teal-90);
-  margin: 0 0 24px 0;
+  text-align: center;
+  margin: 10px 0 0 0;
+}
+
+.ka-faq__list {
+  width: min(820px, 100%);
+  margin: 48px auto 0;
 }
 
 .ka-faq__item {
-  border-top: 1px solid rgba(0,0,0,.18);
-  padding: 18px 0;
+  border-top: 1px solid rgba(31, 35, 40, 0.20);
+  padding: 24px 0;
 }
 
-.ka-faq__item summary {
-  cursor: pointer;
-  list-style: none;
-  font-family: var(--font-sans);
-  font-weight: 600;
-  font-size: 14px;
-  letter-spacing: .02em;
-  color: rgba(15,76,92,.90);
+.ka-faq__item:last-child {
+  border-bottom: 1px solid rgba(31, 35, 40, 0.20);
 }
 
-.ka-faq__item summary::-webkit-details-marker {
-  display: none;
+.ka-faq__question {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 30px;
+  letter-spacing: 0;
+  color: var(--charcoal);
+  margin: 0;
 }
 
 .ka-faq__answer {
-  margin-top: 10px;
   font-family: var(--font-body);
+  font-weight: 400;
   font-size: 18px;
   line-height: 30px;
+  letter-spacing: 0;
   color: var(--muted);
+  margin: 10px 0 0 0;
+}
+
+@media (max-width: 899px) {
+  .ka-faq__wrap {
+    padding: 72px 0 84px;
+  }
+
+  .ka-faq__title {
+    font-size: 48px;
+  }
+
+  .ka-faq__list {
+    margin-top: 40px;
+  }
+
+  .ka-faq__item {
+    padding: 22px 0;
+  }
+}
+
+@media (max-width: 719px) {
+  .ka-faq__wrap {
+    padding: 64px 0 76px;
+  }
+
+  .ka-faq__title {
+    font-size: 42px;
+  }
+
+  .ka-faq__list {
+    margin-top: 32px;
+  }
+
+  .ka-faq__question,
+  .ka-faq__answer {
+    font-size: 17px;
+    line-height: 28px;
+  }
+
+  .ka-faq__item {
+    padding: 20px 0;
+  }
 }
 
 /* =========================================================
