@@ -1718,44 +1718,108 @@ CONTACT
 }
 
 .ka-contact__wrap {
-  width: var(--wrap-w);
+  width: min(496px, 100%);
   margin: 0 auto;
   padding: 88px 0 140px;
   text-align: center;
 }
 
-.ka-contact__title {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  font-size: 56px;
-  line-height: 1.05;
+.ka-contact__micro {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 16px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
   color: var(--teal-90);
-  margin: 0 0 14px 0;
 }
 
-.ka-contact__body {
-  font-family: var(--font-body);
-  font-size: 18px;
-  line-height: 30px;
-  color: var(--muted);
-  margin: 0 auto;
-  max-width: 680px;
+.ka-contact__title {
+  margin: 14px 0 0 0;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 76px;
+  line-height: 0.92;
+  letter-spacing: 0;
+  color: var(--teal-90);
+  text-align: center;
 }
 
 .ka-contact__cta {
-  margin-top: 22px;
-  display: inline-flex;
-  gap: 12px;
-  align-items: center;
+  margin-top: 26px;
+  display: flex;
+  justify-content: center;
 }
 
-.ka-contact__mail {
-  font-family: var(--font-sans);
-  font-weight: 600;
-  font-size: 14px;
-  color: rgba(15,76,92,.90);
+.ka-contact__button {
+  min-width: 132px;
+  height: 44px;
+  padding: 0 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid rgba(15, 76, 92, 0.26);
+  background: transparent;
   text-decoration: none;
-  border-bottom: 1px solid rgba(15,76,92,.40);
+  box-sizing: border-box;
+
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.02em;
+  color: #0F4C5C;
+
+  transition:
+    background-color 0.22s ease,
+    border-color 0.22s ease,
+    color 0.22s ease;
+}
+
+.ka-contact__button:hover {
+  background: rgba(15, 76, 92, 0.05);
+  border-color: rgba(15, 76, 92, 0.38);
+}
+
+@media (max-width: 1279px) {
+  .ka-contact__title {
+    font-size: 68px;
+  }
+}
+
+@media (max-width: 899px) {
+  .ka-contact__wrap {
+    width: min(520px, 100%);
+    padding: 72px 0 112px;
+  }
+
+  .ka-contact__title {
+    font-size: 60px;
+  }
+}
+
+@media (max-width: 719px) {
+  .ka-contact__wrap {
+    width: 100%;
+    padding: 64px 0 96px;
+  }
+
+  .ka-contact__title {
+    font-size: 46px;
+    line-height: 0.96;
+  }
+
+  .ka-contact__cta {
+    margin-top: 24px;
+  }
+
+  .ka-contact__button {
+    min-width: 124px;
+    height: 42px;
+    padding: 0 20px;
+  }
 }
 
 /* =========================================================
