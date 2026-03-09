@@ -587,14 +587,26 @@ WHY VIETNAM NOW (range-based desktop-first pattern)
 }
 
 @media (max-width: 1279px) {
+  .ka-wyvn__wrap {
+    padding: 80px 0;
+  }
+
   .ka-wyvn__top {
-    grid-template-columns: minmax(320px, 420px) minmax(0, 1fr);
+    grid-template-columns: minmax(300px, 390px) minmax(0, 1fr);
   }
 
   .ka-wyvn__h1 {
-    font-size: 58px;
-    line-height: 62px;
-    max-width: 400px;
+    font-size: 56px;
+    line-height: 60px;
+    max-width: 380px;
+  }
+
+  .ka-wyvn__intro {
+    max-width: 360px;
+  }
+
+  .ka-wyvn__focus {
+    margin-top: 72px;
   }
 }
 
@@ -867,17 +879,21 @@ SERVICES (range-based desktop-first pattern)
 
 /* ---------- desktop narrow ---------- */
 @media (max-width: 1279px) {
+  .ka-services__wrap {
+    padding: 80px 0 96px;
+  }
+
   .ka-services__head {
-    grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 390px);
   }
 
   .ka-services__title {
-    font-size: 66px;
-    line-height: 72px;
+    font-size: 64px;
+    line-height: 70px;
   }
 
   .ka-services__intro {
-    max-width: 420px;
+    max-width: 390px;
   }
 
   .ka-process {
@@ -888,7 +904,6 @@ SERVICES (range-based desktop-first pattern)
     min-height: 400px;
   }
 }
-
 /* ---------- tablet landscape / transition ---------- */
 @media (max-width: 899px) {
   .ka-services__wrap {
@@ -1127,14 +1142,27 @@ OWM (range-based desktop-first pattern)
 }
 
 @media (max-width: 1279px) {
+  .ka-owm__wrap {
+    padding: 80px 0 96px;
+  }
+
   .ka-owm__introblock {
-    grid-template-columns: minmax(0, 1fr) minmax(300px, 420px);
-    column-gap: 48px;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 390px);
+    column-gap: 56px;
   }
 
   .ka-owm__title {
-    font-size: 66px;
-    line-height: 72px;
+    font-size: 62px;
+    line-height: 68px;
+  }
+
+  .ka-owm__visualblock {
+    margin-top: 48px;
+  }
+
+  .ka-owm__grid {
+    margin-top: 32px;
+    gap: 28px;
   }
 }
 
@@ -1439,6 +1467,18 @@ html, body {
 /* =========================================================
 GLOBAL VIEWPORT FRAMEWORK
 ========================================================= */
+@media (max-width: 1279px) {
+  :root {
+    --site-pad: 32px;
+    --split-gap: 48px;
+    --grid-gap: 22px;
+  }
+
+  .site-nav {
+    gap: 18px;
+  }
+}
+
 @media (max-width: 1119px) {
   :root {
     --site-pad: 28px;
