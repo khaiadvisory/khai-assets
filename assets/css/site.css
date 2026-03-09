@@ -222,6 +222,54 @@ body.nav-revealed .site-header {
   background: transparent;
 }
 
+@media (max-width: 1119px) {
+  .site-header {
+    height: 88px;
+  }
+
+  .site-header__inner {
+    gap: 14px;
+  }
+
+  .nav-logo {
+    width: 102px;
+    height: 42px;
+  }
+
+  .nav-right {
+    gap: 12px;
+    overflow: hidden;
+  }
+
+  .site-nav {
+    gap: 10px;
+    justify-content: flex-start;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 2px;
+  }
+
+  .site-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .site-nav a {
+    flex: 0 0 auto;
+    font-size: 12px;
+    letter-spacing: 0.03em;
+  }
+
+  .nav-contact {
+    width: auto;
+    height: 39px;
+    padding: 10px 12px;
+    font-size: 12px;
+    letter-spacing: 0.03em;
+  }
+}
+
 /* =========================================================
 HERO (HTML embed)
 ========================================================= */
