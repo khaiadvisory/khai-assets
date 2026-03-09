@@ -1580,8 +1580,8 @@ FAQ
   margin: 0;
   font-family: var(--font-body);
   font-weight: 500;
-  font-size: 18px;
-  line-height: 30px;
+  font-size: 17px;
+  line-height: 28px;
   letter-spacing: 0;
   color: var(--charcoal);
 }
@@ -1628,8 +1628,8 @@ FAQ
   padding: 0 44px 0 0;
   font-family: var(--font-body);
   font-weight: 400;
-  font-size: 18px;
-  line-height: 30px;
+  font-size: 16px;
+  line-height: 28px;
   letter-spacing: 0;
   color: var(--muted);
   opacity: 0;
