@@ -916,7 +916,9 @@ SERVICES (range-based desktop-first pattern)
   }
 
   .ka-process__line {
-    display: none;
+    display: block;
+    left: 16.6667%;
+    right: 16.6667%;
   }
 
   .ka-process__row {
@@ -939,6 +941,10 @@ SERVICES (range-based desktop-first pattern)
 @media (max-width: 719px) {
   .ka-services__wrap {
     padding: 64px 0 76px;
+  }
+
+  .ka-process__line {
+    display: none;
   }
 
   .ka-process__row {
@@ -1433,44 +1439,83 @@ html, body {
 /* =========================================================
 GLOBAL VIEWPORT FRAMEWORK
 ========================================================= */
-@media (max-width: 1439px) {
-  :root {
-    --site-pad: 32px;
-  }
-}
-
-@media (max-width: 1279px) {
-  :root {
-    --site-pad: 24px;
-    --split-gap: 40px;
-    --grid-gap: 20px;
-  }
-
-  .site-nav {
-    gap: 18px;
-  }
-}
-
 @media (max-width: 1119px) {
   :root {
-    --site-pad: 20px;
+    --site-pad: 28px;
   }
 
   .site-header__inner {
-    gap: 18px;
-  }
-
-  .nav-right {
     gap: 16px;
   }
 
-  .site-nav {
+  .nav-right {
     gap: 14px;
+  }
+
+  .site-nav {
+    gap: 12px;
   }
 }
 
 @media (max-width: 899px) {
   :root {
-    --site-pad: 16px;
+    --site-pad: 24px;
+  }
+}
+
+@media (max-width: 719px) {
+  :root {
+    --site-pad: 20px;
+  }
+}
+
+@media (max-width: 1119px) {
+  .site-header {
+    height: 88px;
+  }
+
+  body {
+    padding-top: 88px;
+  }
+
+  html {
+    scroll-padding-top: 88px;
+  }
+
+  .site-header__inner {
+    min-width: 0;
+  }
+
+  .nav-logo {
+    width: 102px;
+    height: 42px;
+  }
+
+  .nav-right {
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .site-nav {
+    min-width: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 2px;
+  }
+
+  .site-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .site-nav a {
+    flex: 0 0 auto;
+  }
+
+  .nav-contact {
+    width: auto;
+    padding: 10px 14px;
+    font-size: 13px;
   }
 }
