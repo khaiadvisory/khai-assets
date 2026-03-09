@@ -1047,11 +1047,7 @@ SERVICES (Figma-aligned)
     margin-top: 40px;
   }
 
-  .ka-owm__media {
-    height: 340px;
-  }
-
-  .ka-owm__grid {
+    .ka-owm__grid {
     margin-top: 28px;
     grid-template-columns: 1fr;
     gap: 28px;
