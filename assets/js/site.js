@@ -265,52 +265,89 @@
   }
   
       /* =========================================================
-     9. JUMP A HASH / LANDING SU SEZIONE
-     ========================================================= */
+   9. JUMP A HASH / LANDING SU SEZIONE
+   ========================================================= */
 
-  function jumpToHash() {
-    var id = (location.hash || '').slice(1);
-    var el = findTarget(id);
-    if (!el) return;
+function jumpToHash() {
+  var id = (location.hash || '').slice(1);
+  var el = findTarget(id);
+  if (!el) return;
 
-    console.group('[KHAI NAV DEBUG] jumpToHash start');
-    console.log({
-      id: id,
-      currentSectionId: getCurrentSectionId(),
-      alreadyAtTarget: isAlreadyAtTargetId(id),
-      pageYOffset: window.pageYOffset || 0,
-      elementTop: el.getBoundingClientRect().top,
-      elementBottom: el.getBoundingClientRect().bottom,
-      bodyPaddingTop: document.body.style.paddingTop || '(empty)',
-      bodyClasses: document.body.className
-    });
-    console.groupEnd();
+  console.group('[KHAI NAV DEBUG] jumpToHash start');
+  console.log({
+    id: id,
+    currentSectionId: getCurrentSectionId(),
+    alreadyAtTarget: isAlreadyAtTargetId(id),
+    pageYOffset: window.pageYOffset || 0,
+    elementTop: el.getBoundingClientRect().top,
+    elementBottom: el.getBoundingClientRect().bottom,
+    bodyPaddingTop: document.body.style.paddingTop || '(empty)',
+    bodyClasses: document.body.className
+  });
+  console.groupEnd();
 
-    if (isAlreadyAtTargetId(id)) {
-      console.group('[KHAI NAV DEBUG] jumpToHash aborted: already at target');
+  hoverReveal = false;
+  anchorJumpLock = true;
+
+  // HOME = caso speciale:
+  // la navbar deve restare sempre visibile e fissa
+  if (id === 'home') {
+    showNav();
+
+    animateScrollTo(0, function () {
+      showNav();
+      lastY = window.pageYOffset || 0;
+
+      console.group('[KHAI NAV DEBUG] jumpToHash finished (home)');
       console.log({
         id: id,
+        finalPageYOffset: window.pageYOffset || 0,
         currentSectionId: getCurrentSectionId(),
-        pageYOffset: window.pageYOffset || 0,
-        locationHash: location.hash
+        bodyPaddingTop: document.body.style.paddingTop || '(empty)',
+        bodyClasses: document.body.className
       });
       console.groupEnd();
-      return;
-    }
 
-    hoverReveal = false;
-    anchorJumpLock = true;
-
-    // HOME = caso speciale:
-    // la navbar deve restare sempre visibile e fissa
-    if (id === 'home') {
-      showNav();
-
-      animateScrollTo(0, function () {
+      setTimeout(function () {
         showNav();
+        anchorJumpLock = false;
+      }, 140);
+    });
+
+    return;
+  }
+
+  // Tutte le altre sezioni: navbar nascosta al landing
+  hideNav();
+
+  // Aspettiamo 2 frame per stabilizzare il layout
+  // dopo il cambio di padding-top del body
+  requestAnimationFrame(function () {
+    requestAnimationFrame(function () {
+      var target = findTarget(id);
+      if (!target) {
+        anchorJumpLock = false;
+        return;
+      }
+
+      var y = getRawTargetY(target);
+
+      console.group('[KHAI NAV DEBUG] jump target computed');
+      console.log({
+        id: id,
+        rawTargetY: y,
+        currentPageYOffset: window.pageYOffset || 0,
+        targetRectTop: target.getBoundingClientRect().top,
+        targetRectBottom: target.getBoundingClientRect().bottom,
+        bodyPaddingTop: document.body.style.paddingTop || '(empty)',
+        bodyClasses: document.body.className
+      });
+      console.groupEnd();
+
+      animateScrollTo(y, function () {
         lastY = window.pageYOffset || 0;
 
-        console.group('[KHAI NAV DEBUG] jumpToHash finished (home)');
+        console.group('[KHAI NAV DEBUG] jumpToHash finished');
         console.log({
           id: id,
           finalPageYOffset: window.pageYOffset || 0,
@@ -321,61 +358,12 @@
         console.groupEnd();
 
         setTimeout(function () {
-          showNav();
           anchorJumpLock = false;
         }, 140);
       });
-
-      return;
-    }
-
-    // Tutte le altre sezioni: navbar nascosta al landing
-    hideNav();
-
-    // Aspettiamo 2 frame per stabilizzare il layout
-    // dopo il cambio di padding-top del body
-    requestAnimationFrame(function () {
-      requestAnimationFrame(function () {
-        var target = findTarget(id);
-        if (!target) {
-          anchorJumpLock = false;
-          return;
-        }
-
-        var y = getRawTargetY(target);
-
-        console.group('[KHAI NAV DEBUG] jump target computed');
-        console.log({
-          id: id,
-          rawTargetY: y,
-          currentPageYOffset: window.pageYOffset || 0,
-          targetRectTop: target.getBoundingClientRect().top,
-          targetRectBottom: target.getBoundingClientRect().bottom,
-          bodyPaddingTop: document.body.style.paddingTop || '(empty)',
-          bodyClasses: document.body.className
-        });
-        console.groupEnd();
-
-        animateScrollTo(y, function () {
-          lastY = window.pageYOffset || 0;
-
-          console.group('[KHAI NAV DEBUG] jumpToHash finished');
-          console.log({
-            id: id,
-            finalPageYOffset: window.pageYOffset || 0,
-            currentSectionId: getCurrentSectionId(),
-            bodyPaddingTop: document.body.style.paddingTop || '(empty)',
-            bodyClasses: document.body.className
-          });
-          console.groupEnd();
-
-          setTimeout(function () {
-            anchorJumpLock = false;
-          }, 140);
-        });
-      });
     });
-  }
+  });
+}
 
    /* =========================================================
      10. LOGICA NAVBAR SU SCROLL
@@ -580,77 +568,74 @@
   }
 
 
-        /* =========================================================
-     13. EVENT LISTENERS GLOBALI
-     ========================================================= */
+       /* =========================================================
+   13. EVENT LISTENERS GLOBALI
+   ========================================================= */
 
-  function debugNavClick(label, data) {
-    console.group('[KHAI NAV DEBUG] ' + label);
-    console.log(data);
-    console.groupEnd();
-  }
+function debugNavClick(label, data) {
+  console.group('[KHAI NAV DEBUG] ' + label);
+  console.log(data);
+  console.groupEnd();
+}
 
-  // Load iniziale
-  window.addEventListener('load', function () {
-    bindRevealZone();
-    syncInitialNavState();
+// Load iniziale
+window.addEventListener('load', function () {
+  bindRevealZone();
+  syncInitialNavState();
 
-    debugNavClick('load state', {
-      version: window.__KHAI_NAV_VERSION,
-      locationHash: location.hash,
-      currentSectionId: getCurrentSectionId(),
-      pageYOffset: window.pageYOffset || 0,
-      ranges: getSectionRanges()
-    });
-
-    if (location.hash) {
-      jumpToHash();
-    }
+  debugNavClick('load state', {
+    version: window.__KHAI_NAV_VERSION,
+    locationHash: location.hash,
+    currentSectionId: getCurrentSectionId(),
+    pageYOffset: window.pageYOffset || 0,
+    ranges: getSectionRanges()
   });
 
-  // Click navbar gestiti solo via data-nav-target
-  document.addEventListener('click', function (e) {
-    var a = e.target.closest('a[data-nav-target]');
-    if (!a) return;
+  if (location.hash) {
+    jumpToHash();
+  }
+});
 
-    var id = a.getAttribute('data-nav-target');
-    if (!id) return;
+// Click navbar gestiti solo via data-nav-target
+document.addEventListener('click', function (e) {
+  var a = e.target.closest('a[data-nav-target]');
+  if (!a) return;
 
-    var target = findTarget(id);
-    if (!target) return;
+  var id = a.getAttribute('data-nav-target');
+  if (!id) return;
 
-    debugNavClick('before click decision', {
-      version: window.__KHAI_NAV_VERSION,
+  var target = findTarget(id);
+  if (!target) return;
+
+  debugNavClick('before click decision', {
+    version: window.__KHAI_NAV_VERSION,
+    id: id,
+    locationHash: location.hash,
+    currentSectionId: getCurrentSectionId(),
+    alreadyAtTarget: isAlreadyAtTargetId(id),
+    pageYOffset: window.pageYOffset || 0,
+    ranges: getSectionRanges()
+  });
+
+  // Blocca qualsiasi comportamento nativo / altri handler
+  e.preventDefault();
+  e.stopPropagation();
+  if (typeof e.stopImmediatePropagation === 'function') {
+    e.stopImmediatePropagation();
+  }
+
+  if (location.hash !== '#' + id) {
+    history.replaceState(null, '', '#' + id);
+  }
+
+  if (isAlreadyAtTargetId(id)) {
+    debugNavClick('same section clicked: re-jump to section start', {
       id: id,
-      locationHash: location.hash,
       currentSectionId: getCurrentSectionId(),
-      alreadyAtTarget: isAlreadyAtTargetId(id),
       pageYOffset: window.pageYOffset || 0,
       ranges: getSectionRanges()
     });
-
-    // Blocca qualsiasi comportamento nativo / altri handler
-    e.preventDefault();
-    e.stopPropagation();
-    if (typeof e.stopImmediatePropagation === 'function') {
-      e.stopImmediatePropagation();
-    }
-
-    // Se clicchi la sezione già attiva, non succede niente
-    if (isAlreadyAtTargetId(id)) {
-      debugNavClick('blocked: already at target', {
-        id: id,
-        currentSectionId: getCurrentSectionId(),
-        pageYOffset: window.pageYOffset || 0,
-        ranges: getSectionRanges()
-      });
-      return;
-    }
-
-    if (location.hash !== '#' + id) {
-      history.replaceState(null, '', '#' + id);
-    }
-
+  } else {
     debugNavClick('jumpToHash will run', {
       id: id,
       currentSectionId: getCurrentSectionId(),
@@ -658,12 +643,13 @@
       pageYOffset: window.pageYOffset || 0,
       ranges: getSectionRanges()
     });
+  }
 
-    jumpToHash();
-  }, true);
+  jumpToHash();
+}, true);
 
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('mousemove', onMouseMove, { passive: true });
-  window.addEventListener('resize', onResize);
+window.addEventListener('scroll', onScroll, { passive: true });
+window.addEventListener('mousemove', onMouseMove, { passive: true });
+window.addEventListener('resize', onResize);
 
 })();
