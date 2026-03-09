@@ -967,10 +967,15 @@ SERVICES (Figma-aligned)
 .ka-owm__media {
   width: 100vw;
   height: 560px;
-  background-image: url("https://raw.githubusercontent.com/khaiadvisory/khai-assets/refs/heads/main/assets/assets/images/OWMcut.jpg?v=2");
-  background-size: cover;
-  background-position: center 44%;
-  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.ka-owm__mediaimg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 44%;
 }
 
 .ka-owm__grid {
