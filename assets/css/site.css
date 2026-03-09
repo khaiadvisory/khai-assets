@@ -12,6 +12,8 @@ GLOBAL TOKENS
   /* layout */
   --nav-h: 96px;
   --container: 1120px;
+  --container-pad: 32px;
+  --container-safe: min(100% - (var(--container-pad) * 2), var(--container));
 
   /* fonts */
   --font-serif: "DM Serif Display", serif;
@@ -84,12 +86,13 @@ body.nav-revealed .site-header {
 }
 
 .site-header__inner {
-  width: 1120px;
+  width: var(--container-safe);
   height: 100%;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 24px;
   box-sizing: border-box;
 }
 
@@ -111,7 +114,8 @@ body.nav-revealed .site-header {
 }
 
 .nav-right {
-  width: 760px;
+  flex: 1 1 auto;
+  min-width: 0;
   height: 41px;
   display: flex;
   align-items: center;
@@ -128,6 +132,7 @@ body.nav-revealed .site-header {
   flex-wrap: nowrap;
   white-space: nowrap;
   min-width: 0;
+  flex: 1 1 auto;
 }
 
 .site-nav a,
@@ -197,8 +202,7 @@ body.nav-revealed .site-header {
 }
 
 .ka-container {
-  width: 100%;
-  max-width: var(--container);
+  width: var(--container-safe);
   height: 100%;
   margin: 0 auto;
   position: relative;
