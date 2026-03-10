@@ -3,15 +3,8 @@
      1. CONFIG / COSTANTI PRINCIPALI
      ========================================================= */
 
-  // Altezza navbar letta dal CSS token --nav-h
-function getNavHeight() {
-  var raw = getComputedStyle(document.documentElement)
-    .getPropertyValue('--nav-h')
-    .trim();
-
-  var parsed = parseFloat(raw);
-  return Number.isFinite(parsed) ? parsed : 96;
-}
+  // Altezza navbar desktop
+  var NAV_H = 96;
 
   // Fascia invisibile in alto che fa riapparire la navbar su desktop
   var REVEAL_ZONE = 24;
@@ -107,11 +100,10 @@ function getNavHeight() {
 
   // Mostra navbar e ripristina lo spazio top del body
   function showNav() {
-  var navH = getNavHeight();
-  document.body.classList.remove('nav-hidden');
-  document.body.classList.add('nav-revealed');
-  document.body.style.paddingTop = navH + 'px';
-}
+    document.body.classList.remove('nav-hidden');
+    document.body.classList.add('nav-revealed');
+    document.body.style.paddingTop = NAV_H + 'px';
+  }
 
   // Nasconde navbar e rimuove lo spazio top del body
   function hideNav() {
@@ -247,7 +239,7 @@ function getNavHeight() {
     if (y <= 8) return 'home';
 
     // Usiamo una probe line assoluta nel documento
-    var probeOffset = isDesktop() ? 120 : getNavHeight();
+    var probeOffset = isDesktop() ? 120 : 96;
     var probeDocY = y + probeOffset;
     var ranges = getSectionRanges();
 
@@ -564,186 +556,6 @@ function jumpToHash() {
     scheduleRevealHide();
   }
 
-  /* =========================================================
-     11B. CONTACT MODAL
-     ========================================================= */
-
-  var CONTACT_WORKER_URL = 'https://khai-contact-form.paolo-testa01.workers.dev';
-
-  function getContactModalEls() {
-    return {
-      modal: document.getElementById('ka-contact-modal'),
-      form: document.getElementById('ka-contact-form'),
-      feedback: document.getElementById('ka-contact-feedback'),
-      submit: document.getElementById('ka-contact-submit'),
-      firstInput: document.getElementById('ka-name')
-    };
-  }
-
-  function openContactModal() {
-  var els = getContactModalEls();
-  if (!els.modal) return;
-
-  setContactFeedback('', '');
-
-  els.modal.classList.add('is-open');
-  els.modal.setAttribute('aria-hidden', 'false');
-  document.body.classList.add('ka-modal-open');
-
-  window.setTimeout(function () {
-    if (els.firstInput) els.firstInput.focus();
-  }, 40);
-}
-
-  function closeContactModal() {
-  var els = getContactModalEls();
-  if (!els.modal) return;
-
-  els.modal.classList.remove('is-open');
-  els.modal.setAttribute('aria-hidden', 'true');
-  document.body.classList.remove('ka-modal-open');
-
-  setContactFeedback('', '');
-  setContactSubmitting(false);
-}
-
-  function setContactFeedback(message, type) {
-    var els = getContactModalEls();
-    if (!els.feedback) return;
-
-    els.feedback.textContent = message || '';
-    els.feedback.classList.remove('is-error', 'is-success');
-
-    if (type) {
-      els.feedback.classList.add(type === 'success' ? 'is-success' : 'is-error');
-    }
-  }
-
-  function setContactSubmitting(isSubmitting) {
-    var els = getContactModalEls();
-    if (!els.submit) return;
-
-    els.submit.disabled = !!isSubmitting;
-    els.submit.textContent = isSubmitting ? 'Sending...' : 'Send';
-  }
-
-  function validateContactForm(data) {
-    if (!data.name || !data.email || !data.message) {
-      return 'Please complete Name, Email, and Message.';
-    }
-
-    var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email);
-    if (!emailOk) {
-      return 'Please enter a valid email address.';
-    }
-
-    return '';
-  }
-
-  async function submitContactForm(form) {
-    var formData = new FormData(form);
-
-    var payload = {
-      name: String(formData.get('name') || '').trim(),
-      email: String(formData.get('email') || '').trim(),
-      company: String(formData.get('company') || '').trim(),
-      website: String(formData.get('website') || '').trim(),
-      message: String(formData.get('message') || '').trim(),
-      companyTrap: String(formData.get('companyTrap') || '').trim()
-    };
-
-    var validationError = validateContactForm(payload);
-    if (validationError) {
-      setContactFeedback(validationError, 'error');
-      return;
-    }
-
-    setContactFeedback('', '');
-    setContactSubmitting(true);
-
-    try {
-      var res = await fetch(CONTACT_WORKER_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payload)
-      });
-
-      var json = {};
-      try {
-        json = await res.json();
-      } catch (err) {
-        json = {};
-      }
-
-      if (!res.ok || !json.ok) {
-        throw new Error(json.error || 'Unable to send message.');
-      }
-
-      form.reset();
-      setContactFeedback('Message sent successfully.', 'success');
-
-      window.setTimeout(function () {
-        closeContactModal();
-        setContactFeedback('', '');
-      }, 900);
-    } catch (error) {
-      setContactFeedback('Unable to send message right now. Please try again in a moment.', 'error');
-    } finally {
-      setContactSubmitting(false);
-    }
-  }
-
-  function bindContactModal() {
-  document.addEventListener('click', function (e) {
-    var openTrigger = e.target.closest('[data-contact-open]');
-    if (openTrigger) {
-      e.preventDefault();
-      e.stopPropagation();
-      if (typeof e.stopImmediatePropagation === 'function') {
-        e.stopImmediatePropagation();
-      }
-
-      window.setTimeout(function () {
-        openContactModal();
-      }, 0);
-
-      return;
-    }
-
-    var closeTrigger = e.target.closest('[data-contact-close]');
-    if (closeTrigger) {
-      var els = getContactModalEls();
-      if (!els.modal || !els.modal.classList.contains('is-open')) return;
-
-      e.preventDefault();
-      e.stopPropagation();
-      if (typeof e.stopImmediatePropagation === 'function') {
-        e.stopImmediatePropagation();
-      }
-
-      closeContactModal();
-    }
-  }, true);
-
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') {
-      var els = getContactModalEls();
-      if (els.modal && els.modal.classList.contains('is-open')) {
-        closeContactModal();
-      }
-    }
-  });
-
-  document.addEventListener('submit', function (e) {
-    var form = e.target;
-    if (!form || form.id !== 'ka-contact-form') return;
-
-    e.preventDefault();
-    submitContactForm(form);
-  });
-}
 
   /* =========================================================
      12. RESIZE
@@ -770,7 +582,6 @@ function debugNavClick(label, data) {
 window.addEventListener('load', function () {
   bindRevealZone();
   syncInitialNavState();
-  bindContactModal();
 
   debugNavClick('load state', {
     version: window.__KHAI_NAV_VERSION,
