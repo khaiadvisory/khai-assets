@@ -1,4 +1,4 @@
-2146
+2150
 /* =========================================================
 FONTS
 - DM Serif Display (headings)
@@ -303,17 +303,17 @@ html {
     border-bottom: 1px solid rgba(31, 35, 40, 0.08);
   }
 
-  .site-header__inner {
+ .site-header__inner {
   display: grid;
   grid-template-columns: 1fr auto;
   grid-template-areas:
     "logo contact"
     "nav nav";
-  align-items: start;
-  row-gap: 12px;
+  align-items: center;
+  row-gap: 10px;
   column-gap: 12px;
   height: 100%;
-  padding: 14px 0 14px;
+  padding: 14px 0 12px;
   box-sizing: border-box;
 }
   
@@ -330,36 +330,39 @@ html {
 .site-nav {
   grid-area: nav;
   display: flex;
-  flex-direction: column;
-  align-items: stretch;
+  justify-content: flex-start;
   gap: 8px;
-  width: 100%;
   min-width: 0;
-  overflow: visible;
-  white-space: normal;
-  padding: 0;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  padding: 0 8px 2px 0;
   box-sizing: border-box;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
   .site-nav::-webkit-scrollbar {
     display: none;
   }
 
-  .site-nav a {
-  display: flex;
+ .site-nav a {
+  display: inline-flex;
   align-items: center;
-  justify-content: flex-start;
-  width: 100%;
-  min-height: 36px;
-  padding: 0 12px;
+  justify-content: center;
+  flex: 0 0 auto;
+  min-height: 32px;
+  padding: 0 10px;
   border: 1px solid rgba(31, 35, 40, 0.10);
   border-radius: 999px;
   font-size: 11px;
   line-height: 1;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.02em;
   background: rgba(255,255,255,0.35);
   box-sizing: border-box;
 }
+  
   .site-nav a::after {
     display: none;
   }
@@ -367,7 +370,7 @@ html {
   .nav-contact {
   grid-area: contact;
   width: auto;
-  height: 36px;
+  height: 34px;
   padding: 0 12px;
   font-size: 11px;
   line-height: 1;
