@@ -2118,7 +2118,7 @@ CARRD WRAPPER RESET
 }
 
 .ka-modal__title {
-  margin: 0 0 24px;
+  margin: 0 0 32px;
   font-family: var(--font-serif);
   font-size: 64px;
   line-height: 0.94;
@@ -2143,7 +2143,7 @@ CARRD WRAPPER RESET
 }
 
 .ka-modal__field--full {
-  margin-top: 14px;
+  margin-top: 12px;
 }
 
 .ka-modal__field label {
@@ -2167,13 +2167,11 @@ CARRD WRAPPER RESET
   resize: vertical;
   -webkit-appearance: none;
   appearance: none;
-
   font-family: var(--font-sans);
   font-size: 14px;
   line-height: 20px;
   font-weight: 400;
   color: var(--charcoal);
-
   transition:
     border-color 0.2s ease,
     box-shadow 0.2s ease,
@@ -2219,7 +2217,7 @@ CARRD WRAPPER RESET
 
 .ka-modal__feedback {
   min-height: 22px;
-  margin-top: 14px;
+  margin-top: 10px;
   font-family: var(--font-sans);
   font-size: 13px;
   line-height: 18px;
@@ -2235,7 +2233,7 @@ CARRD WRAPPER RESET
 }
 
 .ka-modal__actions {
-  margin-top: 4px;
+  margin-top: -2px;
   display: flex;
   justify-content: center;
 }
@@ -2249,14 +2247,12 @@ CARRD WRAPPER RESET
   background: transparent;
   cursor: pointer;
   box-sizing: border-box;
-
   font-family: var(--font-sans);
   font-size: 14px;
   line-height: 20px;
   font-weight: 500;
   letter-spacing: 0.02em;
   color: #0F4C5C;
-
   transition:
     background-color 0.22s ease,
     border-color 0.22s ease,
@@ -2315,23 +2311,6 @@ body.ka-modal-open {
     width: 100%;
     min-width: 0;
   }
-}
-
-/* CONTACT MODAL — spacing refinement */
-.ka-modal__title {
-  margin-bottom: 32px;
-}
-
-.ka-modal__field--full {
-  margin-top: 12px;
-}
-
-.ka-modal__feedback {
-  margin-top: 10px;
-}
-
-.ka-modal__actions {
-  margin-top: -2px;
 }
 
 
