@@ -1,4 +1,4 @@
-2150
+2155
 /* =========================================================
 FONTS
 - DM Serif Display (headings)
@@ -310,10 +310,10 @@ html {
     "logo contact"
     "nav nav";
   align-items: center;
-  row-gap: 10px;
+  row-gap: 12px;
   column-gap: 12px;
   height: 100%;
-  padding: 14px 0 12px;
+  padding: 12px 0 10px;
   box-sizing: border-box;
 }
   
@@ -331,13 +331,13 @@ html {
   grid-area: nav;
   display: flex;
   justify-content: flex-start;
-  gap: 8px;
+  gap: 10px;
   min-width: 0;
   width: 100%;
   overflow-x: auto;
   overflow-y: hidden;
   white-space: nowrap;
-  padding: 0 8px 2px 0;
+  padding: 0 8px 4px 0;
   box-sizing: border-box;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -352,13 +352,13 @@ html {
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
-  min-height: 32px;
-  padding: 0 10px;
+  min-height: 34px;
+  padding: 0 12px;
   border: 1px solid rgba(31, 35, 40, 0.10);
   border-radius: 999px;
   font-size: 11px;
   line-height: 1;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
   background: rgba(255,255,255,0.35);
   box-sizing: border-box;
 }
