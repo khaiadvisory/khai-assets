@@ -2033,4 +2033,266 @@ CARRD WRAPPER RESET
   overflow: visible !important;
 }
 
+/* =========================================================
+   CONTACT MODAL
+   ========================================================= */
+.ka-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 12000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.24s ease,
+    visibility 0.24s ease;
+}
+
+.ka-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.ka-modal__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(12, 16, 20, 0.42);
+}
+
+.ka-modal__dialog {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 720px);
+  background: #F6F5F2;
+  border-radius: 16px;
+  box-sizing: border-box;
+  padding: 34px 22px 18px;
+  box-shadow: 0 24px 80px rgba(15, 20, 24, 0.22);
+}
+
+.ka-modal__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 28px;
+  height: 28px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: #1F2328;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, sans-serif;
+  font-size: 22px;
+  line-height: 1;
+  opacity: 0.72;
+  transition: opacity 0.2s ease;
+}
+
+.ka-modal__close:hover {
+  opacity: 1;
+}
+
+.ka-modal__eyebrow {
+  margin: 0 0 10px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #4D8998;
+}
+
+.ka-modal__title {
+  margin: 0 0 28px;
+  font-family: var(--font-display);
+  font-size: 54px;
+  line-height: 0.98;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: #4D8998;
+}
+
+.ka-modal__form {
+  margin: 0;
+}
+
+.ka-modal__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 18px;
+  row-gap: 14px;
+}
+
+.ka-modal__field {
+  min-width: 0;
+}
+
+.ka-modal__field--full {
+  margin-top: 14px;
+}
+
+.ka-modal__field label {
+  display: block;
+  margin: 0 0 8px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: #1F2328;
+}
+
+.ka-modal__field input,
+.ka-modal__field textarea {
+  width: 100%;
+  border: 1px solid #D9DDD6;
+  border-radius: 10px;
+  background: #FFFFFF;
+  box-sizing: border-box;
+  box-shadow: none;
+  outline: none;
+  resize: vertical;
+
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  color: #1F2328;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.ka-modal__field input {
+  height: 30px;
+  padding: 4px 12px;
+}
+
+.ka-modal__field textarea {
+  min-height: 93px;
+  padding: 12px;
+}
+
+.ka-modal__field input:focus,
+.ka-modal__field textarea:focus {
+  border-color: rgba(77, 137, 152, 0.72);
+  box-shadow: 0 0 0 3px rgba(77, 137, 152, 0.10);
+}
+
+.ka-modal__field input::placeholder,
+.ka-modal__field textarea::placeholder {
+  color: rgba(31, 35, 40, 0.42);
+}
+
+.ka-modal__hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.ka-modal__feedback {
+  min-height: 22px;
+  margin-top: 14px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 18px;
+  color: #1F2328;
+}
+
+.ka-modal__feedback.is-error {
+  color: #A33B2E;
+}
+
+.ka-modal__feedback.is-success {
+  color: #246B45;
+}
+
+.ka-modal__actions {
+  margin-top: 6px;
+  display: flex;
+  justify-content: center;
+}
+
+.ka-modal__submit {
+  min-width: 152px;
+  height: 31px;
+  padding: 0 28px;
+  border-radius: 999px;
+  border: 1px solid rgba(15, 76, 92, 0.26);
+  background: transparent;
+  cursor: pointer;
+  box-sizing: border-box;
+
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: #0F4C5C;
+
+  transition:
+    background-color 0.22s ease,
+    border-color 0.22s ease,
+    color 0.22s ease,
+    opacity 0.22s ease;
+}
+
+.ka-modal__submit:hover {
+  background: rgba(15, 76, 92, 0.05);
+  border-color: rgba(15, 76, 92, 0.40);
+}
+
+.ka-modal__submit:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+body.ka-modal-open {
+  overflow: hidden;
+}
+
+@media (max-width: 767px) {
+  .ka-modal {
+    padding: 16px;
+    align-items: flex-start;
+    overflow-y: auto;
+  }
+
+  .ka-modal__dialog {
+    width: 100%;
+    margin: 32px 0;
+    padding: 28px 18px 18px;
+    border-radius: 14px;
+  }
+
+  .ka-modal__title {
+    font-size: 40px;
+    line-height: 1;
+    margin-bottom: 22px;
+  }
+
+  .ka-modal__grid {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+    row-gap: 14px;
+  }
+
+  .ka-modal__field--full {
+    margin-top: 14px;
+  }
+}
+
 
