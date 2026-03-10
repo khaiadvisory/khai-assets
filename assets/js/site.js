@@ -556,6 +556,165 @@ function jumpToHash() {
     scheduleRevealHide();
   }
 
+  /* =========================================================
+     11B. CONTACT MODAL
+     ========================================================= */
+
+  var CONTACT_WORKER_URL = 'https://khai-contact-form.paolo-testa01.workers.dev';
+
+  function getContactModalEls() {
+    return {
+      modal: document.getElementById('ka-contact-modal'),
+      form: document.getElementById('ka-contact-form'),
+      feedback: document.getElementById('ka-contact-feedback'),
+      submit: document.getElementById('ka-contact-submit'),
+      firstInput: document.getElementById('ka-name')
+    };
+  }
+
+  function openContactModal() {
+    var els = getContactModalEls();
+    if (!els.modal) return;
+
+    els.modal.classList.add('is-open');
+    els.modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('ka-modal-open');
+
+    window.setTimeout(function () {
+      if (els.firstInput) els.firstInput.focus();
+    }, 40);
+  }
+
+  function closeContactModal() {
+    var els = getContactModalEls();
+    if (!els.modal) return;
+
+    els.modal.classList.remove('is-open');
+    els.modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('ka-modal-open');
+  }
+
+  function setContactFeedback(message, type) {
+    var els = getContactModalEls();
+    if (!els.feedback) return;
+
+    els.feedback.textContent = message || '';
+    els.feedback.classList.remove('is-error', 'is-success');
+
+    if (type) {
+      els.feedback.classList.add(type === 'success' ? 'is-success' : 'is-error');
+    }
+  }
+
+  function setContactSubmitting(isSubmitting) {
+    var els = getContactModalEls();
+    if (!els.submit) return;
+
+    els.submit.disabled = !!isSubmitting;
+    els.submit.textContent = isSubmitting ? 'Sending...' : 'Send';
+  }
+
+  function validateContactForm(data) {
+    if (!data.name || !data.email || !data.message) {
+      return 'Please complete Name, Email, and Message.';
+    }
+
+    var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email);
+    if (!emailOk) {
+      return 'Please enter a valid email address.';
+    }
+
+    return '';
+  }
+
+  async function submitContactForm(form) {
+    var formData = new FormData(form);
+
+    var payload = {
+      name: String(formData.get('name') || '').trim(),
+      email: String(formData.get('email') || '').trim(),
+      company: String(formData.get('company') || '').trim(),
+      website: String(formData.get('website') || '').trim(),
+      message: String(formData.get('message') || '').trim(),
+      companyTrap: String(formData.get('companyTrap') || '').trim()
+    };
+
+    var validationError = validateContactForm(payload);
+    if (validationError) {
+      setContactFeedback(validationError, 'error');
+      return;
+    }
+
+    setContactFeedback('', '');
+    setContactSubmitting(true);
+
+    try {
+      var res = await fetch(CONTACT_WORKER_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      var json = {};
+      try {
+        json = await res.json();
+      } catch (err) {
+        json = {};
+      }
+
+      if (!res.ok || !json.ok) {
+        throw new Error(json.error || 'Unable to send message.');
+      }
+
+      form.reset();
+      setContactFeedback('Message sent successfully.', 'success');
+
+      window.setTimeout(function () {
+        closeContactModal();
+        setContactFeedback('', '');
+      }, 900);
+    } catch (error) {
+      setContactFeedback('Unable to send message right now. Please try again in a moment.', 'error');
+    } finally {
+      setContactSubmitting(false);
+    }
+  }
+
+  function bindContactModal() {
+    document.addEventListener('click', function (e) {
+      var openTrigger = e.target.closest('[data-contact-open]');
+      if (openTrigger) {
+        e.preventDefault();
+        openContactModal();
+        return;
+      }
+
+      var closeTrigger = e.target.closest('[data-contact-close]');
+      if (closeTrigger) {
+        e.preventDefault();
+        closeContactModal();
+      }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        var els = getContactModalEls();
+        if (els.modal && els.modal.classList.contains('is-open')) {
+          closeContactModal();
+        }
+      }
+    });
+
+    document.addEventListener('submit', function (e) {
+      var form = e.target;
+      if (!form || form.id !== 'ka-contact-form') return;
+
+      e.preventDefault();
+      submitContactForm(form);
+    });
+  }
 
   /* =========================================================
      12. RESIZE
