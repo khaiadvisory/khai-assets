@@ -741,6 +741,7 @@ function debugNavClick(label, data) {
 window.addEventListener('load', function () {
   bindRevealZone();
   syncInitialNavState();
+  bindContactModal();
 
   debugNavClick('load state', {
     version: window.__KHAI_NAV_VERSION,
