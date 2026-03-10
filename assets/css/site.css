@@ -1,4 +1,3 @@
-2134
 /* =========================================================
 FONTS
 - DM Serif Display (headings)
@@ -86,7 +85,7 @@ NAVBAR
   left: 0;
   width: 100%;
   z-index: 9999;
-  height: var(--nav-h);
+  height: 96px;
   background: #F6F5F2;
   border-bottom: 1px solid rgba(31, 35, 40, 0.08);
   transform: translateY(0);
@@ -240,16 +239,16 @@ body.nav-revealed .site-header {
 
 @media (max-width: 1119px) {
   .site-header {
-  height: var(--nav-h);
-}
+    height: 88px;
+  }
 
-body {
-  padding-top: var(--nav-h);
-}
+  body {
+    padding-top: 88px;
+  }
 
-html {
-  scroll-padding-top: var(--nav-h);
-}
+  html {
+    scroll-padding-top: 88px;
+  }
 
   .site-header__inner {
     gap: 14px;
@@ -2008,7 +2007,6 @@ GLOBAL VIEWPORT FRAMEWORK
 
 @media (max-width: 1119px) {
   :root {
-    --nav-h: 88px;
     --site-pad: 28px;
   }
 }
@@ -2314,3 +2312,4 @@ body.ka-modal-open {
     min-width: 0;
   }
 }
+
