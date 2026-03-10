@@ -573,26 +573,31 @@ function jumpToHash() {
   }
 
   function openContactModal() {
-    var els = getContactModalEls();
-    if (!els.modal) return;
+  var els = getContactModalEls();
+  if (!els.modal) return;
 
-    els.modal.classList.add('is-open');
-    els.modal.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('ka-modal-open');
+  setContactFeedback('', '');
 
-    window.setTimeout(function () {
-      if (els.firstInput) els.firstInput.focus();
-    }, 40);
-  }
+  els.modal.classList.add('is-open');
+  els.modal.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('ka-modal-open');
+
+  window.setTimeout(function () {
+    if (els.firstInput) els.firstInput.focus();
+  }, 40);
+}
 
   function closeContactModal() {
-    var els = getContactModalEls();
-    if (!els.modal) return;
+  var els = getContactModalEls();
+  if (!els.modal) return;
 
-    els.modal.classList.remove('is-open');
-    els.modal.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('ka-modal-open');
-  }
+  els.modal.classList.remove('is-open');
+  els.modal.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('ka-modal-open');
+
+  setContactFeedback('', '');
+  setContactSubmitting(false);
+}
 
   function setContactFeedback(message, type) {
     var els = getContactModalEls();
