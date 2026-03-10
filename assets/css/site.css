@@ -2317,4 +2317,21 @@ body.ka-modal-open {
   }
 }
 
+/* CONTACT MODAL — spacing refinement */
+.ka-modal__title {
+  margin-bottom: 32px;
+}
+
+.ka-modal__field--full {
+  margin-top: 12px;
+}
+
+.ka-modal__feedback {
+  margin-top: 10px;
+}
+
+.ka-modal__actions {
+  margin-top: -2px;
+}
+
 
