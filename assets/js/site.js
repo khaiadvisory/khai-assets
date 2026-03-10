@@ -683,38 +683,54 @@ function jumpToHash() {
   }
 
   function bindContactModal() {
-    document.addEventListener('click', function (e) {
-      var openTrigger = e.target.closest('[data-contact-open]');
-      if (openTrigger) {
-        e.preventDefault();
+  document.addEventListener('click', function (e) {
+    var openTrigger = e.target.closest('[data-contact-open]');
+    if (openTrigger) {
+      e.preventDefault();
+      e.stopPropagation();
+      if (typeof e.stopImmediatePropagation === 'function') {
+        e.stopImmediatePropagation();
+      }
+
+      window.setTimeout(function () {
         openContactModal();
-        return;
-      }
+      }, 0);
 
-      var closeTrigger = e.target.closest('[data-contact-close]');
-      if (closeTrigger) {
-        e.preventDefault();
-        closeContactModal();
-      }
-    });
+      return;
+    }
 
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') {
-        var els = getContactModalEls();
-        if (els.modal && els.modal.classList.contains('is-open')) {
-          closeContactModal();
-        }
-      }
-    });
-
-    document.addEventListener('submit', function (e) {
-      var form = e.target;
-      if (!form || form.id !== 'ka-contact-form') return;
+    var closeTrigger = e.target.closest('[data-contact-close]');
+    if (closeTrigger) {
+      var els = getContactModalEls();
+      if (!els.modal || !els.modal.classList.contains('is-open')) return;
 
       e.preventDefault();
-      submitContactForm(form);
-    });
-  }
+      e.stopPropagation();
+      if (typeof e.stopImmediatePropagation === 'function') {
+        e.stopImmediatePropagation();
+      }
+
+      closeContactModal();
+    }
+  }, true);
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      var els = getContactModalEls();
+      if (els.modal && els.modal.classList.contains('is-open')) {
+        closeContactModal();
+      }
+    }
+  });
+
+  document.addEventListener('submit', function (e) {
+    var form = e.target;
+    if (!form || form.id !== 'ka-contact-form') return;
+
+    e.preventDefault();
+    submitContactForm(form);
+  });
+}
 
   /* =========================================================
      12. RESIZE
