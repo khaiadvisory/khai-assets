@@ -3,15 +3,8 @@
      1. CONFIG / COSTANTI PRINCIPALI
      ========================================================= */
 
-  // Altezza navbar letta dal CSS token --nav-h
-function getNavHeight() {
-  var raw = getComputedStyle(document.documentElement)
-    .getPropertyValue('--nav-h')
-    .trim();
-
-  var parsed = parseFloat(raw);
-  return Number.isFinite(parsed) ? parsed : 96;
-}
+  // Altezza navbar desktop
+  var NAV_H = 96;
 
   // Fascia invisibile in alto che fa riapparire la navbar su desktop
   var REVEAL_ZONE = 24;
@@ -107,11 +100,10 @@ function getNavHeight() {
 
   // Mostra navbar e ripristina lo spazio top del body
   function showNav() {
-  var navH = getNavHeight();
-  document.body.classList.remove('nav-hidden');
-  document.body.classList.add('nav-revealed');
-  document.body.style.paddingTop = navH + 'px';
-}
+    document.body.classList.remove('nav-hidden');
+    document.body.classList.add('nav-revealed');
+    document.body.style.paddingTop = NAV_H + 'px';
+  }
 
   // Nasconde navbar e rimuove lo spazio top del body
   function hideNav() {
@@ -247,7 +239,7 @@ function getNavHeight() {
     if (y <= 8) return 'home';
 
     // Usiamo una probe line assoluta nel documento
-    var probeOffset = isDesktop() ? 120 : getNavHeight();
+    var probeOffset = isDesktop() ? 120 : 96;
     var probeDocY = y + probeOffset;
     var ranges = getSectionRanges();
 
