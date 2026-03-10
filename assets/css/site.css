@@ -1,4 +1,4 @@
-2155
+2134
 /* =========================================================
 FONTS
 - DM Serif Display (headings)
@@ -291,94 +291,6 @@ html {
     padding: 10px 12px;
     font-size: 12px;
     letter-spacing: 0.03em;
-  }
-}
-
-@media (max-width: 719px) {
-  :root {
-    --nav-h: 118px;
-  }
-
-  .site-header {
-    border-bottom: 1px solid rgba(31, 35, 40, 0.08);
-  }
-
- .site-header__inner {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  grid-template-areas:
-    "logo contact"
-    "nav nav";
-  align-items: center;
-  row-gap: 12px;
-  column-gap: 12px;
-  height: 100%;
-  padding: 12px 0 10px;
-  box-sizing: border-box;
-}
-  
-  .nav-logo {
-    grid-area: logo;
-    width: 94px;
-    height: 36px;
-  }
-
-  .nav-right {
-    display: contents;
-  }
-
-.site-nav {
-  grid-area: nav;
-  display: flex;
-  justify-content: flex-start;
-  gap: 10px;
-  min-width: 0;
-  width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
-  white-space: nowrap;
-  padding: 0 8px 4px 0;
-  box-sizing: border-box;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-  .site-nav::-webkit-scrollbar {
-    display: none;
-  }
-
- .site-nav a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex: 0 0 auto;
-  min-height: 34px;
-  padding: 0 12px;
-  border: 1px solid rgba(31, 35, 40, 0.10);
-  border-radius: 999px;
-  font-size: 11px;
-  line-height: 1;
-  letter-spacing: 0.01em;
-  background: rgba(255,255,255,0.35);
-  box-sizing: border-box;
-}
-  
-  .site-nav a::after {
-    display: none;
-  }
-
-  .nav-contact {
-  grid-area: contact;
-  width: auto;
-  height: 34px;
-  padding: 0 12px;
-  font-size: 11px;
-  line-height: 1;
-  letter-spacing: 0.04em;
-}
-  
-  .nav-reveal-zone {
-    display: none;
   }
 }
 
@@ -2402,4 +2314,3 @@ body.ka-modal-open {
     min-width: 0;
   }
 }
-
