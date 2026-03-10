@@ -2061,64 +2061,70 @@ CARRD WRAPPER RESET
 .ka-modal__overlay {
   position: absolute;
   inset: 0;
-  background: rgba(12, 16, 20, 0.42);
+  background: rgba(0, 0, 0, 0.40);
+  backdrop-filter: blur(2px);
 }
 
 .ka-modal__dialog {
   position: relative;
   z-index: 1;
   width: min(100%, 720px);
-  background: #F6F5F2;
+  background: var(--paper);
   border-radius: 16px;
+  border: 1px solid rgba(31, 35, 40, 0.12);
   box-sizing: border-box;
-  padding: 34px 22px 18px;
-  box-shadow: 0 24px 80px rgba(15, 20, 24, 0.22);
+  padding: 30px 30px 26px;
+  box-shadow: 0 28px 80px rgba(15, 20, 24, 0.18);
 }
 
 .ka-modal__close {
   position: absolute;
-  top: 16px;
-  right: 16px;
-  width: 28px;
-  height: 28px;
+  top: 14px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
   border: 0;
   padding: 0;
   background: transparent;
-  color: #1F2328;
+  color: rgba(31, 35, 40, 0.78);
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-family: Arial, sans-serif;
-  font-size: 22px;
+  font-family: var(--font-sans);
+  font-size: 24px;
   line-height: 1;
-  opacity: 0.72;
-  transition: opacity 0.2s ease;
+  transition:
+    color 0.2s ease,
+    opacity 0.2s ease,
+    transform 0.2s ease;
 }
 
 .ka-modal__close:hover {
+  color: var(--teal-head-85);
   opacity: 1;
+  transform: scale(1.04);
 }
 
 .ka-modal__eyebrow {
-  margin: 0 0 10px;
+  margin: 0 0 8px;
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: 13px;
   line-height: 16px;
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #4D8998;
+  color: var(--teal-90);
 }
 
 .ka-modal__title {
-  margin: 0 0 28px;
-  font-family: var(--font-display);
-  font-size: 54px;
-  line-height: 0.98;
+  margin: 0 0 24px;
+  font-family: var(--font-serif);
+  font-size: 64px;
+  line-height: 0.94;
   font-weight: 400;
-  letter-spacing: -0.02em;
-  color: #4D8998;
+  letter-spacing: 0;
+  color: var(--teal-90);
 }
 
 .ka-modal__form {
@@ -2142,57 +2148,65 @@ CARRD WRAPPER RESET
 
 .ka-modal__field label {
   display: block;
-  margin: 0 0 8px;
-  font-family: var(--font-sans);
-  font-size: 12px;
-  line-height: 16px;
+  margin: 0 0 6px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 18px;
   font-weight: 500;
-  letter-spacing: 0;
-  color: #1F2328;
+  color: var(--charcoal);
 }
 
 .ka-modal__field input,
 .ka-modal__field textarea {
   width: 100%;
-  border: 1px solid #D9DDD6;
-  border-radius: 10px;
-  background: #FFFFFF;
+  border: 1px solid rgba(47, 111, 122, 0.20);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.88);
   box-sizing: border-box;
-  box-shadow: none;
   outline: none;
   resize: vertical;
+  -webkit-appearance: none;
+  appearance: none;
 
   font-family: var(--font-sans);
   font-size: 14px;
   line-height: 20px;
   font-weight: 400;
-  color: #1F2328;
+  color: var(--charcoal);
 
   transition:
     border-color 0.2s ease,
     box-shadow 0.2s ease,
-    background-color 0.2s ease;
+    background-color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .ka-modal__field input {
-  height: 30px;
-  padding: 4px 12px;
+  height: 44px;
+  padding: 0 14px;
 }
 
 .ka-modal__field textarea {
-  min-height: 93px;
-  padding: 12px;
+  min-height: 138px;
+  padding: 12px 14px;
+}
+
+.ka-modal__field input:hover,
+.ka-modal__field textarea:hover {
+  border-color: rgba(47, 111, 122, 0.32);
+  background: #FFFFFF;
 }
 
 .ka-modal__field input:focus,
 .ka-modal__field textarea:focus {
-  border-color: rgba(77, 137, 152, 0.72);
-  box-shadow: 0 0 0 3px rgba(77, 137, 152, 0.10);
+  border-color: rgba(47, 111, 122, 0.52);
+  background: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(47, 111, 122, 0.10);
 }
 
 .ka-modal__field input::placeholder,
 .ka-modal__field textarea::placeholder {
-  color: rgba(31, 35, 40, 0.42);
+  color: rgba(95, 110, 114, 0.70);
 }
 
 .ka-modal__hp {
@@ -2209,7 +2223,7 @@ CARRD WRAPPER RESET
   font-family: var(--font-sans);
   font-size: 13px;
   line-height: 18px;
-  color: #1F2328;
+  color: var(--charcoal);
 }
 
 .ka-modal__feedback.is-error {
@@ -2221,14 +2235,14 @@ CARRD WRAPPER RESET
 }
 
 .ka-modal__actions {
-  margin-top: 6px;
+  margin-top: 4px;
   display: flex;
   justify-content: center;
 }
 
 .ka-modal__submit {
-  min-width: 152px;
-  height: 31px;
+  min-width: 220px;
+  height: 44px;
   padding: 0 28px;
   border-radius: 999px;
   border: 1px solid rgba(15, 76, 92, 0.26);
@@ -2237,27 +2251,30 @@ CARRD WRAPPER RESET
   box-sizing: border-box;
 
   font-family: var(--font-sans);
-  font-size: 13px;
-  line-height: 18px;
-  font-weight: 600;
-  letter-spacing: 0.01em;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
   color: #0F4C5C;
 
   transition:
     background-color 0.22s ease,
     border-color 0.22s ease,
     color 0.22s ease,
-    opacity 0.22s ease;
+    opacity 0.22s ease,
+    transform 0.22s ease;
 }
 
 .ka-modal__submit:hover {
-  background: rgba(15, 76, 92, 0.05);
+  background: rgba(15, 76, 92, 0.06);
   border-color: rgba(15, 76, 92, 0.40);
+  transform: translateY(-1px);
 }
 
 .ka-modal__submit:disabled {
   opacity: 0.6;
   cursor: wait;
+  transform: none;
 }
 
 body.ka-modal-open {
@@ -2274,13 +2291,13 @@ body.ka-modal-open {
   .ka-modal__dialog {
     width: 100%;
     margin: 32px 0;
-    padding: 28px 18px 18px;
+    padding: 26px 18px 20px;
     border-radius: 14px;
   }
 
   .ka-modal__title {
-    font-size: 40px;
-    line-height: 1;
+    font-size: 42px;
+    line-height: 0.98;
     margin-bottom: 22px;
   }
 
@@ -2292,6 +2309,11 @@ body.ka-modal-open {
 
   .ka-modal__field--full {
     margin-top: 14px;
+  }
+
+  .ka-modal__submit {
+    width: 100%;
+    min-width: 0;
   }
 }
 
