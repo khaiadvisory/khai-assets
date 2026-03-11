@@ -13,10 +13,10 @@
   var DESKTOP_MIN = 1024;
 
   // Parametri smooth scroll anchor
-  var MIN_DURATION = 620;
-  var MAX_DURATION = 1350;
-  var DISTANCE_DIVISOR = 1.9;
-  var REINFORCE_MS = 160;
+ var MIN_DURATION = 320;
+var MAX_DURATION = 760;
+var DISTANCE_DIVISOR = 3.2;
+var REINFORCE_MS = 90;
 
   // Soglia minima per considerare lo scroll "reale"
   var SCROLL_DELTA = 8;
