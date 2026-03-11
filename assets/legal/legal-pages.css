@@ -1,0 +1,122 @@
+:root {
+  --paper: #F6F5F2;
+  --ink: #1F2328;
+  --muted: #4B5563;
+  --line: rgba(31, 35, 40, 0.14);
+  --accent: #0F4C5C;
+  --container: 820px;
+}
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+  color: var(--ink);
+}
+body {
+  font-family: 'Spectral', Georgia, serif;
+  line-height: 1.65;
+  min-width: 320px;
+}
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+.ka-legal {
+  min-height: 100vh;
+  padding: 40px 20px 64px;
+}
+.ka-legal__wrap {
+  width: min(var(--container), calc(100vw - 40px));
+  margin: 0 auto;
+}
+.ka-legal__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 36px;
+}
+.ka-legal__brand {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+}
+.ka-legal__back {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 0.85rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.ka-legal__eyebrow {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+.ka-legal h1 {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 0.98;
+  margin: 0 0 12px;
+}
+.ka-legal__updated {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin: 0 0 28px;
+}
+.ka-legal__intro {
+  font-size: 1rem;
+  color: var(--muted);
+  margin: 0 0 36px;
+  max-width: 62ch;
+}
+.ka-legal__section {
+  padding: 22px 0;
+  border-top: 1px solid var(--line);
+}
+.ka-legal__section:first-of-type {
+  border-top: 1px solid var(--line);
+}
+.ka-legal h2 {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 0.96rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  margin: 0 0 10px;
+  color: var(--ink);
+}
+.ka-legal p {
+  margin: 0 0 12px;
+}
+.ka-legal ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+.ka-legal li {
+  margin: 0 0 8px;
+}
+.ka-legal__footer {
+  border-top: 1px solid var(--line);
+  margin-top: 32px;
+  padding-top: 18px;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+@media (max-width: 640px) {
+  .ka-legal { padding-top: 28px; }
+  .ka-legal__top {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
