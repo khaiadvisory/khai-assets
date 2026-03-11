@@ -2547,10 +2547,10 @@ body.ka-modal-open {
   }
 
   .ka-wyvn__boat--mobile {
-    display: block;
-    margin-top: 22px;
-    aspect-ratio: 16 / 11;
-  }
+  display: block;
+  margin-top: 22px;
+  aspect-ratio: 600 / 706;
+}
 
   .ka-wyvn__top > .ka-wyvn__boat:not(.ka-wyvn__boat--mobile) {
     display: none;
