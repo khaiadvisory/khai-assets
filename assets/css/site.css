@@ -116,7 +116,7 @@ body.nav-revealed .site-header {
 }
 
 .nav-logo {
-  width: 148px;
+  width: 118px;
   height: 41px;
   display: flex;
   align-items: center;
@@ -254,8 +254,8 @@ body.nav-revealed .site-header {
     gap: 14px;
   }
 
-  .nav-logo {
-  width: 132px;
+ .nav-logo {
+  width: 108px;
   height: 39px;
 }
 
@@ -1904,7 +1904,7 @@ FOOTER
 
 .ka-footer__brand img {
   display: block;
-  width: 112px;
+  width: 108px;
   height: auto;
   margin-left: 0;
 }
@@ -2007,9 +2007,9 @@ FOOTER
   }
 
   .ka-footer__brand img {
-    width: 96px;
-    margin-left: 0;
-  }
+  width: 92px;
+  margin-left: 0;
+}
 
   .ka-footer__body,
   .ka-footer__link,
