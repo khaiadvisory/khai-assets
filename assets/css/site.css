@@ -2427,8 +2427,14 @@ body.ka-modal-open {
   white-space: nowrap;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  padding: 0 var(--site-pad) 2px var(--site-pad);
+  padding: 0 0 2px 0;
   box-sizing: border-box;
+}
+
+.site-nav::before,
+.site-nav::after {
+  content: "";
+  flex: 1 0 var(--site-pad);
 }
   
   .site-nav::-webkit-scrollbar {
@@ -2904,13 +2910,21 @@ body.ka-modal-open {
  .site-nav {
   grid-column: 1 / -1;
   grid-row: 2;
+  display: flex;
+  align-items: center;
   gap: 6px;
   justify-content: flex-start;
   overflow-x: auto;
   overflow-y: hidden;
   white-space: nowrap;
-  padding: 0 var(--site-pad) 2px var(--site-pad);
+  padding: 0 0 2px 0;
   box-sizing: border-box;
+}
+
+.site-nav::before,
+.site-nav::after {
+  content: "";
+  flex: 1 0 var(--site-pad);
 }
 
   .site-nav a {
