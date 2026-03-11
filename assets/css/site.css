@@ -2331,51 +2331,103 @@ body.ka-modal-open {
     padding-top: 88px;
   }
 
-  /* =========================
+    /* =========================
      NAVBAR
+     Mobile dedicated: top row logo + contact,
+     second row scrollable nav
      ========================= */
 
   .site-header {
-    height: 88px;
+    height: 116px;
+  }
+
+  html {
+    scroll-padding-top: 116px;
+  }
+
+  body {
+    padding-top: 116px;
   }
 
   .site-header__inner {
     width: var(--wrap-w);
-    gap: 10px;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: 44px 32px;
+    column-gap: 10px;
+    row-gap: 12px;
+    align-content: center;
+    align-items: center;
   }
 
   .nav-logo {
+    grid-column: 1;
+    grid-row: 1;
     width: 88px;
     height: 36px;
+    align-self: center;
   }
 
   .nav-right {
-    gap: 8px;
-    min-width: 0;
+    grid-column: 1 / -1;
+    grid-row: 1 / span 2;
+    display: contents;
+  }
+
+  .nav-contact {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+    align-self: center;
+    height: 34px;
+    padding: 8px 12px;
+    font-size: 10px;
+    line-height: 16px;
+    letter-spacing: 0.01em;
+    width: auto;
   }
 
   .site-nav {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
     gap: 8px;
-    flex: 1 1 auto;
-    justify-content: flex-end;
+    min-width: 0;
+    width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
     white-space: nowrap;
-    padding-bottom: 2px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 0 0 2px 0;
+  }
+
+  .site-nav::-webkit-scrollbar {
+    display: none;
   }
 
   .site-nav a {
     font-size: 10px;
     line-height: 16px;
     letter-spacing: 0.01em;
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    height: 30px;
+    padding: 0 10px;
+    border-radius: 999px;
+    background: rgba(15, 76, 92, 0.04);
   }
 
-  .nav-contact {
-    height: 34px;
-    padding: 8px 12px;
-    font-size: 10px;
-    line-height: 16px;
-    letter-spacing: 0.01em;
+  .site-nav a::after {
+    display: none;
+  }
+
+  .site-nav a:hover {
+    background: rgba(15, 76, 92, 0.08);
   }
 
   /* =========================
@@ -2739,58 +2791,63 @@ body.ka-modal-open {
     padding-top: 84px;
   }
 
-  .site-header {
-    height: 84px;
+    .site-header {
+    height: 108px;
+  }
+
+  html {
+    scroll-padding-top: 108px;
+  }
+
+  body {
+    padding-top: 108px;
   }
 
   .site-header__inner {
-    gap: 6px;
-    align-items: center;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: 40px 30px;
+    column-gap: 8px;
+    row-gap: 10px;
+    align-content: center;
   }
 
   .nav-logo {
-  width: 72px;
-  height: 30px;
-  flex: 0 0 auto;
-}
+    width: 72px;
+    height: 30px;
+  }
 
   .nav-right {
-    gap: 6px;
-    min-width: 0;
-    flex: 1 1 auto;
+    display: contents;
+  }
+
+  .nav-contact {
+    grid-column: 2;
+    grid-row: 1;
+    height: 30px;
+    padding: 6px 9px;
+    font-size: 8px;
+    line-height: 13px;
+    letter-spacing: 0;
   }
 
   .site-nav {
+    grid-column: 1 / -1;
+    grid-row: 2;
     gap: 6px;
-    flex: 1 1 auto;
-    min-width: 0;
-    justify-content: flex-end;
+    justify-content: flex-start;
     overflow-x: auto;
     overflow-y: hidden;
     white-space: nowrap;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
   }
 
-  .site-nav::-webkit-scrollbar {
-    display: none;
+  .site-nav a {
+    font-size: 8px;
+    line-height: 13px;
+    letter-spacing: 0;
+    flex: 0 0 auto;
+    height: 28px;
+    padding: 0 9px;
   }
-
- .site-nav a {
-  font-size: 8px;
-  line-height: 13px;
-  letter-spacing: 0;
-  flex: 0 0 auto;
-}
-
-  .nav-contact {
-  height: 30px;
-  padding: 6px 9px;
-  font-size: 8px;
-  line-height: 13px;
-  letter-spacing: 0;
-  flex: 0 0 auto;
-}
 
   .ka-hero {
     min-height: 540px;
