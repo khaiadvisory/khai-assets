@@ -1243,8 +1243,17 @@ OWM (range-based desktop-first pattern)
   }
 
   .ka-owm__introblock {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     row-gap: 28px;
+  }
+
+  .ka-owm__titlecol {
+    order: 1;
+  }
+
+  .ka-owm__introtext {
+    order: 2;
   }
 
   .ka-owm__title {
