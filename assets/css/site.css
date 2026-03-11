@@ -494,6 +494,10 @@ WHY VIETNAM NOW (range-based desktop-first pattern)
   width: 100%;
 }
 
+.ka-wyvn__boat--mobile {
+  display: none;
+}
+
 .ka-wyvn__wrap {
   width: var(--wrap-w);
   margin: 0 auto;
