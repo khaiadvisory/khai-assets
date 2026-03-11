@@ -2843,15 +2843,19 @@ body.ka-modal-open {
      CONTACT
      ========================= */
 
-  .ka-contact__wrap {
-    padding: 60px 0 72px;
-  }
-
+ .ka-contact__wrap {
+  padding: 60px 0 72px;
+  text-align: center;
+}
+  
   .ka-contact__title {
-    font-size: 30px;
-    line-height: 0.98;
-    max-width: 300px;
-  }
+  font-size: 30px;
+  line-height: 0.98;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
 
   /* =========================
      FOOTER
