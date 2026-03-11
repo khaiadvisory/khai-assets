@@ -2716,31 +2716,66 @@ body.ka-modal-open {
     --site-pad: 8px;
   }
 
+   .site-header {
+    height: 84px;
+  }
+
+  html {
+    scroll-padding-top: 84px;
+  }
+
+  body {
+    padding-top: 84px;
+  }
+
   .site-header__inner {
-    gap: 8px;
+    gap: 6px;
+    align-items: center;
   }
 
   .nav-logo {
-    width: 80px;
-    height: 34px;
+    width: 76px;
+    height: 32px;
+    flex: 0 0 auto;
+  }
+
+  .nav-right {
+    gap: 6px;
+    min-width: 0;
+    flex: 1 1 auto;
   }
 
   .site-nav {
     gap: 6px;
+    flex: 1 1 auto;
+    min-width: 0;
+    justify-content: flex-end;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .site-nav::-webkit-scrollbar {
+    display: none;
   }
 
   .site-nav a {
     font-size: 9px;
-    line-height: 15px;
+    line-height: 14px;
     letter-spacing: 0;
+    flex: 0 0 auto;
   }
 
   .nav-contact {
-    padding: 8px 10px;
+    height: 32px;
+    padding: 7px 10px;
     font-size: 9px;
-    line-height: 15px;
+    line-height: 14px;
+    letter-spacing: 0;
+    flex: 0 0 auto;
   }
-
   .ka-hero {
     min-height: 540px;
   }
