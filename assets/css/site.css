@@ -2758,13 +2758,21 @@ body.ka-modal-open {
   }
 
   .ka-owm__visualblock {
-    margin-top: 22px;
-  }
+  margin-top: 22px;
+}
 
-  .ka-owm__h3 {
-    font-size: 18px;
-    line-height: 22px;
-  }
+.ka-owm__media {
+  aspect-ratio: 16 / 9;
+}
+
+.ka-owm__mediaimg {
+  object-position: center;
+}
+
+.ka-owm__h3 {
+  font-size: 18px;
+  line-height: 22px;
+}
 
     /* =========================
      WHY WORK WITH US
