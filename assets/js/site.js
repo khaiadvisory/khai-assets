@@ -66,10 +66,18 @@
   }
 
   function findTarget(id) {
-    if (!id) return null;
-    return document.getElementById(id);
+  if (!id) return null;
+
+  // Mobile-only special target for OWM:
+  // on smartphone we land on the visible title block,
+  // not on the section wrapper top.
+  if (!isDesktop() && id === 'owm') {
+    var owmTitleCol = document.querySelector('#owm .ka-owm__titlecol');
+    if (owmTitleCol) return owmTitleCol;
   }
 
+  return document.getElementById(id);
+}
   function getHeaderHeight() {
     var header = document.querySelector('.site-header');
     if (!header) return NAV_H_FALLBACK;
