@@ -2332,14 +2332,6 @@ body.ka-modal-open {
     --site-pad: 10px;
   }
 
-  html {
-    scroll-padding-top: 88px;
-  }
-
-  body {
-    padding-top: 88px;
-  }
-
     /* =========================
      NAVBAR
      Mobile dedicated: top row logo + contact,
@@ -2792,15 +2784,7 @@ body.ka-modal-open {
     --site-pad: 8px;
   }
 
-  html {
-    scroll-padding-top: 84px;
-  }
-
-  body {
-    padding-top: 84px;
-  }
-
-    .site-header {
+  .site-header {
     height: 108px;
   }
 
@@ -2862,33 +2846,33 @@ body.ka-modal-open {
     min-height: 540px;
   }
 
- #heroText {
-  top: 98px;
-  gap: 12px;
-}
+  #heroText {
+    top: 98px;
+    gap: 12px;
+  }
 
- .ka-hero__title {
-  font-size: 29px;
-  line-height: 0.98;
-  max-width: 250px;
-}
+  .ka-hero__title {
+    font-size: 29px;
+    line-height: 0.98;
+    max-width: 250px;
+  }
 
   .ka-hero__sub {
-  font-size: 13px;
-  line-height: 21px;
-  max-width: 270px;
-}
+    font-size: 13px;
+    line-height: 21px;
+    max-width: 270px;
+  }
 
   .ka-hero__cta {
     gap: 8px;
   }
 
   .ka-btn,
-.ka-btn--text,
-.ka-btn--ghost {
-  font-size: 10px;
-}
-  
+  .ka-btn--text,
+  .ka-btn--ghost {
+    font-size: 10px;
+  }
+
   .ka-wyvn__h1,
   .ka-services__title,
   .ka-owm__title,
@@ -2910,10 +2894,10 @@ body.ka-modal-open {
   }
 
   .ka-contact__title {
-  max-width: 240px;
-  margin-left: auto;
-  margin-right: auto;
-}
+    max-width: 240px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
   .ka-card__bullets {
     font-size: 12.5px;
@@ -2921,13 +2905,12 @@ body.ka-modal-open {
   }
 
   .ka-faq__itemQuestion {
-  font-size: 13px;
-  line-height: 20px;
-}
-  
+    font-size: 13px;
+    line-height: 20px;
+  }
+
   .ka-faq__answer {
-  font-size: 13px;
-  line-height: 22px;
-}
-  
+    font-size: 13px;
+    line-height: 22px;
+  }
 }
