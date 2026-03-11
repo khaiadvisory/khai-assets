@@ -316,7 +316,7 @@ HERO (HTML embed)
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,.56);
+  background: rgba(0,0,0,.48);
   z-index: 1;
   pointer-events: none;
 }
