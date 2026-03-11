@@ -2510,7 +2510,7 @@ body.ka-modal-open {
     max-width: none;
   }
 
-  /* =========================
+    /* =========================
      SERVICES
      ========================= */
 
@@ -2576,27 +2576,42 @@ body.ka-modal-open {
   .ka-services__cards {
     margin-top: 34px;
     row-gap: 14px;
+    grid-template-columns: 1fr;
   }
 
-  .ka-serviceCard {
+  .ka-card {
     padding: 18px 16px 18px;
     border-radius: 12px;
+    min-height: auto;
   }
 
-  .ka-serviceCard__phase {
+  .ka-card::before {
+    width: 30px;
+    margin-bottom: 10px;
+  }
+
+  .ka-card__phase {
+    margin-bottom: 12px;
+    font-size: 11px;
+    line-height: 15px;
+  }
+
+  .ka-card__title {
+    font-size: 18px;
+    line-height: 22px;
     margin-bottom: 12px;
   }
 
-  .ka-serviceCard__title {
-    font-size: 18px;
-    line-height: 22px;
-  }
-
-  .ka-serviceCard__list,
-  .ka-serviceCard__body,
-  .ka-serviceCard__deliverable {
+  .ka-card__bullets {
     font-size: 13px;
     line-height: 22px;
+    padding-left: 17px;
+  }
+
+  .ka-card__deliverable {
+    padding-top: 18px;
+    font-size: 13px;
+    line-height: 20px;
   }
 
   .ka-services__note {
@@ -2716,16 +2731,16 @@ body.ka-modal-open {
     --site-pad: 8px;
   }
 
-   .site-header {
-    height: 84px;
-  }
-
   html {
     scroll-padding-top: 84px;
   }
 
   body {
     padding-top: 84px;
+  }
+
+  .site-header {
+    height: 84px;
   }
 
   .site-header__inner {
@@ -2776,12 +2791,19 @@ body.ka-modal-open {
     letter-spacing: 0;
     flex: 0 0 auto;
   }
+
   .ka-hero {
     min-height: 540px;
   }
 
+  #heroText {
+    top: 102px;
+    gap: 14px;
+  }
+
   .ka-hero__title {
     font-size: 31px;
+    line-height: 0.98;
     max-width: 270px;
   }
 
@@ -2789,6 +2811,16 @@ body.ka-modal-open {
     font-size: 14px;
     line-height: 22px;
     max-width: 290px;
+  }
+
+  .ka-hero__cta {
+    gap: 8px;
+  }
+
+  .ka-btn,
+  .ka-btn--text,
+  .ka-btn--ghost {
+    font-size: 11px;
   }
 
   .ka-wyvn__h1,
@@ -2800,14 +2832,24 @@ body.ka-modal-open {
     font-size: 28px;
   }
 
-  .ka-serviceCard {
+  .ka-card {
     padding: 16px 14px 16px;
   }
 
-  .ka-serviceCard__title,
+  .ka-card__title,
   .ka-owm__pointTitle,
   .ka-whywork__positioningTitle {
     font-size: 17px;
+    line-height: 21px;
+  }
+
+  .ka-card__bullets {
+    font-size: 12.5px;
+    line-height: 21px;
+  }
+
+  .ka-faq__itemQuestion {
+    font-size: 14px;
     line-height: 21px;
   }
 }
