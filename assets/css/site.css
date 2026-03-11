@@ -2340,9 +2340,10 @@ body.ka-modal-open {
   }
 
   .ka-modal__submit {
-    width: 100%;
-    min-width: 0;
-  }
+  width: auto;
+  min-width: 180px;
+  max-width: 220px;
+}
 }
 
 /* =========================================================
