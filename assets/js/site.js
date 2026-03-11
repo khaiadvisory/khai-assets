@@ -3,8 +3,8 @@
      1. CONFIG / COSTANTI PRINCIPALI
      ========================================================= */
 
-  // Altezza navbar desktop
-  var NAV_H = 96;
+    // Fallback height usata per desktop e come sicurezza generale
+  var NAV_H_FALLBACK = 96;
 
   // Fascia invisibile in alto che fa riapparire la navbar su desktop
   var REVEAL_ZONE = 24;
@@ -70,6 +70,16 @@
     return document.getElementById(id);
   }
 
+  function getHeaderHeight() {
+    var header = document.querySelector('.site-header');
+    if (!header) return NAV_H_FALLBACK;
+
+    var h = header.getBoundingClientRect().height;
+    if (!h || h < 1) return NAV_H_FALLBACK;
+
+    return Math.round(h);
+  }
+
 
   /* =========================================================
      4. EASING + DURATA ANIMAZIONE SCROLL
@@ -99,10 +109,11 @@
      ========================================================= */
 
   // Mostra navbar e ripristina lo spazio top del body
-  function showNav() {
+   function showNav() {
+    var navH = isDesktop() ? NAV_H_FALLBACK : getHeaderHeight();
     document.body.classList.remove('nav-hidden');
     document.body.classList.add('nav-revealed');
-    document.body.style.paddingTop = NAV_H + 'px';
+    document.body.style.paddingTop = navH + 'px';
   }
 
   // Nasconde navbar e rimuove lo spazio top del body
@@ -232,14 +243,15 @@
     return ranges;
   }
 
-  function getCurrentSectionId() {
+    function getCurrentSectionId() {
     var y = window.pageYOffset || 0;
 
     // In top pagina consideriamo Home attiva
     if (y <= 8) return 'home';
 
-    // Usiamo una probe line assoluta nel documento
-    var probeOffset = isDesktop() ? 120 : 96;
+    // Desktop invariato; mobile coerente con l'altezza reale della navbar
+    var navH = isDesktop() ? NAV_H_FALLBACK : getHeaderHeight();
+    var probeOffset = isDesktop() ? 120 : navH + 12;
     var probeDocY = y + probeOffset;
     var ranges = getSectionRanges();
 
