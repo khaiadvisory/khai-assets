@@ -198,6 +198,22 @@
     return y;
   }
 
+function getJumpTargetY(el) {
+  var rawY = getRawTargetY(el);
+
+  // Desktop: comportamento storico invariato
+  if (isDesktop()) {
+    return rawY;
+  }
+
+  // Mobile: compensiamo con l'altezza reale della navbar visibile
+  var navH = getHeaderHeight();
+  var y = rawY - navH;
+
+  if (y < 0) y = 0;
+  return y;
+}
+
 
       /* =========================================================
      8. CONTROLLO: SIAMO GIÀ NELLA SEZIONE TARGET?
@@ -329,50 +345,99 @@ function jumpToHash() {
     return;
   }
 
-  // Tutte le altre sezioni: navbar nascosta al landing
-  hideNav();
+   // Tutte le altre sezioni
+  // Desktop: comportamento storico invariato
+  if (isDesktop()) {
+    hideNav();
 
-  // Aspettiamo 2 frame per stabilizzare il layout
-  // dopo il cambio di padding-top del body
-  requestAnimationFrame(function () {
     requestAnimationFrame(function () {
-      var target = findTarget(id);
-      if (!target) {
-        anchorJumpLock = false;
-        return;
-      }
+      requestAnimationFrame(function () {
+        var target = findTarget(id);
+        if (!target) {
+          anchorJumpLock = false;
+          return;
+        }
 
-      var y = getRawTargetY(target);
+        var y = getJumpTargetY(target);
 
-      console.group('[KHAI NAV DEBUG] jump target computed');
-      console.log({
-        id: id,
-        rawTargetY: y,
-        currentPageYOffset: window.pageYOffset || 0,
-        targetRectTop: target.getBoundingClientRect().top,
-        targetRectBottom: target.getBoundingClientRect().bottom,
-        bodyPaddingTop: document.body.style.paddingTop || '(empty)',
-        bodyClasses: document.body.className
-      });
-      console.groupEnd();
-
-      animateScrollTo(y, function () {
-        lastY = window.pageYOffset || 0;
-
-        console.group('[KHAI NAV DEBUG] jumpToHash finished');
+        console.group('[KHAI NAV DEBUG] jump target computed (desktop)');
         console.log({
           id: id,
-          finalPageYOffset: window.pageYOffset || 0,
-          currentSectionId: getCurrentSectionId(),
+          jumpTargetY: y,
+          currentPageYOffset: window.pageYOffset || 0,
+          targetRectTop: target.getBoundingClientRect().top,
+          targetRectBottom: target.getBoundingClientRect().bottom,
+          headerHeight: getHeaderHeight(),
           bodyPaddingTop: document.body.style.paddingTop || '(empty)',
           bodyClasses: document.body.className
         });
         console.groupEnd();
 
-        setTimeout(function () {
-          anchorJumpLock = false;
-        }, 140);
+        animateScrollTo(y, function () {
+          lastY = window.pageYOffset || 0;
+
+          console.group('[KHAI NAV DEBUG] jumpToHash finished (desktop)');
+          console.log({
+            id: id,
+            finalPageYOffset: window.pageYOffset || 0,
+            currentSectionId: getCurrentSectionId(),
+            bodyPaddingTop: document.body.style.paddingTop || '(empty)',
+            bodyClasses: document.body.className
+          });
+          console.groupEnd();
+
+          setTimeout(function () {
+            anchorJumpLock = false;
+          }, 140);
+        });
       });
+    });
+
+    return;
+  }
+
+  // Mobile: navbar visibile e landing compensato
+  showNav();
+
+  requestAnimationFrame(function () {
+    var target = findTarget(id);
+    if (!target) {
+      anchorJumpLock = false;
+      return;
+    }
+
+    var y = getJumpTargetY(target);
+
+    console.group('[KHAI NAV DEBUG] jump target computed (mobile)');
+    console.log({
+      id: id,
+      jumpTargetY: y,
+      currentPageYOffset: window.pageYOffset || 0,
+      targetRectTop: target.getBoundingClientRect().top,
+      targetRectBottom: target.getBoundingClientRect().bottom,
+      headerHeight: getHeaderHeight(),
+      bodyPaddingTop: document.body.style.paddingTop || '(empty)',
+      bodyClasses: document.body.className
+    });
+    console.groupEnd();
+
+    animateScrollTo(y, function () {
+      showNav();
+      lastY = window.pageYOffset || 0;
+
+      console.group('[KHAI NAV DEBUG] jumpToHash finished (mobile)');
+      console.log({
+        id: id,
+        finalPageYOffset: window.pageYOffset || 0,
+        currentSectionId: getCurrentSectionId(),
+        bodyPaddingTop: document.body.style.paddingTop || '(empty)',
+        bodyClasses: document.body.className
+      });
+      console.groupEnd();
+
+      setTimeout(function () {
+        anchorJumpLock = false;
+      }, 140);
     });
   });
 }
