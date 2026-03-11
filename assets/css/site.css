@@ -313,6 +313,16 @@ HERO (HTML embed)
   background-repeat: no-repeat;
 }
 
+.ka-hero__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
 /* Wrapper testo hero = 1120 centrato */
 #heroText {
   position: absolute;
