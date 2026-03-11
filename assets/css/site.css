@@ -2843,30 +2843,31 @@ body.ka-modal-open {
   }
 
   .ka-hero {
-    min-height: 540px;
-  }
+  min-height: 500px;
+}
 
-  #heroText {
-    top: 98px;
-    gap: 12px;
-  }
+ #heroText {
+  top: 84px;
+  gap: 10px;
+}
 
-  .ka-hero__title {
-    font-size: 29px;
-    line-height: 0.98;
-    max-width: 250px;
-  }
+ .ka-hero__title {
+  font-size: 29px;
+  line-height: 0.98;
+  max-width: 240px;
+}
 
-  .ka-hero__sub {
-    font-size: 13px;
-    line-height: 21px;
-    max-width: 270px;
-  }
+ .ka-hero__sub {
+  font-size: 13px;
+  line-height: 20px;
+  max-width: 250px;
+}
 
-  .ka-hero__cta {
-    gap: 8px;
-  }
-
+ .ka-hero__cta {
+  gap: 8px;
+  margin-top: 2px;
+}
+  
   .ka-btn,
   .ka-btn--text,
   .ka-btn--ghost {
