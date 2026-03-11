@@ -2632,42 +2632,61 @@ body.ka-modal-open {
   }
 
   .ka-process {
-    margin-top: 44px;
-    height: auto;
-  }
+  margin-top: 44px;
+  height: 58px;
+  --ka-process-center-y: 19px;
+}
 
-  .ka-process__line {
-    display: none;
-  }
+.ka-process__line {
+  display: block;
+  left: 16.6667%;
+  right: 16.6667%;
+  top: var(--ka-process-center-y);
+}
 
-  .ka-process__row {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-    height: auto;
-  }
+.ka-process__row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: 8px;
+  align-items: start;
+  height: 58px;
+}
 
-  .ka-step {
-    position: static;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-  }
+.ka-step {
+  position: relative;
+  height: 58px;
+  display: block;
+}
 
-  .ka-step__num,
-  .ka-step__node,
-  .ka-step__label {
-    position: static;
-    transform: none;
-  }
+.ka-step__num {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  font-size: 10px;
+  line-height: 12px;
+  letter-spacing: 0.12em;
+}
 
-  .ka-step__label {
-    font-size: 12px;
-    line-height: 18px;
-  }
+.ka-step__node {
+  position: absolute;
+  left: 50%;
+  top: var(--ka-process-center-y);
+  width: 7px;
+  height: 7px;
+  transform: translate(-50%, -50%);
+}
+
+.ka-step__label {
+  position: absolute;
+  left: 50%;
+  top: 31px;
+  transform: translateX(-50%);
+  font-size: 11px;
+  line-height: 14px;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
 
   .ka-services__cards {
     margin-top: 34px;
