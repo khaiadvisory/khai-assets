@@ -2313,3 +2313,466 @@ body.ka-modal-open {
   }
 }
 
+/* =========================================================
+   MOBILE SMARTPHONE REFINEMENT LAYER
+   Safe overrides only - desktop remains untouched
+   ========================================================= */
+
+@media (max-width: 719px) {
+  :root {
+    --site-pad: 10px;
+  }
+
+  html {
+    scroll-padding-top: 88px;
+  }
+
+  body {
+    padding-top: 88px;
+  }
+
+  /* =========================
+     NAVBAR
+     ========================= */
+
+  .site-header {
+    height: 88px;
+  }
+
+  .site-header__inner {
+    width: var(--wrap-w);
+    gap: 10px;
+  }
+
+  .nav-logo {
+    width: 88px;
+    height: 36px;
+  }
+
+  .nav-right {
+    gap: 8px;
+    min-width: 0;
+  }
+
+  .site-nav {
+    gap: 8px;
+    flex: 1 1 auto;
+    justify-content: flex-end;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    padding-bottom: 2px;
+  }
+
+  .site-nav a {
+    font-size: 10px;
+    line-height: 16px;
+    letter-spacing: 0.01em;
+  }
+
+  .nav-contact {
+    height: 34px;
+    padding: 8px 12px;
+    font-size: 10px;
+    line-height: 16px;
+    letter-spacing: 0.01em;
+  }
+
+  /* =========================
+     HERO
+     ========================= */
+
+  .ka-hero {
+    min-height: 560px;
+  }
+
+  #heroText {
+    top: 108px;
+    width: 100%;
+    max-width: none;
+    gap: 16px;
+  }
+
+  .ka-hero__eyebrow {
+    font-size: 11px;
+    line-height: 15px;
+    letter-spacing: 0.15em;
+  }
+
+  .ka-hero__title {
+    font-size: 34px;
+    line-height: 0.98;
+    max-width: 300px;
+  }
+
+  .ka-hero__sub {
+    font-size: 15px;
+    line-height: 23px;
+    max-width: 310px;
+  }
+
+  .ka-hero__cta {
+    gap: 10px;
+    margin-top: 4px;
+  }
+
+  .ka-btn--ghost {
+    padding: 11px 16px;
+  }
+
+  .ka-btn,
+  .ka-btn--text,
+  .ka-btn--ghost {
+    font-size: 12px;
+  }
+
+  /* =========================
+     GLOBAL TYPE / SECTION RHYTHM
+     ========================= */
+
+  .ka-micro,
+  .ka-services__eyebrow,
+  .ka-hero__eyebrow {
+    letter-spacing: 0.14em;
+  }
+
+  .ka-wyvn__wrap,
+  .ka-services__wrap,
+  .ka-owm__wrap,
+  .ka-whywork__wrap,
+  .ka-faq__wrap,
+  .ka-contact__wrap,
+  .ka-footer__wrap {
+    width: var(--wrap-w);
+  }
+
+  /* =========================
+     WHY VIETNAM NOW
+     ========================= */
+
+  .ka-wyvn__wrap {
+    padding: 56px 0 68px;
+  }
+
+  .ka-wyvn__top {
+    row-gap: 24px;
+  }
+
+  .ka-wyvn__h1 {
+    font-size: 30px;
+    line-height: 0.98;
+    max-width: 240px;
+  }
+
+  .ka-wyvn__intro {
+    font-size: 14px;
+    line-height: 24px;
+    margin-top: 14px;
+  }
+
+  .ka-insight {
+    padding: 11px 0;
+    grid-template-columns: 24px 1fr;
+    column-gap: 8px;
+  }
+
+  .ka-insight__title {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .ka-insight__body {
+    font-size: 12px;
+    line-height: 19px;
+  }
+
+  .ka-wyvn__boat {
+    aspect-ratio: 16 / 12;
+  }
+
+  .ka-wyvn__focus {
+    margin-top: 56px;
+  }
+
+  .ka-wyvn__focusMedia {
+    aspect-ratio: 16 / 9;
+  }
+
+  .ka-wyvn__focusTitle {
+    font-size: 18px;
+    line-height: 23px;
+    max-width: none;
+  }
+
+  .ka-wyvn__focusBody {
+    font-size: 14px;
+    line-height: 24px;
+    max-width: none;
+  }
+
+  /* =========================
+     SERVICES
+     ========================= */
+
+  .ka-services__wrap {
+    padding: 56px 0 72px;
+  }
+
+  .ka-services__head {
+    grid-template-columns: 1fr;
+    row-gap: 18px;
+  }
+
+  .ka-services__title {
+    font-size: 30px;
+    line-height: 0.98;
+  }
+
+  .ka-services__intro {
+    font-size: 14px;
+    line-height: 24px;
+    max-width: none;
+    padding-top: 0;
+  }
+
+  .ka-process {
+    margin-top: 44px;
+    height: auto;
+  }
+
+  .ka-process__line {
+    display: none;
+  }
+
+  .ka-process__row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    height: auto;
+  }
+
+  .ka-step {
+    position: static;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .ka-step__num,
+  .ka-step__node,
+  .ka-step__label {
+    position: static;
+    transform: none;
+  }
+
+  .ka-step__label {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .ka-services__cards {
+    margin-top: 34px;
+    row-gap: 14px;
+  }
+
+  .ka-serviceCard {
+    padding: 18px 16px 18px;
+    border-radius: 12px;
+  }
+
+  .ka-serviceCard__phase {
+    margin-bottom: 12px;
+  }
+
+  .ka-serviceCard__title {
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .ka-serviceCard__list,
+  .ka-serviceCard__body,
+  .ka-serviceCard__deliverable {
+    font-size: 13px;
+    line-height: 22px;
+  }
+
+  .ka-services__note {
+    margin-top: 44px;
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  /* =========================
+     OUR WORKING MODEL
+     ========================= */
+
+  .ka-owm__wrap {
+    padding: 56px 0 68px;
+  }
+
+  .ka-owm__title {
+    font-size: 30px;
+    line-height: 0.98;
+    max-width: 260px;
+  }
+
+  .ka-owm__intro,
+  .ka-owm__body,
+  .ka-owm__pointBody {
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  .ka-owm__imageWrap {
+    margin-top: 22px;
+  }
+
+  .ka-owm__pointTitle {
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  /* =========================
+     WHY WORK WITH US
+     ========================= */
+
+  .ka-whywork__wrap {
+    padding: 56px 0 68px;
+  }
+
+  .ka-whywork__title {
+    font-size: 30px;
+    line-height: 0.98;
+    max-width: 250px;
+  }
+
+  .ka-whywork__introLead,
+  .ka-whywork__introBody,
+  .ka-whywork__positioningBody {
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  .ka-whywork__positioningTitle {
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  /* =========================
+     FAQ
+     ========================= */
+
+  .ka-faq__wrap {
+    padding: 56px 0 68px;
+  }
+
+  .ka-faq__title {
+    font-size: 30px;
+    line-height: 0.98;
+  }
+
+  .ka-faq__itemQuestion {
+    font-size: 15px;
+    line-height: 22px;
+    padding-right: 18px;
+  }
+
+  /* =========================
+     CONTACT
+     ========================= */
+
+  .ka-contact__wrap {
+    padding: 56px 0 68px;
+  }
+
+  .ka-contact__title {
+    font-size: 30px;
+    line-height: 0.98;
+    max-width: 300px;
+  }
+
+  /* =========================
+     FOOTER
+     ========================= */
+
+  .ka-footer__wrap {
+    padding: 28px 0 34px;
+  }
+
+  .ka-footer__body,
+  .ka-footer__link,
+  .ka-footer__legalLink,
+  .ka-footer__copyright {
+    font-size: 13px;
+    line-height: 22px;
+  }
+}
+
+@media (max-width: 389px) {
+  :root {
+    --site-pad: 8px;
+  }
+
+  .site-header__inner {
+    gap: 8px;
+  }
+
+  .nav-logo {
+    width: 80px;
+    height: 34px;
+  }
+
+  .site-nav {
+    gap: 6px;
+  }
+
+  .site-nav a {
+    font-size: 9px;
+    line-height: 15px;
+    letter-spacing: 0;
+  }
+
+  .nav-contact {
+    padding: 8px 10px;
+    font-size: 9px;
+    line-height: 15px;
+  }
+
+  .ka-hero {
+    min-height: 540px;
+  }
+
+  .ka-hero__title {
+    font-size: 31px;
+    max-width: 270px;
+  }
+
+  .ka-hero__sub {
+    font-size: 14px;
+    line-height: 22px;
+    max-width: 290px;
+  }
+
+  .ka-wyvn__h1,
+  .ka-services__title,
+  .ka-owm__title,
+  .ka-whywork__title,
+  .ka-faq__title,
+  .ka-contact__title {
+    font-size: 28px;
+  }
+
+  .ka-serviceCard {
+    padding: 16px 14px 16px;
+  }
+
+  .ka-serviceCard__title,
+  .ka-owm__pointTitle,
+  .ka-whywork__positioningTitle {
+    font-size: 17px;
+    line-height: 21px;
+  }
+}
