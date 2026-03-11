@@ -823,14 +823,74 @@ function jumpToHash() {
 }
 
   /* =========================================================
+     11C. HERO VIDEO: FALLBACK TECNICO / RETE
+     ========================================================= */
+
+  function getHeroVideoEl() {
+    return document.querySelector('.ka-hero__video');
+  }
+
+  function isVideoConnectionOk() {
+    var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+
+    // Se l'API non esiste, per default permettiamo il video
+    if (!connection) return true;
+
+    // Risparmio dati attivo = meglio fallback statico
+    if (connection.saveData) return false;
+
+    // Connessioni lente = meglio fallback statico
+    var type = String(connection.effectiveType || '').toLowerCase();
+    if (type === 'slow-2g' || type === '2g') return false;
+
+    return true;
+  }
+
+  function canUseHeroVideo() {
+    var video = getHeroVideoEl();
+    if (!video) return false;
+
+    // Se il browser non supporta davvero il tag video, niente video
+    if (typeof video.play !== 'function') return false;
+
+    // Se la connessione è sfavorevole, meglio fallback statico
+    if (!isVideoConnectionOk()) return false;
+
+    return true;
+  }
+
+  function setupHeroVideo() {
+    var video = getHeroVideoEl();
+    if (!video) return;
+
+    if (!canUseHeroVideo()) {
+      video.pause();
+      video.removeAttribute('autoplay');
+      video.style.display = 'none';
+      return;
+    }
+
+    video.style.display = 'block';
+
+    // Proviamo a forzare il play; se fallisce, resta il fallback statico
+    var playPromise = video.play();
+    if (playPromise && typeof playPromise.catch === 'function') {
+      playPromise.catch(function () {
+        video.style.display = 'none';
+      });
+    }
+  }
+
+  /* =========================================================
      12. RESIZE
      ========================================================= */
 
   function onResize() {
-    hoverReveal = false;
-    syncInitialNavState();
-    lastY = window.pageYOffset || 0;
-  }
+  hoverReveal = false;
+  syncInitialNavState();
+  setupHeroVideo();
+  lastY = window.pageYOffset || 0;
+}
 
 
        /* =========================================================
@@ -848,6 +908,7 @@ window.addEventListener('load', function () {
   bindRevealZone();
   syncInitialNavState();
   bindContactModal();
+  setupHeroVideo();
 
   debugNavClick('load state', {
     version: window.__KHAI_NAV_VERSION,
