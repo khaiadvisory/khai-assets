@@ -305,12 +305,20 @@ HERO (HTML embed)
 .ka-hero__bg {
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
-    url("https://khai2-preview.carrd.co/assets/images/image01.jpg?v=a5b02c7f");
+  overflow: hidden;
+  background-image: url("https://khai2-preview.carrd.co/assets/images/image01.jpg?v=a5b02c7f");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+.ka-hero__bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.56);
+  z-index: 1;
+  pointer-events: none;
 }
 
 .ka-hero__video {
@@ -321,12 +329,13 @@ HERO (HTML embed)
   object-fit: cover;
   object-position: center;
   display: block;
+  z-index: 0;
 }
 
 /* Wrapper testo hero = 1120 centrato */
 #heroText {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   top: clamp(132px, 16vh, 180px);
   left: 0;
   width: min(600px, 54vw);
