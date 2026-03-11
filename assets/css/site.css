@@ -2522,7 +2522,7 @@ body.ka-modal-open {
     width: var(--wrap-w);
   }
 
-   /* =========================
+     /* =========================
      WHY VIETNAM NOW
      ========================= */
 
@@ -2546,6 +2546,20 @@ body.ka-modal-open {
     margin-top: 16px;
   }
 
+  .ka-wyvn__boat--mobile {
+    display: block;
+    margin-top: 22px;
+    aspect-ratio: 16 / 11;
+  }
+
+  .ka-wyvn__top > .ka-wyvn__boat:not(.ka-wyvn__boat--mobile) {
+    display: none;
+  }
+
+  .ka-wyvn__insights {
+    margin-top: 18px;
+  }
+
   .ka-insight {
     padding: 11px 0;
     grid-template-columns: 24px 1fr;
@@ -2560,10 +2574,6 @@ body.ka-modal-open {
   .ka-insight__body {
     font-size: 12px;
     line-height: 19px;
-  }
-
-  .ka-wyvn__boat {
-    aspect-ratio: 16 / 12;
   }
 
   .ka-wyvn__focus {
