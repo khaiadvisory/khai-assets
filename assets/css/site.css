@@ -259,6 +259,12 @@ body.nav-revealed .site-header {
   height: 39px;
 }
 
+  .ka-footer__brand img {
+  width: auto;
+  height: 26px;
+}
+
+
   .nav-right {
     gap: 12px;
     overflow: hidden;
@@ -1904,8 +1910,8 @@ FOOTER
 
 .ka-footer__brand img {
   display: block;
-  width: 108px;
-  height: auto;
+  width: auto;
+  height: 27px;
   margin-left: 0;
 }
 
@@ -2007,7 +2013,8 @@ FOOTER
   }
 
   .ka-footer__brand img {
-  width: 92px;
+  width: auto;
+  height: 24px;
   margin-left: 0;
 }
 
@@ -2892,6 +2899,11 @@ body.ka-modal-open {
     width: 72px;
     height: 30px;
   }
+  
+  .ka-footer__brand img {
+  width: auto;
+  height: 20px;
+}
 
   .nav-right {
     display: contents;
