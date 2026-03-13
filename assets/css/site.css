@@ -220,6 +220,66 @@ body.nav-revealed .site-header {
   border-color: rgba(15, 76, 92, 0.42);
 }
 
+.nav-lang {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.nav-lang a {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  color: #1F2328;
+  position: relative;
+  display: inline-block;
+  transition:
+    color 0.22s ease,
+    opacity 0.22s ease;
+}
+
+.nav-lang a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 1px;
+  background: #0F4C5C;
+  opacity: 0;
+  transform: scaleX(0.72);
+  transform-origin: center;
+  transition: opacity 0.22s ease, transform 0.22s ease;
+}
+
+.nav-lang a:hover {
+  color: #0F4C5C;
+}
+
+.nav-lang a:hover::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.nav-lang a.is-active {
+  color: #0F4C5C;
+}
+
+.nav-lang a.is-active::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.nav-lang-toggle,
+.nav-lang-menu {
+  display: none;
+}
+
 .ka-container {
   width: var(--wrap-w);
   height: 100%;
