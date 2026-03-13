@@ -641,6 +641,87 @@ function jumpToHash() {
     scheduleRevealHide();
   }
 
+/* =========================================================
+   11A. LANGUAGE SWITCH
+   ========================================================= */
+
+function getLanguageMenuEls() {
+  return {
+    wrap: document.querySelector('.nav-lang-wrap'),
+    toggle: document.querySelector('.nav-lang-toggle'),
+    menu: document.getElementById('navLangMenu')
+  };
+}
+
+function openLanguageMenu() {
+  var els = getLanguageMenuEls();
+  if (!els.toggle || !els.menu) return;
+
+  els.menu.hidden = false;
+  els.toggle.setAttribute('aria-expanded', 'true');
+}
+
+function closeLanguageMenu() {
+  var els = getLanguageMenuEls();
+  if (!els.toggle || !els.menu) return;
+
+  els.menu.hidden = true;
+  els.toggle.setAttribute('aria-expanded', 'false');
+}
+
+function toggleLanguageMenu() {
+  var els = getLanguageMenuEls();
+  if (!els.toggle || !els.menu) return;
+
+  var isOpen = els.toggle.getAttribute('aria-expanded') === 'true';
+
+  if (isOpen) {
+    closeLanguageMenu();
+  } else {
+    openLanguageMenu();
+  }
+}
+
+function bindLanguageMenu() {
+  var els = getLanguageMenuEls();
+  if (!els.wrap || !els.toggle || !els.menu) return;
+
+  closeLanguageMenu();
+
+  els.toggle.addEventListener('click', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (typeof e.stopImmediatePropagation === 'function') {
+      e.stopImmediatePropagation();
+    }
+
+    toggleLanguageMenu();
+  });
+
+  els.menu.addEventListener('click', function (e) {
+    var link = e.target.closest('a');
+    if (!link) return;
+
+    closeLanguageMenu();
+  });
+
+  document.addEventListener('click', function (e) {
+    var currentEls = getLanguageMenuEls();
+    if (!currentEls.wrap || !currentEls.menu) return;
+
+    if (currentEls.wrap.contains(e.target)) return;
+
+    closeLanguageMenu();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      closeLanguageMenu();
+    }
+  });
+}
+
   /* =========================================================
      11B. CONTACT MODAL
      ========================================================= */
