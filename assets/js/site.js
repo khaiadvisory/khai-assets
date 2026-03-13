@@ -968,6 +968,7 @@ function bindLanguageMenu() {
 
   function onResize() {
   hoverReveal = false;
+  closeLanguageMenu();
   syncInitialNavState();
   setupHeroVideo();
   lastY = window.pageYOffset || 0;
@@ -988,6 +989,7 @@ function debugNavClick(label, data) {
 window.addEventListener('load', function () {
   bindRevealZone();
   syncInitialNavState();
+  bindLanguageMenu();
   bindContactModal();
   setupHeroVideo();
 
