@@ -2511,6 +2511,12 @@ body.ka-modal-open {
     display: contents;
   }
 
+  .nav-right {
+  grid-column: 1 / -1;
+  grid-row: 1 / span 2;
+  display: contents;
+}
+
   .nav-contact {
     grid-column: 2;
     grid-row: 1;
