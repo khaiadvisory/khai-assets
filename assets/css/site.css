@@ -2511,13 +2511,14 @@ body.ka-modal-open {
     display: contents;
   }
 
-  .nav-lang-wrap {
+ .nav-lang-wrap {
   grid-column: 2;
   grid-row: 1;
   justify-self: end;
   align-self: center;
   position: relative;
-  margin-right: 58px;
+  margin-right: 64px;
+  margin-top: 1px;
   z-index: 10030;
 }
 
@@ -2533,9 +2534,9 @@ body.ka-modal-open {
 }
 
 .nav-lang-menu {
-  top: calc(100% + 8px);
-  right: 0;
-  min-width: 154px;
+  top: calc(100% + 10px);
+  right: -2px;
+  min-width: 148px;
   padding: 8px;
 }
 
@@ -3045,13 +3046,14 @@ body.ka-modal-open {
     display: contents;
   }
 
-  .nav-lang-wrap {
+ .nav-lang-wrap {
   grid-column: 2;
   grid-row: 1;
   justify-self: end;
   align-self: center;
   position: relative;
-  margin-right: 52px;
+  margin-right: 58px;
+  margin-top: 1px;
   z-index: 10030;
 }
 
@@ -3062,11 +3064,11 @@ body.ka-modal-open {
 }
 
 .nav-lang-menu {
-  top: calc(100% + 8px);
-  right: 0;
-  min-width: 148px;
+  top: calc(100% + 10px);
+  right: -4px;
+  min-width: 144px;
 }
-
+  
   .nav-contact {
     grid-column: 2;
     grid-row: 1;
