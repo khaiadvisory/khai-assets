@@ -220,64 +220,91 @@ body.nav-revealed .site-header {
   border-color: rgba(15, 76, 92, 0.42);
 }
 
-.nav-lang {
+.nav-lang-wrap {
+  position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
   flex: 0 0 auto;
-  white-space: nowrap;
 }
 
-.nav-lang a {
+.nav-lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 0 12px;
+  border: 1px solid rgba(15, 76, 92, 0.24);
+  border-radius: 999px;
+  background: transparent;
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  color: #0F4C5C;
+  cursor: pointer;
+  transition:
+    background 0.22s ease,
+    border-color 0.22s ease,
+    color 0.22s ease;
+}
+
+.nav-lang-toggle:hover {
+  background: rgba(15, 76, 92, 0.06);
+  border-color: rgba(15, 76, 92, 0.42);
+}
+
+.nav-lang-toggle__label {
+  display: inline-block;
+}
+
+.nav-lang-toggle__chevron {
+  display: inline-block;
+  font-size: 11px;
+  line-height: 1;
+  transform: translateY(-1px);
+}
+
+.nav-lang-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  min-width: 152px;
+  padding: 8px;
+  border: 1px solid rgba(15, 76, 92, 0.14);
+  border-radius: 14px;
+  background: #F6F3EE;
+  box-shadow: 0 12px 28px rgba(16, 24, 40, 0.08);
+  z-index: 10020;
+}
+
+.nav-lang-menu[hidden] {
+  display: none !important;
+}
+
+.nav-lang-menu a {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 10px;
   font-family: "Inter", sans-serif;
   font-size: 14px;
-  font-weight: 400;
   line-height: 20px;
-  letter-spacing: 0.05em;
   text-decoration: none;
   color: #1F2328;
-  position: relative;
-  display: inline-block;
   transition:
-    color 0.22s ease,
-    opacity 0.22s ease;
+    background 0.22s ease,
+    color 0.22s ease;
 }
 
-.nav-lang a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -6px;
-  width: 100%;
-  height: 1px;
-  background: #0F4C5C;
-  opacity: 0;
-  transform: scaleX(0.72);
-  transform-origin: center;
-  transition: opacity 0.22s ease, transform 0.22s ease;
-}
-
-.nav-lang a:hover {
+.nav-lang-menu a:hover {
+  background: rgba(15, 76, 92, 0.06);
   color: #0F4C5C;
 }
 
-.nav-lang a:hover::after {
-  opacity: 1;
-  transform: scaleX(1);
-}
-
-.nav-lang a.is-active {
+.nav-lang-menu a.is-active {
   color: #0F4C5C;
-}
-
-.nav-lang a.is-active::after {
-  opacity: 1;
-  transform: scaleX(1);
-}
-
-.nav-lang-toggle,
-.nav-lang-menu {
-  display: none;
+  background: rgba(15, 76, 92, 0.08);
 }
 
 .ka-container {
