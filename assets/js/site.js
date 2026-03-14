@@ -728,6 +728,90 @@ function bindLanguageMenu() {
 
   var CONTACT_WORKER_URL = 'https://khai-contact-form.paolo-testa01.workers.dev';
 
+var CONTACT_I18N = {
+  en: {
+    send: 'Send',
+    sending: 'Sending...',
+    required: 'Please complete Name, Email, and Message.',
+    invalidEmail: 'Please enter a valid email address.',
+    sendErrorFallback: 'Unable to send message.',
+    sendSuccess: 'Message sent successfully.',
+    sendErrorNow: 'Unable to send message right now. Please try again in a moment.'
+  },
+  it: {
+    send: 'Invia',
+    sending: 'Invio in corso...',
+    required: 'Compila Nome, Email e Messaggio.',
+    invalidEmail: 'Inserisci un indirizzo email valido.',
+    sendErrorFallback: 'Impossibile inviare il messaggio.',
+    sendSuccess: 'Messaggio inviato con successo.',
+    sendErrorNow: 'Impossibile inviare il messaggio in questo momento. Riprova tra poco.'
+  },
+  de: {
+    send: 'Senden',
+    sending: 'Wird gesendet...',
+    required: 'Bitte füllen Sie Name, E-Mail und Nachricht aus.',
+    invalidEmail: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.',
+    sendErrorFallback: 'Nachricht konnte nicht gesendet werden.',
+    sendSuccess: 'Nachricht erfolgreich gesendet.',
+    sendErrorNow: 'Die Nachricht kann im Moment nicht gesendet werden. Bitte versuchen Sie es in Kürze erneut.'
+  }
+};
+
+function getContactLocale() {
+  var htmlLang = '';
+  try {
+    htmlLang = String((document.documentElement && document.documentElement.lang) || '')
+      .trim()
+      .toLowerCase();
+  } catch (e) {}
+
+  if (htmlLang === 'en' || htmlLang === 'it' || htmlLang === 'de') {
+    return htmlLang;
+  }
+
+  var toggleLabel = '';
+  try {
+    var toggleEl = document.querySelector('.nav-lang-toggle__label');
+    toggleLabel = String((toggleEl && toggleEl.textContent) || '')
+      .trim()
+      .toLowerCase();
+  } catch (e) {}
+
+  if (toggleLabel === 'en' || toggleLabel === 'it' || toggleLabel === 'de') {
+    return toggleLabel;
+  }
+
+  var activeLang = '';
+  try {
+    var activeEl = document.querySelector('.nav-lang-menu a.is-active, .nav-lang-menu a[aria-current="page"]');
+    activeLang = String((activeEl && activeEl.textContent) || '')
+      .trim()
+      .toLowerCase();
+  } catch (e) {}
+
+  if (activeLang === 'english') return 'en';
+  if (activeLang === 'italiano') return 'it';
+  if (activeLang === 'deutsch') return 'de';
+
+  var host = '';
+  try {
+    host = String((window.location && window.location.hostname) || '')
+      .trim()
+      .toLowerCase();
+  } catch (e) {}
+
+  if (host.indexOf('de.') === 0) return 'de';
+  if (host.indexOf('it.') === 0) return 'it';
+
+  return 'en';
+}
+
+function getContactStrings() {
+  var locale = getContactLocale();
+  return CONTACT_I18N[locale] || CONTACT_I18N.en;
+}
+
   function getContactModalEls() {
     return {
       modal: document.getElementById('ka-contact-modal'),
@@ -778,26 +862,29 @@ function bindLanguageMenu() {
   }
 
   function setContactSubmitting(isSubmitting) {
-    var els = getContactModalEls();
-    if (!els.submit) return;
+  var els = getContactModalEls();
+  var t = getContactStrings();
+  if (!els.submit) return;
 
-    els.submit.disabled = !!isSubmitting;
-    els.submit.textContent = isSubmitting ? 'Sending...' : 'Send';
+  els.submit.disabled = !!isSubmitting;
+  els.submit.textContent = isSubmitting ? t.sending : t.send;
+}
+
+ function validateContactForm(data) {
+  var t = getContactStrings();
+
+  if (!data.name || !data.email || !data.message) {
+    return t.required;
   }
 
-  function validateContactForm(data) {
-    if (!data.name || !data.email || !data.message) {
-      return 'Please complete Name, Email, and Message.';
-    }
-
-    var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email);
-    if (!emailOk) {
-      return 'Please enter a valid email address.';
-    }
-
-    return '';
+  var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email);
+  if (!emailOk) {
+    return t.invalidEmail;
   }
 
+  return '';
+}
+       
   async function submitContactForm(form) {
     var formData = new FormData(form);
 
@@ -835,23 +922,24 @@ function bindLanguageMenu() {
         json = {};
       }
 
-      if (!res.ok || !json.ok) {
-        throw new Error(json.error || 'Unable to send message.');
-      }
+     var t = getContactStrings();
 
-      form.reset();
-      setContactFeedback('Message sent successfully.', 'success');
+if (!res.ok || !json.ok) {
+  throw new Error(json.error || t.sendErrorFallback);
+}
 
-      window.setTimeout(function () {
-        closeContactModal();
-        setContactFeedback('', '');
-      }, 900);
-    } catch (error) {
-      setContactFeedback('Unable to send message right now. Please try again in a moment.', 'error');
-    } finally {
-      setContactSubmitting(false);
-    }
-  }
+form.reset();
+setContactFeedback(t.sendSuccess, 'success');
+
+window.setTimeout(function () {
+  closeContactModal();
+  setContactFeedback('', '');
+}, 900);
+} catch (error) {
+  setContactFeedback(t.sendErrorNow, 'error');
+} finally {
+  setContactSubmitting(false);
+}
 
   function bindContactModal() {
   document.addEventListener('click', function (e) {
