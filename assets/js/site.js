@@ -885,63 +885,64 @@ function getContactStrings() {
   return '';
 }
        
-  async function submitContactForm(form) {
-    var formData = new FormData(form);
+ async function submitContactForm(form) {
+  var formData = new FormData(form);
 
-    var payload = {
-      name: String(formData.get('name') || '').trim(),
-      email: String(formData.get('email') || '').trim(),
-      company: String(formData.get('company') || '').trim(),
-      website: String(formData.get('website') || '').trim(),
-      message: String(formData.get('message') || '').trim(),
-      companyTrap: String(formData.get('companyTrap') || '').trim()
-    };
+  var payload = {
+    name: String(formData.get('name') || '').trim(),
+    email: String(formData.get('email') || '').trim(),
+    company: String(formData.get('company') || '').trim(),
+    website: String(formData.get('website') || '').trim(),
+    message: String(formData.get('message') || '').trim(),
+    companyTrap: String(formData.get('companyTrap') || '').trim()
+  };
 
-    var validationError = validateContactForm(payload);
-    if (validationError) {
-      setContactFeedback(validationError, 'error');
-      return;
+  var validationError = validateContactForm(payload);
+  if (validationError) {
+    setContactFeedback(validationError, 'error');
+    return;
+  }
+
+  setContactFeedback('', '');
+  setContactSubmitting(true);
+
+  try {
+    var res = await fetch(CONTACT_WORKER_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    });
+
+    var json = {};
+    try {
+      json = await res.json();
+    } catch (err) {
+      json = {};
     }
 
-    setContactFeedback('', '');
-    setContactSubmitting(true);
+    var t = getContactStrings();
 
-    try {
-      var res = await fetch(CONTACT_WORKER_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payload)
-      });
+    if (!res.ok || !json.ok) {
+      throw new Error(json.error || t.sendErrorFallback);
+    }
 
-      var json = {};
-      try {
-        json = await res.json();
-      } catch (err) {
-        json = {};
-      }
+    form.reset();
+    setContactFeedback(t.sendSuccess, 'success');
 
-     var t = getContactStrings();
-
-if (!res.ok || !json.ok) {
-  throw new Error(json.error || t.sendErrorFallback);
+    window.setTimeout(function () {
+      closeContactModal();
+      setContactFeedback('', '');
+    }, 900);
+  } catch (error) {
+    setContactFeedback(t.sendErrorNow, 'error');
+  } finally {
+    setContactSubmitting(false);
+  }
 }
 
-form.reset();
-setContactFeedback(t.sendSuccess, 'success');
-
-window.setTimeout(function () {
-  closeContactModal();
-  setContactFeedback('', '');
-}, 900);
-} catch (error) {
-  setContactFeedback(t.sendErrorNow, 'error');
-} finally {
-  setContactSubmitting(false);
-}
-
-  function bindContactModal() {
+function bindContactModal() {
   document.addEventListener('click', function (e) {
     var openTrigger = e.target.closest('[data-contact-open]');
     if (openTrigger) {
