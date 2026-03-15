@@ -3183,11 +3183,17 @@ body.ka-modal-open {
 }
 
 /* =========================================================
-   DELIVERABLE PANEL — EDITORIAL NOTE
+   DELIVERABLE PANEL — INTERNAL OVERLAY
    ========================================================= */
+
+.ka-card {
+  position: relative;
+  overflow: hidden;
+}
 
 .ka-card__deliverable {
   position: relative;
+  z-index: 2;
 }
 
 .ka-deliverable {
@@ -3199,7 +3205,7 @@ body.ka-modal-open {
   margin: 0;
   display: inline-flex;
   align-items: baseline;
-  gap: 10px;
+  gap: 0;
   font: inherit;
   color: inherit;
   cursor: pointer;
@@ -3222,45 +3228,27 @@ body.ka-modal-open {
     opacity 0.22s ease;
 }
 
-.ka-deliverable__meta {
-  font-family: var(--font-sans);
-  font-weight: 500;
-  font-size: 11px;
-  line-height: 14px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(47, 111, 122, 0.66);
-  transition:
-    color 0.22s ease,
-    opacity 0.22s ease;
-}
-
 .ka-deliverable:hover .ka-deliverable__label,
 .ka-deliverable[aria-expanded="true"] .ka-deliverable__label {
   color: var(--teal-head-85);
   text-decoration-color: rgba(47, 111, 122, 0.56);
 }
 
-.ka-deliverable:hover .ka-deliverable__meta,
-.ka-deliverable[aria-expanded="true"] .ka-deliverable__meta {
-  color: var(--teal-head-85);
-}
-
 .ka-deliverable__panel {
   position: absolute;
-  left: 0;
-  top: calc(100% + 12px);
-  width: min(332px, calc(100vw - 48px));
+  left: 18px;
+  right: 18px;
+  bottom: 18px;
   padding: 18px 18px 16px;
-  background: #FBFAF7;
+  background: rgba(251, 250, 247, 0.98);
   border: 1px solid rgba(47, 111, 122, 0.14);
   border-radius: 16px;
-  box-shadow: 0 6px 16px rgba(15, 20, 24, 0.035);
-  z-index: 30;
+  box-shadow: 0 8px 20px rgba(15, 20, 24, 0.035);
+  z-index: 4;
 
   opacity: 0;
   transform: translateY(8px) scale(0.985);
-  transform-origin: top left;
+  transform-origin: bottom left;
   pointer-events: none;
   transition:
     opacity 220ms ease,
@@ -3334,13 +3322,10 @@ body.ka-modal-open {
     line-height: 20px;
   }
 
-  .ka-deliverable__meta {
-    font-size: 10px;
-    line-height: 13px;
-  }
-
   .ka-deliverable__panel {
-    width: min(312px, calc(100vw - 40px));
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
     padding: 16px 16px 14px;
     border-radius: 14px;
   }
