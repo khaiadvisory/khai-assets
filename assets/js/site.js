@@ -1152,3 +1152,48 @@ window.addEventListener('mousemove', onMouseMove, { passive: true });
 window.addEventListener('resize', onResize);
 
 })();
+
+/* =========================================================
+   DELIVERABLE INFO PANEL
+   ========================================================= */
+
+(function () {
+  function closeAllDeliverablePanels(exceptButton) {
+    document.querySelectorAll('.ka-deliverable').forEach((button) => {
+      const panel = button.parentElement.querySelector('.ka-deliverable__panel');
+      if (!panel) return;
+
+      if (button !== exceptButton) {
+        button.setAttribute('aria-expanded', 'false');
+        panel.hidden = true;
+      }
+    });
+  }
+
+  document.addEventListener('click', function (event) {
+    const button = event.target.closest('.ka-deliverable');
+
+    if (button) {
+      const panel = button.parentElement.querySelector('.ka-deliverable__panel');
+      if (!panel) return;
+
+      const isOpen = button.getAttribute('aria-expanded') === 'true';
+
+      closeAllDeliverablePanels(button);
+
+      button.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+      panel.hidden = isOpen;
+      return;
+    }
+
+    if (!event.target.closest('.ka-card__deliverable')) {
+      closeAllDeliverablePanels(null);
+    }
+  });
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') {
+      closeAllDeliverablePanels(null);
+    }
+  });
+})();
