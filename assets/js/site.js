@@ -1154,18 +1154,41 @@ window.addEventListener('resize', onResize);
 })();
 
 /* =========================================================
-   DELIVERABLE INFO PANEL
+   DELIVERABLE PANEL
    ========================================================= */
 
 (function () {
+  function closePanel(button, panel) {
+    if (!button || !panel) return;
+
+    button.setAttribute('aria-expanded', 'false');
+    panel.classList.remove('is-open');
+
+    window.setTimeout(function () {
+      if (button.getAttribute('aria-expanded') === 'false') {
+        panel.hidden = true;
+      }
+    }, 260);
+  }
+
+  function openPanel(button, panel) {
+    if (!button || !panel) return;
+
+    button.setAttribute('aria-expanded', 'true');
+    panel.hidden = false;
+
+    requestAnimationFrame(function () {
+      panel.classList.add('is-open');
+    });
+  }
+
   function closeAllDeliverablePanels(exceptButton) {
     document.querySelectorAll('.ka-deliverable').forEach((button) => {
       const panel = button.parentElement.querySelector('.ka-deliverable__panel');
       if (!panel) return;
 
       if (button !== exceptButton) {
-        button.setAttribute('aria-expanded', 'false');
-        panel.hidden = true;
+        closePanel(button, panel);
       }
     });
   }
@@ -1181,8 +1204,12 @@ window.addEventListener('resize', onResize);
 
       closeAllDeliverablePanels(button);
 
-      button.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
-      panel.hidden = isOpen;
+      if (isOpen) {
+        closePanel(button, panel);
+      } else {
+        openPanel(button, panel);
+      }
+
       return;
     }
 
