@@ -3316,18 +3316,27 @@ body.ka-modal-open {
   color: var(--teal-head-85);
 }
 
-@media (max-width: 719px) {
+@media (max-width: 899px) {
+  .ka-card {
+    overflow: visible;
+  }
+
   .ka-deliverable__label {
     font-size: 13px;
     line-height: 20px;
   }
 
   .ka-deliverable__panel {
-    left: 14px;
-    right: 14px;
-    bottom: 14px;
+    position: static;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    width: 100%;
+    margin-top: 12px;
     padding: 16px 16px 14px;
     border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(15, 20, 24, 0.03);
+    transform-origin: top left;
   }
 
   .ka-deliverable__title {
