@@ -369,10 +369,10 @@ body.nav-revealed .site-header {
 }
 
 
-  .nav-right {
-    gap: 12px;
-    overflow: hidden;
-  }
+ .nav-right {
+  gap: 12px;
+  overflow: visible;
+}
 
   .site-nav {
     gap: 10px;
