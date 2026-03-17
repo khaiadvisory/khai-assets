@@ -1512,6 +1512,424 @@ WHY WORK WITH US
 
 .ka-whyworkDiagram__inner {
   width: 100%;
+  background: transparent;
+}
+
+.ka-flow {
+  position: relative;
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 8px 0 0;
+}
+
+.ka-flow__top {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 180px;
+  position: relative;
+  z-index: 3;
+}
+
+.ka-flowNode--top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.ka-flowNode__icon img {
+  display: block;
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.ka-flowNode__label {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 18px;
+  letter-spacing: 0;
+  color: var(--ink);
+  text-align: center;
+}
+
+.ka-flow__topConnector {
+  position: relative;
+  width: 290px;
+  height: 46px;
+  margin: 10px auto 0;
+  z-index: 1;
+}
+
+.ka-flow__topConnectorLine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: rgba(15, 76, 92, 0.75);
+}
+
+.ka-flow__topConnectorDrop {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1px;
+  height: 34px;
+  background: rgba(15, 76, 92, 0.75);
+  transform: translateX(-50%);
+}
+
+.ka-flow__center {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 3;
+}
+
+.ka-flowCard--khai {
+  width: 298px;
+  min-height: 112px;
+  border: 1px solid rgba(15, 76, 92, 0.75);
+  border-radius: 24px;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 22px 24px 20px;
+}
+
+.ka-flowCard__title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 34px;
+  line-height: 0.95;
+  letter-spacing: 0;
+  color: var(--teal);
+  text-align: center;
+}
+
+.ka-flowCard__sub {
+  margin-top: 10px;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  letter-spacing: 0;
+  color: var(--ink);
+  text-align: center;
+}
+
+.ka-flow__bottomConnector {
+  position: relative;
+  height: 86px;
+  margin-top: 2px;
+  z-index: 1;
+}
+
+.ka-flow__bottomBranch {
+  position: absolute;
+  top: 0;
+  width: 29%;
+  height: 62px;
+  border-top: 1px solid rgba(15, 76, 92, 0.75);
+}
+
+.ka-flow__bottomBranch--left {
+  right: 50%;
+  border-top-left-radius: 0;
+  border-top-right-radius: 120px 62px;
+}
+
+.ka-flow__bottomBranch--right {
+  left: 50%;
+  border-top-right-radius: 0;
+  border-top-left-radius: 120px 62px;
+}
+
+.ka-flow__bottom {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 120px;
+  align-items: start;
+}
+
+.ka-flowCard--group {
+  border: 1px solid rgba(15, 76, 92, 0.75);
+  border-radius: 28px;
+  background: transparent;
+  padding: 30px 26px 26px;
+}
+
+.ka-flowCard__head {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.ka-flowCard__headIcon img {
+  display: block;
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.ka-flowCard__headTitle {
+  max-width: 240px;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.02;
+  letter-spacing: 0;
+  color: var(--teal);
+}
+
+.ka-flowCard__grid {
+  margin-top: 26px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 12px;
+}
+
+.ka-flowTag {
+  min-height: 44px;
+  border: 1px solid rgba(15, 76, 92, 0.28);
+  border-radius: 9px;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  text-align: center;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--ink);
+}
+
+@media (max-width: 899px) {
+  .ka-whywork__subsection--diagram {
+    margin-top: 36px;
+  }
+
+  .ka-flow {
+    padding-top: 4px;
+  }
+
+  .ka-flow__top {
+    gap: 100px;
+  }
+
+  .ka-flow__topConnector {
+    width: 220px;
+    height: 40px;
+    margin-top: 8px;
+  }
+
+  .ka-flow__topConnectorDrop {
+    height: 28px;
+  }
+
+  .ka-flowCard--khai {
+    width: 250px;
+    min-height: 98px;
+    border-radius: 22px;
+    padding: 20px 20px 18px;
+  }
+
+  .ka-flowCard__title {
+    font-size: 30px;
+  }
+
+  .ka-flow__bottomConnector {
+    height: 72px;
+  }
+
+  .ka-flow__bottomBranch {
+    width: 32%;
+    height: 52px;
+  }
+
+  .ka-flow__bottomBranch--left {
+    border-top-right-radius: 104px 52px;
+  }
+
+  .ka-flow__bottomBranch--right {
+    border-top-left-radius: 104px 52px;
+  }
+
+  .ka-flow__bottom {
+    gap: 40px;
+  }
+
+  .ka-flowCard--group {
+    padding: 24px 20px 22px;
+    border-radius: 24px;
+  }
+
+  .ka-flowCard__headTitle {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 719px) {
+  .ka-whywork__subsection--diagram {
+    margin-top: 32px;
+  }
+
+  .ka-flow {
+    max-width: 360px;
+    padding-top: 0;
+  }
+
+  .ka-flow__top {
+    gap: 56px;
+  }
+
+  .ka-flowNode__icon img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .ka-flowNode__label {
+    font-size: 10px;
+    line-height: 14px;
+  }
+
+  .ka-flow__topConnector {
+    width: 150px;
+    height: 28px;
+    margin-top: 6px;
+  }
+
+  .ka-flow__topConnectorDrop {
+    height: 20px;
+  }
+
+  .ka-flowCard--khai {
+    width: 140px;
+    min-height: 74px;
+    border-radius: 14px;
+    padding: 14px 12px 12px;
+  }
+
+  .ka-flowCard__title {
+    font-size: 17px;
+  }
+
+  .ka-flowCard__sub {
+    margin-top: 6px;
+    font-size: 8px;
+    line-height: 11px;
+  }
+
+  .ka-flow__bottomConnector {
+    height: 42px;
+    margin-top: 0;
+  }
+
+  .ka-flow__bottomBranch {
+    width: 34%;
+    height: 28px;
+  }
+
+  .ka-flow__bottomBranch--left {
+    border-top-right-radius: 72px 28px;
+  }
+
+  .ka-flow__bottomBranch--right {
+    border-top-left-radius: 72px 28px;
+  }
+
+  .ka-flow__bottom {
+    gap: 16px;
+  }
+
+  .ka-flowCard--group {
+    padding: 14px 10px 12px;
+    border-radius: 18px;
+  }
+
+  .ka-flowCard__head {
+    gap: 8px;
+  }
+
+  .ka-flowCard__headIcon img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .ka-flowCard__headTitle {
+    font-size: 11px;
+    line-height: 1.05;
+    max-width: 100px;
+  }
+
+  .ka-flowCard__grid {
+    margin-top: 12px;
+    gap: 8px;
+  }
+
+  .ka-flowTag {
+    min-height: 28px;
+    border-radius: 7px;
+    padding: 4px 6px;
+    font-size: 8px;
+    line-height: 10px;
+  }
+}
+
+@media (max-width: 389px) {
+  .ka-flow {
+    max-width: 320px;
+  }
+
+  .ka-flow__top {
+    gap: 42px;
+  }
+
+  .ka-flow__topConnector {
+    width: 136px;
+  }
+
+  .ka-flowCard--khai {
+    width: 128px;
+  }
+
+  .ka-flow__bottom {
+    gap: 12px;
+  }
+
+  .ka-flowCard--group {
+    padding: 12px 8px 10px;
+  }
+
+  .ka-flowCard__headTitle {
+    font-size: 10px;
+    max-width: 90px;
+  }
+
+  .ka-flowTag {
+    font-size: 7px;
+    line-height: 9px;
+  }
+}
+
+.ka-whywork__subsection--diagram {
+  margin-top: 40px;
+}
+
+.ka-whyworkDiagram {
+  width: 100%;
+}
+
+.ka-whyworkDiagram__inner {
+  width: 100%;
   border-radius: 24px;
   overflow: hidden;
   background: transparent;
