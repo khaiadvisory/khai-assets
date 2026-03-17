@@ -1502,6 +1502,69 @@ WHY WORK WITH US
   margin-top: 64px;
 }
 
+.ka-whywork__subsection--diagram {
+  margin-top: 40px;
+}
+
+.ka-whyworkDiagram {
+  width: 100%;
+}
+
+.ka-whyworkDiagram__inner {
+  width: 100%;
+  min-height: 560px;
+  border: 1px dashed rgba(15, 76, 92, 0.18);
+  border-radius: 24px;
+  background: rgba(15, 76, 92, 0.03);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ka-whyworkDiagram__placeholder {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.05em;
+  color: rgba(15, 76, 92, 0.72);
+  text-transform: uppercase;
+}
+
+@media (max-width: 899px) {
+  .ka-whywork__subsection--diagram {
+    margin-top: 36px;
+  }
+
+  .ka-whyworkDiagram__inner {
+    min-height: 420px;
+    border-radius: 20px;
+  }
+}
+
+@media (max-width: 719px) {
+  .ka-whywork__subsection--diagram {
+    margin-top: 32px;
+  }
+
+  .ka-whyworkDiagram__inner {
+    min-height: 340px;
+    border-radius: 18px;
+  }
+
+  .ka-whyworkDiagram__placeholder {
+    font-size: 13px;
+    line-height: 18px;
+  }
+}
+
+@media (max-width: 389px) {
+  .ka-whyworkDiagram__inner {
+    min-height: 300px;
+    border-radius: 16px;
+  }
+}
+
 .ka-whywork__bottom {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 320px;
