@@ -2536,17 +2536,17 @@ body.ka-modal-open {
   }
 
   .site-header__inner {
-    width: var(--wrap-w);
-    height: 100%;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    grid-template-rows: 44px 32px;
-    column-gap: 10px;
-    row-gap: 12px;
-    align-content: center;
-    align-items: center;
-  }
-
+  width: var(--wrap-w);
+  height: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  grid-template-rows: 44px 32px;
+  column-gap: 8px;
+  row-gap: 12px;
+  align-content: center;
+  align-items: center;
+}
+  
   .nav-logo {
     grid-column: 1;
     grid-row: 1;
@@ -2562,13 +2562,13 @@ body.ka-modal-open {
   }
 
  .nav-lang-wrap {
-  grid-column: 2;
+  grid-column: 3;
   grid-row: 1;
   justify-self: end;
   align-self: center;
   position: relative;
-  margin-right: 72px;
-  margin-top: 1px;
+  margin-right: 0;
+  margin-top: 0;
   z-index: 10030;
 }
 
@@ -2590,8 +2590,8 @@ body.ka-modal-open {
   padding: 8px;
 }
 
-  .nav-contact {
-  grid-column: 2;
+ .nav-contact {
+  grid-column: 4;
   grid-row: 1;
   justify-self: end;
   align-self: center;
@@ -2603,7 +2603,7 @@ body.ka-modal-open {
   letter-spacing: 0.01em;
   width: auto;
 }
-
+  
   .site-nav {
   grid-column: 1 / -1;
   grid-row: 2;
@@ -3076,12 +3076,12 @@ body.ka-modal-open {
   }
 
   .site-header__inner {
-    grid-template-columns: 1fr auto;
-    grid-template-rows: 40px 30px;
-    column-gap: 8px;
-    row-gap: 10px;
-    align-content: center;
-  }
+  grid-template-columns: auto 1fr auto auto;
+  grid-template-rows: 40px 30px;
+  column-gap: 6px;
+  row-gap: 10px;
+  align-content: center;
+}
 
   .nav-logo {
     width: 72px;
@@ -3098,13 +3098,13 @@ body.ka-modal-open {
   }
 
  .nav-lang-wrap {
-  grid-column: 2;
+  grid-column: 3;
   grid-row: 1;
   justify-self: end;
   align-self: center;
   position: relative;
-  margin-right: 66px;
-  margin-top: 1px;
+  margin-right: 0;
+  margin-top: 0;
   z-index: 10030;
 }
 
@@ -3121,7 +3121,7 @@ body.ka-modal-open {
 }
   
   .nav-contact {
-  grid-column: 2;
+  grid-column: 4;
   grid-row: 1;
   justify-self: end;
   align-self: center;
