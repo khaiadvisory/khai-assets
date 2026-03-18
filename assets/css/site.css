@@ -1569,20 +1569,6 @@ WHY WORK WITH US
   height: auto;
 }
 
-.ka-whyworkMotionScene {
-  position: absolute;
-  left: 50%;
-  top: var(--ka-diagram-intro-top);
-  transform: translate(-50%, calc(-50% + var(--ka-diagram-intro-shift-y)));
-  width: var(--ka-diagram-intro-width);
-  aspect-ratio: 1120 / 560;
-  pointer-events: none;
-  opacity: 0;
-  z-index: 3;
-  outline: 1px dashed rgba(15, 76, 92, 0.45);
-  background: rgba(15, 76, 92, 0.04);
-}
-
 
 /* ===== WHYWORK DIAGRAM / JS-CONTROLLED PLAY ONCE ===== */
 .ka-whyworkDiagram.is-armed .ka-flowSvgFinal {
@@ -1653,10 +1639,6 @@ WHY WORK WITH US
   align-items: start;
 }
 
-.ka-whyworkDiagram.is-armed .ka-whyworkMotionScene {
-  opacity: 1;
-}
-
 .ka-whywork__bottomLeft,
 .ka-whywork__bottomRight {
   min-width: 0;
@@ -1675,10 +1657,6 @@ WHY WORK WITH US
   color: var(--teal-90);
   margin: 0;
   max-width: 420px;
-}
-
-.ka-whyworkDiagram.is-played .ka-whyworkMotionScene {
-  opacity: 0;
 }
 
 .ka-whywork__bottomRight {
