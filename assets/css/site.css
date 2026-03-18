@@ -1668,38 +1668,38 @@ WHY WORK WITH US
 }
 
 .ka-whyworkDiagram.is-playing .ka-whyworkMotionPiece--client {
-  animation: kaPieceClient 1550ms cubic-bezier(.22,.65,.2,1) forwards;
+  animation: kaPieceClient 1850ms cubic-bezier(.22,.65,.2,1) forwards;
 }
 
 .ka-whyworkDiagram.is-playing .ka-whyworkMotionPiece--briefcase {
-  animation: kaPieceBriefcase 1550ms cubic-bezier(.22,.65,.2,1) forwards;
+  animation: kaPieceBriefcase 1850ms cubic-bezier(.22,.65,.2,1) forwards;
 }
 
 .ka-whyworkDiagram.is-playing .ka-whyworkMotionPiece--factory {
-  animation: kaPieceFactory 1550ms cubic-bezier(.22,.65,.2,1) forwards;
+  animation: kaPieceFactory 1850ms cubic-bezier(.22,.65,.2,1) forwards;
 }
 
 .ka-whyworkDiagram.is-playing .ka-whyworkMotionPiece--building {
-  animation: kaPieceBuilding 1550ms cubic-bezier(.22,.65,.2,1) forwards;
+  animation: kaPieceBuilding 1850ms cubic-bezier(.22,.65,.2,1) forwards;
 }
 
 .ka-whyworkDiagram.is-playing .ka-whyworkMotionPiece--logo {
-  animation: kaPieceLogoOut 760ms ease forwards;
+  animation: kaPieceLogoOut 920ms ease forwards;
 }
 
 .ka-whyworkDiagram.is-playing .ka-whyworkMotionLine {
-  animation: kaDiagramLineDraw 760ms ease forwards;
-  animation-delay: 780ms;
+  animation: kaDiagramLineDraw 920ms ease forwards;
+  animation-delay: 980ms;
 }
 
 .ka-whyworkDiagram.is-playing .ka-whyworkMotionDot {
-  animation: kaDiagramDotIn 220ms ease forwards;
-  animation-delay: 1350ms;
+  animation: kaDiagramDotIn 280ms ease forwards;
+  animation-delay: 1720ms;
 }
 
 .ka-whyworkDiagram.is-playing .ka-flowSvgFinal {
-  animation: kaDiagramFinalReveal 820ms ease forwards;
-  animation-delay: 1480ms;
+  animation: kaDiagramFinalReveal 1100ms ease forwards;
+  animation-delay: 1860ms;
 }
 
 .ka-whyworkDiagram.is-played .ka-flowSvgFinal {
