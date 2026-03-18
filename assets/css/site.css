@@ -1514,7 +1514,7 @@ WHY WORK WITH US
   --ka-diagram-intro-top: 43%;
   --ka-diagram-intro-width: min(520px, calc(100% - 120px));
   --ka-diagram-intro-shift-y: 0px;
-  --ka-diagram-final-opacity-start: 0.18;
+  --ka-diagram-final-opacity-start: 0;
   --ka-diagram-final-opacity-end: 1;
   --ka-diagram-preview-duration: 1800ms;
   --ka-diagram-preview-delay: 220ms;
