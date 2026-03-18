@@ -1548,13 +1548,13 @@ WHY WORK WITH US
 .ka-whyworkIntroScene {
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 43%;
   transform: translate(-50%, -50%);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 26px;
-  width: min(780px, calc(100% - 80px));
+  gap: 22px;
+  width: min(700px, calc(100% - 96px));
 }
 
 .ka-whyworkIntroAsset {
@@ -1565,23 +1565,23 @@ WHY WORK WITH US
 }
 
 .ka-whyworkIntroAsset--client {
-  width: 56px;
-}
-
-.ka-whyworkIntroAsset--partner {
-  width: 56px;
-}
-
-.ka-whyworkIntroAsset--logo {
-  width: 200px;
-}
-
-.ka-whyworkIntroAsset--factory {
   width: 52px;
 }
 
+.ka-whyworkIntroAsset--partner {
+  width: 52px;
+}
+
+.ka-whyworkIntroAsset--logo {
+  width: 170px;
+}
+
+.ka-whyworkIntroAsset--factory {
+  width: 48px;
+}
+
 .ka-whyworkIntroAsset--briefcase {
-  width: 54px;
+  width: 50px;
 }
 
 /* WHYWORK / INTRO OVERLAY / TEMP TEST MODE */
@@ -1699,30 +1699,31 @@ WHY WORK WITH US
     max-width: 100%;
   }
 
-  /* WHYWORK / DIAGRAM OVERLAY / TABLET */
+ /* WHYWORK / DIAGRAM OVERLAY / TABLET */
 .ka-whyworkIntroScene {
-  width: min(720px, calc(100% - 48px));
-  gap: 20px;
+  top: 41%;
+  width: min(620px, calc(100% - 56px));
+  gap: 18px;
 }
 
 .ka-whyworkIntroAsset--client {
-  width: 48px;
+  width: 42px;
 }
 
 .ka-whyworkIntroAsset--partner {
-  width: 48px;
+  width: 42px;
 }
 
 .ka-whyworkIntroAsset--logo {
-  width: 172px;
+  width: 146px;
 }
 
 .ka-whyworkIntroAsset--factory {
-  width: 44px;
+  width: 40px;
 }
 
 .ka-whyworkIntroAsset--briefcase {
-  width: 46px;
+  width: 42px;
 }
 
   .ka-whywork__subsection--positioning {
@@ -1781,28 +1782,29 @@ WHY WORK WITH US
 }
 
 .ka-whyworkIntroScene {
-  width: calc(100% - 28px);
-  gap: 12px;
+  top: 37%;
+  width: calc(100% - 34px);
+  gap: 10px;
 }
 
 .ka-whyworkIntroAsset--client {
-  width: 34px;
+  width: 28px;
 }
 
 .ka-whyworkIntroAsset--partner {
-  width: 34px;
+  width: 28px;
 }
 
 .ka-whyworkIntroAsset--logo {
-  width: 118px;
+  width: 96px;
 }
 
 .ka-whyworkIntroAsset--factory {
-  width: 32px;
+  width: 26px;
 }
 
 .ka-whyworkIntroAsset--briefcase {
-  width: 34px;
+  width: 28px;
 }
 
   .ka-whywork__positioningTitle {
