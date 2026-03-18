@@ -1555,6 +1555,11 @@ WHY WORK WITH US
   visibility: hidden;
 }
 
+.ka-whyworkDiagram[data-diagram-bound="true"] .ka-whyworkDiagram__overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
 .ka-whyworkIntroScene {
   position: absolute;
   left: 50%;
