@@ -1569,33 +1569,47 @@ WHY WORK WITH US
   height: auto;
 }
 
-/* ===== WHYWORK DIAGRAM / TEMP PREVIEW MODE ===== */
-.ka-whyworkDiagram--preview .ka-flowSvgFinal {
+/* ===== WHYWORK DIAGRAM / JS-CONTROLLED PLAY ONCE ===== */
+.ka-whyworkDiagram.is-armed .ka-flowSvgFinal {
   opacity: var(--ka-diagram-final-opacity-start);
+}
+
+.ka-whyworkDiagram.is-armed .ka-whyworkDiagram__overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+.ka-whyworkDiagram.is-playing .ka-flowSvgFinal {
   animation: kaDiagramFinalReveal var(--ka-diagram-preview-duration) ease forwards;
   animation-delay: var(--ka-diagram-preview-delay);
 }
 
-.ka-whyworkDiagram--preview .ka-whyworkDiagram__overlay {
-  opacity: 1;
-  visibility: visible;
-  animation: kaDiagramIntroFade var(--ka-diagram-preview-duration) ease forwards;
+.ka-whyworkDiagram.is-playing .ka-whyworkIntroScene {
+  animation: kaDiagramIntroSceneOut var(--ka-diagram-preview-duration) ease forwards;
   animation-delay: var(--ka-diagram-preview-delay);
 }
 
-@keyframes kaDiagramIntroFade {
+.ka-whyworkDiagram.is-played .ka-flowSvgFinal {
+  opacity: var(--ka-diagram-final-opacity-end);
+}
+
+.ka-whyworkDiagram.is-played .ka-whyworkDiagram__overlay {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@keyframes kaDiagramIntroSceneOut {
   0% {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate(-50%, calc(-50% + var(--ka-diagram-intro-shift-y)));
   }
   58% {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate(-50%, calc(-50% + var(--ka-diagram-intro-shift-y)));
   }
   100% {
     opacity: 0;
-    transform: translateY(-18px);
-    visibility: hidden;
+    transform: translate(-50%, calc(-50% + var(--ka-diagram-intro-shift-y) - 18px));
   }
 }
 
