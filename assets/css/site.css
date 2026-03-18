@@ -1661,7 +1661,7 @@ WHY WORK WITH US
 
 .ka-whyworkDiagram.is-playing .ka-whyworkMotionScene {
   opacity: 1;
-  animation: kaMotionSceneOut 220ms ease forwards;
+  animation: kaMotionSceneOut 120ms ease forwards;
   animation-delay: 1860ms;
 }
 
