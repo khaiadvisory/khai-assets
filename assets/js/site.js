@@ -992,6 +992,60 @@ function bindContactModal() {
   });
 }
 
+
+/* =========================================================
+   11C. WHYWORK DIAGRAM: PLAY ONCE ON ENTER
+   ========================================================= */
+
+function initWhyworkDiagramAnimation() {
+  var diagram = document.querySelector('.ka-whyworkDiagram');
+  if (!diagram) return;
+
+  if (diagram.dataset.diagramBound === 'true') return;
+  diagram.dataset.diagramBound = 'true';
+
+  var totalDuration = 2400;
+
+  function playDiagram() {
+    if (diagram.classList.contains('is-playing') || diagram.classList.contains('is-played')) {
+      return;
+    }
+
+    diagram.classList.add('is-armed');
+
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        diagram.classList.add('is-playing');
+      });
+    });
+
+    window.setTimeout(function () {
+      diagram.classList.remove('is-armed');
+      diagram.classList.remove('is-playing');
+      diagram.classList.add('is-played');
+    }, totalDuration);
+  }
+
+  if (!('IntersectionObserver' in window)) {
+    playDiagram();
+    return;
+  }
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      if (entry.intersectionRatio < 0.35) return;
+
+      playDiagram();
+      observer.disconnect();
+    });
+  }, {
+    threshold: [0.35]
+  });
+
+  observer.observe(diagram);
+}
+
   /* =========================================================
      11C. HERO VIDEO: FALLBACK TECNICO / RETE
      ========================================================= */
@@ -1051,61 +1105,7 @@ function bindContactModal() {
     }
   }
 
-/* ===== WHYWORK DIAGRAM / JS-CONTROLLED PLAY ONCE ===== */
-.ka-whyworkDiagram.is-armed .ka-flowSvgFinal {
-  opacity: var(--ka-diagram-final-opacity-start);
-}
 
-.ka-whyworkDiagram.is-armed .ka-whyworkDiagram__overlay {
-  opacity: 1;
-  visibility: visible;
-}
-
-.ka-whyworkDiagram.is-playing .ka-flowSvgFinal {
-  animation: kaDiagramFinalReveal var(--ka-diagram-preview-duration) ease forwards;
-  animation-delay: var(--ka-diagram-preview-delay);
-}
-
-.ka-whyworkDiagram.is-playing .ka-whyworkIntroScene {
-  animation: kaDiagramIntroSceneOut var(--ka-diagram-preview-duration) ease forwards;
-  animation-delay: var(--ka-diagram-preview-delay);
-}
-
-.ka-whyworkDiagram.is-played .ka-flowSvgFinal {
-  opacity: var(--ka-diagram-final-opacity-end);
-}
-
-.ka-whyworkDiagram.is-played .ka-whyworkDiagram__overlay {
-  opacity: 0;
-  visibility: hidden;
-}
-
-@keyframes kaDiagramIntroSceneOut {
-  0% {
-    opacity: 1;
-    transform: translate(-50%, calc(-50% + var(--ka-diagram-intro-shift-y)));
-  }
-  58% {
-    opacity: 1;
-    transform: translate(-50%, calc(-50% + var(--ka-diagram-intro-shift-y)));
-  }
-  100% {
-    opacity: 0;
-    transform: translate(-50%, calc(-50% + var(--ka-diagram-intro-shift-y) - 18px));
-  }
-}
-
-@keyframes kaDiagramFinalReveal {
-  0% {
-    opacity: var(--ka-diagram-final-opacity-start);
-  }
-  58% {
-    opacity: var(--ka-diagram-final-opacity-start);
-  }
-  100% {
-    opacity: var(--ka-diagram-final-opacity-end);
-  }
-}
 
   /* =========================================================
      12. RESIZE
