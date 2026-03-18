@@ -1535,7 +1535,7 @@ WHY WORK WITH US
   display: block;
   position: relative;
   z-index: 1;
-  opacity: 1;
+  opacity: 0;
 }
 
 .ka-flowSvgFinal__img {
