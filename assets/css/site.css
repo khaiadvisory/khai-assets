@@ -1677,28 +1677,7 @@ WHY WORK WITH US
  /* WHYWORK / DIAGRAM OVERLAY / TABLET */
 .ka-whyworkIntroScene {
   top: 41%;
-  width: min(620px, calc(100% - 56px));
-  gap: 18px;
-}
-
-.ka-whyworkIntroAsset--client {
-  width: 42px;
-}
-
-.ka-whyworkIntroAsset--partner {
-  width: 42px;
-}
-
-.ka-whyworkIntroAsset--logo {
-  width: 146px;
-}
-
-.ka-whyworkIntroAsset--factory {
-  width: 40px;
-}
-
-.ka-whyworkIntroAsset--briefcase {
-  width: 42px;
+  width: min(420px, calc(100% - 72px));
 }
 
   .ka-whywork__subsection--positioning {
@@ -1758,28 +1737,7 @@ WHY WORK WITH US
 
 .ka-whyworkIntroScene {
   top: 37%;
-  width: calc(100% - 34px);
-  gap: 10px;
-}
-
-.ka-whyworkIntroAsset--client {
-  width: 28px;
-}
-
-.ka-whyworkIntroAsset--partner {
-  width: 28px;
-}
-
-.ka-whyworkIntroAsset--logo {
-  width: 96px;
-}
-
-.ka-whyworkIntroAsset--factory {
-  width: 26px;
-}
-
-.ka-whyworkIntroAsset--briefcase {
-  width: 28px;
+  width: min(240px, calc(100% - 56px));
 }
 
   .ka-whywork__positioningTitle {
