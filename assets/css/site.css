@@ -1584,6 +1584,11 @@ WHY WORK WITH US
   width: 54px;
 }
 
+/* WHYWORK / INTRO OVERLAY / TEMP TEST MODE */
+.ka-flowSvgFinal {
+  opacity: 0.18;
+}
+
 /* -------------------------
    WHYWORK / POSITIONING
    ------------------------- */
