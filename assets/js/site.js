@@ -995,6 +995,7 @@ function bindContactModal() {
 
 /* =========================================================
    11C. WHYWORK DIAGRAM: PLAY ONCE ON ENTER
+   desktop motion scene + final SVG handoff
    ========================================================= */
 
 function initWhyworkDiagramAnimation() {
@@ -1004,10 +1005,21 @@ function initWhyworkDiagramAnimation() {
   if (diagram.dataset.diagramBound === 'true') return;
   diagram.dataset.diagramBound = 'true';
 
-  var totalDuration = 2400;
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var totalDuration = 2500;
+  var mobileBreakpoint = 719;
+
+  function finishImmediately() {
+    diagram.classList.remove('is-armed');
+    diagram.classList.remove('is-playing');
+    diagram.classList.add('is-played');
+  }
 
   function playDiagram() {
-    if (diagram.classList.contains('is-playing') || diagram.classList.contains('is-played')) {
+    if (diagram.classList.contains('is-playing') || diagram.classList.contains('is-played')) return;
+
+    if (reduceMotion) {
+      finishImmediately();
       return;
     }
 
@@ -1031,19 +1043,22 @@ function initWhyworkDiagramAnimation() {
     return;
   }
 
+  var threshold = window.innerWidth <= mobileBreakpoint ? 0.2 : 0.35;
+
   var observer = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (!entry.isIntersecting) return;
-      if (entry.intersectionRatio < 0.35) return;
+      if (entry.intersectionRatio < threshold) return;
 
       playDiagram();
       observer.disconnect();
     });
   }, {
-    threshold: [0.35]
+    threshold: [threshold]
   });
 
   observer.observe(diagram);
+}
 }
 
   /* =========================================================
