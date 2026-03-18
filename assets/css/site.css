@@ -1509,6 +1509,12 @@ WHY WORK WITH US
 
 .ka-whyworkDiagram {
   width: 100%;
+
+  /* ===== DIAGRAM INTRO CONTROL TOKENS / DESKTOP ===== */
+  --ka-diagram-intro-top: 43%;
+  --ka-diagram-intro-width: min(520px, calc(100% - 120px));
+  --ka-diagram-intro-shift-y: 0px;
+  --ka-diagram-final-opacity: 0.18;
 }
 
 .ka-whyworkDiagram__inner {
@@ -1526,6 +1532,7 @@ WHY WORK WITH US
   display: block;
   position: relative;
   z-index: 1;
+  opacity: var(--ka-diagram-final-opacity);
 }
 
 .ka-flowSvgFinal__img {
@@ -1548,20 +1555,15 @@ WHY WORK WITH US
 .ka-whyworkIntroScene {
   position: absolute;
   left: 50%;
-  top: 43%;
-  transform: translate(-50%, -50%);
-  width: min(520px, calc(100% - 120px));
+  top: var(--ka-diagram-intro-top);
+  transform: translate(-50%, calc(-50% + var(--ka-diagram-intro-shift-y)));
+  width: var(--ka-diagram-intro-width);
 }
 
 .ka-whyworkIntroStart {
   display: block;
   width: 100%;
   height: auto;
-}
-
-/* WHYWORK / INTRO OVERLAY / TEMP TEST MODE */
-.ka-flowSvgFinal {
-  opacity: 0.18;
 }
 
 /* -------------------------
@@ -1675,11 +1677,12 @@ WHY WORK WITH US
   }
 
  /* WHYWORK / DIAGRAM OVERLAY / TABLET */
-.ka-whyworkIntroScene {
-  top: 41%;
-  width: min(420px, calc(100% - 72px));
+.ka-whyworkDiagram {
+  --ka-diagram-intro-top: 41%;
+  --ka-diagram-intro-width: min(420px, calc(100% - 72px));
+  --ka-diagram-intro-shift-y: 0px;
 }
-
+  
   .ka-whywork__subsection--positioning {
     margin-top: 44px;
   }
@@ -1735,9 +1738,10 @@ WHY WORK WITH US
   max-width: 100%;
 }
 
-.ka-whyworkIntroScene {
-  top: 37%;
-  width: min(240px, calc(100% - 56px));
+.ka-whyworkDiagram {
+  --ka-diagram-intro-top: 37%;
+  --ka-diagram-intro-width: min(240px, calc(100% - 56px));
+  --ka-diagram-intro-shift-y: 0px;
 }
 
   .ka-whywork__positioningTitle {
