@@ -1694,17 +1694,30 @@ WHY WORK WITH US
     max-width: 100%;
   }
 
-  .ka-whyworkIntroRow {
-  width: min(100%, calc(100% - 40px));
-  gap: 12px;
+  /* WHYWORK / DIAGRAM OVERLAY / TABLET */
+.ka-whyworkIntroScene {
+  width: min(720px, calc(100% - 48px));
+  gap: 20px;
 }
 
-.ka-whyworkIntroChip {
-  height: 48px;
-  padding: 0 12px;
-  font-size: 11px;
-  line-height: 48px;
-  letter-spacing: 0.06em;
+.ka-whyworkIntroAsset--client {
+  width: 48px;
+}
+
+.ka-whyworkIntroAsset--partner {
+  width: 48px;
+}
+
+.ka-whyworkIntroAsset--logo {
+  width: 172px;
+}
+
+.ka-whyworkIntroAsset--factory {
+  width: 44px;
+}
+
+.ka-whyworkIntroAsset--briefcase {
+  width: 46px;
 }
 
   .ka-whywork__subsection--positioning {
@@ -1752,7 +1765,8 @@ WHY WORK WITH US
     line-height: 27px;
   }
 
- .ka-whywork__subsection--diagram {
+/* WHYWORK / DIAGRAM OVERLAY / MOBILE */
+.ka-whywork__subsection--diagram {
   margin-top: 32px;
 }
 
@@ -1761,23 +1775,29 @@ WHY WORK WITH US
   max-width: 100%;
 }
 
-.ka-whyworkDiagram__overlay {
-  inset: 12px 0 0 0;
-  align-items: flex-start;
+.ka-whyworkIntroScene {
+  width: calc(100% - 28px);
+  gap: 12px;
 }
 
-.ka-whyworkIntroRow {
-  width: calc(100% - 24px);
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
+.ka-whyworkIntroAsset--client {
+  width: 34px;
 }
 
-.ka-whyworkIntroChip {
-  height: 42px;
-  padding: 0 10px;
-  font-size: 10px;
-  line-height: 42px;
-  letter-spacing: 0.04em;
+.ka-whyworkIntroAsset--partner {
+  width: 34px;
+}
+
+.ka-whyworkIntroAsset--logo {
+  width: 118px;
+}
+
+.ka-whyworkIntroAsset--factory {
+  width: 32px;
+}
+
+.ka-whyworkIntroAsset--briefcase {
+  width: 34px;
 }
 
   .ka-whywork__positioningTitle {
