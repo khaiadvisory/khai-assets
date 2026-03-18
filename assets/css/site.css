@@ -1550,38 +1550,13 @@ WHY WORK WITH US
   left: 50%;
   top: 43%;
   transform: translate(-50%, -50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 22px;
-  width: min(700px, calc(100% - 96px));
+  width: min(520px, calc(100% - 120px));
 }
 
-.ka-whyworkIntroAsset {
+.ka-whyworkIntroStart {
   display: block;
+  width: 100%;
   height: auto;
-  flex: 0 0 auto;
-  max-width: 100%;
-}
-
-.ka-whyworkIntroAsset--client {
-  width: 52px;
-}
-
-.ka-whyworkIntroAsset--partner {
-  width: 52px;
-}
-
-.ka-whyworkIntroAsset--logo {
-  width: 170px;
-}
-
-.ka-whyworkIntroAsset--factory {
-  width: 48px;
-}
-
-.ka-whyworkIntroAsset--briefcase {
-  width: 50px;
 }
 
 /* WHYWORK / INTRO OVERLAY / TEMP TEST MODE */
