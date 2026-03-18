@@ -1051,6 +1051,62 @@ function bindContactModal() {
     }
   }
 
+/* ===== WHYWORK DIAGRAM / JS-CONTROLLED PLAY ONCE ===== */
+.ka-whyworkDiagram.is-armed .ka-flowSvgFinal {
+  opacity: var(--ka-diagram-final-opacity-start);
+}
+
+.ka-whyworkDiagram.is-armed .ka-whyworkDiagram__overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+.ka-whyworkDiagram.is-playing .ka-flowSvgFinal {
+  animation: kaDiagramFinalReveal var(--ka-diagram-preview-duration) ease forwards;
+  animation-delay: var(--ka-diagram-preview-delay);
+}
+
+.ka-whyworkDiagram.is-playing .ka-whyworkIntroScene {
+  animation: kaDiagramIntroSceneOut var(--ka-diagram-preview-duration) ease forwards;
+  animation-delay: var(--ka-diagram-preview-delay);
+}
+
+.ka-whyworkDiagram.is-played .ka-flowSvgFinal {
+  opacity: var(--ka-diagram-final-opacity-end);
+}
+
+.ka-whyworkDiagram.is-played .ka-whyworkDiagram__overlay {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@keyframes kaDiagramIntroSceneOut {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, calc(-50% + var(--ka-diagram-intro-shift-y)));
+  }
+  58% {
+    opacity: 1;
+    transform: translate(-50%, calc(-50% + var(--ka-diagram-intro-shift-y)));
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, calc(-50% + var(--ka-diagram-intro-shift-y) - 18px));
+  }
+}
+
+@keyframes kaDiagramFinalReveal {
+  0% {
+    opacity: var(--ka-diagram-final-opacity-start);
+  }
+  58% {
+    opacity: var(--ka-diagram-final-opacity-start);
+  }
+  100% {
+    opacity: var(--ka-diagram-final-opacity-end);
+  }
+}
+
   /* =========================================================
      12. RESIZE
      ========================================================= */
@@ -1080,6 +1136,7 @@ window.addEventListener('load', function () {
   syncInitialNavState();
   bindLanguageMenu();
   bindContactModal();
+  initWhyworkDiagramAnimation();
   setupHeroVideo();
 
   debugNavClick('load state', {
