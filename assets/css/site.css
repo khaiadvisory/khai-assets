@@ -1569,6 +1569,78 @@ WHY WORK WITH US
   height: auto;
 }
 
+/* =========================================================
+   WHYWORK / INTRO OVERLAY TEST / REFERENCE + PIECES
+   deterministic coordinates from Diagram-flow-start.svg
+   viewBox: 1120 x 560
+   ========================================================= */
+
+.ka-whyworkIntroScene--test {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.ka-whyworkIntroReference {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.ka-whyworkIntroAssembled {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.ka-whyworkIntroPiece {
+  position: absolute;
+  display: block;
+  height: auto;
+  max-width: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+
+/* exact placements from Diagram-flow-start.svg */
+
+.ka-whyworkIntroPiece--client {
+  left: 1.75189%;
+  top: 40.29520%;
+  width: 9.13393%;
+}
+
+.ka-whyworkIntroPiece--briefcase {
+  left: 15.90325%;
+  top: 38.67928%;
+  width: 12.98629%;
+}
+
+.ka-whyworkIntroPiece--logo {
+  left: 33.90697%;
+  top: 43.40156%;
+  width: 28.33372%;
+}
+
+.ka-whyworkIntroPiece--building {
+  left: 67.25811%;
+  top: 35.34815%;
+  width: 14.16686%;
+}
+
+.ka-whyworkIntroPiece--factory {
+  left: 86.44240%;
+  top: 39.78115%;
+  width: 11.80571%;
+}
+
 /* ===== WHYWORK DIAGRAM / JS-CONTROLLED PLAY ONCE ===== */
 .ka-whyworkDiagram.is-armed .ka-flowSvgFinal {
   opacity: var(--ka-diagram-final-opacity-start);
