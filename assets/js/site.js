@@ -994,7 +994,7 @@ function bindContactModal() {
 
 
 /* =========================================================
-   11C. WHYWORK DIAGRAM: PLAY ONCE ON ENTER
+   11C. WHYWORK DIAGRAM: LOOP ON ENTER
    desktop motion scene + final SVG handoff
    ========================================================= */
 
@@ -1006,40 +1006,89 @@ function initWhyworkDiagramAnimation() {
   diagram.dataset.diagramBound = 'true';
 
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var totalDuration = 2500;
   var mobileBreakpoint = 719;
+  var totalDuration = 3200;
+  var repeatDelay = 650;
+  var playTimer = null;
+  var loopTimer = null;
+  var isLoopActive = false;
+
+  function clearTimers() {
+    if (playTimer) {
+      window.clearTimeout(playTimer);
+      playTimer = null;
+    }
+    if (loopTimer) {
+      window.clearTimeout(loopTimer);
+      loopTimer = null;
+    }
+  }
+
+  function resetToStart() {
+    clearTimers();
+    diagram.classList.remove('is-armed');
+    diagram.classList.remove('is-playing');
+    diagram.classList.remove('is-played');
+    void diagram.offsetWidth;
+  }
 
   function finishImmediately() {
+    clearTimers();
     diagram.classList.remove('is-armed');
     diagram.classList.remove('is-playing');
     diagram.classList.add('is-played');
   }
 
-  function playDiagram() {
-    if (diagram.classList.contains('is-playing') || diagram.classList.contains('is-played')) return;
+  function scheduleNextPlay() {
+    if (!isLoopActive) return;
+
+    loopTimer = window.setTimeout(function () {
+      playCycle();
+    }, repeatDelay);
+  }
+
+  function playCycle() {
+    if (!isLoopActive) return;
 
     if (reduceMotion) {
       finishImmediately();
       return;
     }
 
+    resetToStart();
     diagram.classList.add('is-armed');
 
     requestAnimationFrame(function () {
       requestAnimationFrame(function () {
+        if (!isLoopActive) return;
         diagram.classList.add('is-playing');
       });
     });
 
-    window.setTimeout(function () {
+    playTimer = window.setTimeout(function () {
+      if (!isLoopActive) return;
+
       diagram.classList.remove('is-armed');
       diagram.classList.remove('is-playing');
       diagram.classList.add('is-played');
+
+      scheduleNextPlay();
     }, totalDuration);
   }
 
+  function startLoop() {
+    if (isLoopActive) return;
+    isLoopActive = true;
+    playCycle();
+  }
+
+  function stopLoop() {
+    isLoopActive = false;
+    resetToStart();
+  }
+
   if (!('IntersectionObserver' in window)) {
-    playDiagram();
+    startLoop();
     return;
   }
 
@@ -1047,14 +1096,14 @@ function initWhyworkDiagramAnimation() {
 
   var observer = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
-      if (!entry.isIntersecting) return;
-      if (entry.intersectionRatio < threshold) return;
-
-      playDiagram();
-      observer.disconnect();
+      if (entry.isIntersecting && entry.intersectionRatio >= threshold) {
+        startLoop();
+      } else {
+        stopLoop();
+      }
     });
   }, {
-    threshold: [threshold]
+    threshold: [0, threshold]
   });
 
   observer.observe(diagram);
