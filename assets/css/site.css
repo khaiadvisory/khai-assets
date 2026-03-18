@@ -1514,7 +1514,10 @@ WHY WORK WITH US
   --ka-diagram-intro-top: 43%;
   --ka-diagram-intro-width: min(520px, calc(100% - 120px));
   --ka-diagram-intro-shift-y: 0px;
-  --ka-diagram-final-opacity: 0.18;
+  --ka-diagram-final-opacity-start: 0.18;
+  --ka-diagram-final-opacity-end: 1;
+  --ka-diagram-preview-duration: 1800ms;
+  --ka-diagram-preview-delay: 220ms;
 }
 
 .ka-whyworkDiagram__inner {
@@ -1532,7 +1535,7 @@ WHY WORK WITH US
   display: block;
   position: relative;
   z-index: 1;
-  opacity: var(--ka-diagram-final-opacity);
+  opacity: 1;
 }
 
 .ka-flowSvgFinal__img {
@@ -1548,8 +1551,8 @@ WHY WORK WITH US
   inset: 0;
   z-index: 2;
   pointer-events: none;
-  opacity: 1;
-  visibility: visible;
+  opacity: 0;
+  visibility: hidden;
 }
 
 .ka-whyworkIntroScene {
@@ -1566,6 +1569,47 @@ WHY WORK WITH US
   height: auto;
 }
 
+/* ===== WHYWORK DIAGRAM / TEMP PREVIEW MODE ===== */
+.ka-whyworkDiagram--preview .ka-flowSvgFinal {
+  opacity: var(--ka-diagram-final-opacity-start);
+  animation: kaDiagramFinalReveal var(--ka-diagram-preview-duration) ease forwards;
+  animation-delay: var(--ka-diagram-preview-delay);
+}
+
+.ka-whyworkDiagram--preview .ka-whyworkDiagram__overlay {
+  opacity: 1;
+  visibility: visible;
+  animation: kaDiagramIntroFade var(--ka-diagram-preview-duration) ease forwards;
+  animation-delay: var(--ka-diagram-preview-delay);
+}
+
+@keyframes kaDiagramIntroFade {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  58% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-18px);
+    visibility: hidden;
+  }
+}
+
+@keyframes kaDiagramFinalReveal {
+  0% {
+    opacity: var(--ka-diagram-final-opacity-start);
+  }
+  58% {
+    opacity: var(--ka-diagram-final-opacity-start);
+  }
+  100% {
+    opacity: var(--ka-diagram-final-opacity-end);
+  }
+}
 /* -------------------------
    WHYWORK / POSITIONING
    ------------------------- */
