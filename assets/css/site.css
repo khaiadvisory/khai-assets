@@ -1498,91 +1498,67 @@ WHY WORK WITH US
   object-position: center;
 }
 
-/* -------------------------
-   WHYWORK / DIAGRAM MODULE
-   Final SVG + intro asset overlay
-   Overlay hidden by default until JS arms animation
-   ------------------------- */
-.ka-whywork__subsection--diagram {
-  margin-top: 40px;
-}
+<!-- =====================================================
+WHYWORK / DIAGRAM MODULE
+- final svg stays authoritative
+- intro overlay assets prepared, hidden by default
+===================================================== -->
+<div class="ka-whywork__subsection ka-whywork__subsection--diagram">
 
-.ka-whyworkDiagram {
-  width: 100%;
-}
+<div class="ka-whyworkDiagram" data-diagram="khai-flow">
+<div class="ka-whyworkDiagram__inner">
+<div class="ka-whyworkDiagram__stage">
 
-.ka-whyworkDiagram__inner {
-  width: 100%;
-  background: transparent;
-}
+<!-- INTRO OVERLAY / HIDDEN BY DEFAULT -->
+<div class="ka-whyworkDiagram__overlay" aria-hidden="true">
+  <div class="ka-whyworkIntroScene">
+    <img
+      class="ka-whyworkIntroAsset ka-whyworkIntroAsset--client"
+      src="https://raw.githubusercontent.com/khaiadvisory/khai-assets/main/assets/assets/images/client.png"
+      alt=""
+    />
+    <img
+      class="ka-whyworkIntroAsset ka-whyworkIntroAsset--partner"
+      src="https://raw.githubusercontent.com/khaiadvisory/khai-assets/main/assets/assets/images/building.png"
+      alt=""
+    />
+    <img
+      class="ka-whyworkIntroAsset ka-whyworkIntroAsset--logo"
+      src="https://raw.githubusercontent.com/khaiadvisory/khai-assets/main/assets/assets/images/logo.png"
+      alt=""
+    />
+    <img
+      class="ka-whyworkIntroAsset ka-whyworkIntroAsset--factory"
+      src="https://raw.githubusercontent.com/khaiadvisory/khai-assets/main/assets/assets/images/factory.png"
+      alt=""
+    />
+    <img
+      class="ka-whyworkIntroAsset ka-whyworkIntroAsset--briefcase"
+      src="https://raw.githubusercontent.com/khaiadvisory/khai-assets/main/assets/assets/images/briefcase.png"
+      alt=""
+    />
+  </div>
+</div>
 
-.ka-whyworkDiagram__stage {
-  position: relative;
-  width: 100%;
-}
+<!-- FINAL SVG -->
+<picture class="ka-flowSvgFinal">
+<source
+media="(max-width: 719px)"
+srcset="https://raw.githubusercontent.com/khaiadvisory/khai-assets/refs/heads/main/assets/assets/images/Diagram-flow-mobile.svg"
+/>
+<img
+class="ka-flowSvgFinal__img"
+src="https://raw.githubusercontent.com/khaiadvisory/khai-assets/refs/heads/main/assets/assets/images/Diagram-flow.svg"
+alt="Khai Advisory flow diagram"
+/>
+</picture>
 
-.ka-flowSvgFinal {
-  width: 100%;
-  display: block;
-  position: relative;
-  z-index: 1;
-}
+</div>
+</div>
+</div>
 
-.ka-flowSvgFinal__img {
-  display: block;
-  width: 100%;
-  max-width: 1120px;
-  height: auto;
-  margin: 0 auto;
-}
-
-.ka-whyworkDiagram__overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-  opacity: 0;
-  visibility: hidden;
-}
-
-.ka-whyworkIntroScene {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 26px;
-  width: min(780px, calc(100% - 80px));
-}
-
-.ka-whyworkIntroAsset {
-  display: block;
-  height: auto;
-  flex: 0 0 auto;
-  max-width: 100%;
-}
-
-.ka-whyworkIntroAsset--client {
-  width: 56px;
-}
-
-.ka-whyworkIntroAsset--partner {
-  width: 56px;
-}
-
-.ka-whyworkIntroAsset--logo {
-  width: 200px;
-}
-
-.ka-whyworkIntroAsset--factory {
-  width: 52px;
-}
-
-.ka-whyworkIntroAsset--briefcase {
-  width: 54px;
-}
+</div>
+<!-- END WHYWORK / DIAGRAM MODULE -->
 
 /* -------------------------
    WHYWORK / POSITIONING
