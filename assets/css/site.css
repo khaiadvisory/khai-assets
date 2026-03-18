@@ -1849,6 +1849,18 @@ WHY WORK WITH US
   .ka-whyworkMotionScene {
     display: none;
   }
+
+  .ka-whyworkDiagram .ka-flowSvgFinal {
+  opacity: 1;
+}
+
+.ka-whyworkDiagram .ka-whyworkDiagram__overlay {
+  display: none;
+}
+
+.ka-whyworkDiagram .ka-whyworkMotionScene {
+  display: none;
+}
 }
 /* -------------------------
    WHYWORK / POSITIONING
