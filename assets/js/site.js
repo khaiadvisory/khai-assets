@@ -1059,7 +1059,7 @@ function initWhyworkDiagramAnimation() {
 
   observer.observe(diagram);
 }
-}
+
 
   /* =========================================================
      11C. HERO VIDEO: FALLBACK TECNICO / RETE
