@@ -1577,12 +1577,6 @@ WHY WORK WITH US
   opacity: 0;
 }
 
-.ka-whyworkConnectorDot {
-  fill: #0f4c5c;
-  opacity: 0;
-  transform-box: fill-box;
-  transform-origin: center;
-}
 
 /* LAYER 3 */
 .ka-flowSvgFinal {
@@ -1613,32 +1607,20 @@ WHY WORK WITH US
   animation-delay: 180ms;
 }
 
-.ka-whyworkDiagram.is-playing .ka-whyworkConnectorDot--topLeft,
-.ka-whyworkDiagram.is-playing .ka-whyworkConnectorDot--topRight {
-  animation: kaDiagramDotIn 180ms ease forwards;
-  animation-delay: 820ms;
-}
-
 .ka-whyworkDiagram.is-playing .ka-whyworkConnectorLine--bottomLeft,
 .ka-whyworkDiagram.is-playing .ka-whyworkConnectorLine--bottomRight {
   animation: kaDiagramLineDraw 760ms ease forwards;
   animation-delay: 980ms;
 }
 
-.ka-whyworkDiagram.is-playing .ka-whyworkConnectorDot--bottomLeft,
-.ka-whyworkDiagram.is-playing .ka-whyworkConnectorDot--bottomRight {
-  animation: kaDiagramDotIn 180ms ease forwards;
-  animation-delay: 1760ms;
-}
-
 .ka-whyworkDiagram.is-playing .ka-flowSvgFinal {
-  animation: kaDiagramFinalReveal 220ms ease forwards;
-  animation-delay: 1980ms;
+  animation: kaDiagramFinalReveal 180ms linear forwards;
+  animation-delay: 1740ms;
 }
 
 .ka-whyworkDiagram.is-playing .ka-whyworkConnectorOverlay {
-  animation: kaConnectorOverlayOut 120ms ease forwards;
-  animation-delay: 1980ms;
+  animation: kaConnectorOverlayOut 80ms linear forwards;
+  animation-delay: 1740ms;
 }
 
 .ka-whyworkDiagram.is-played .ka-flowSvgFinal {
@@ -1662,16 +1644,6 @@ WHY WORK WITH US
   }
 }
 
-@keyframes kaDiagramDotIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.35);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
 
 @keyframes kaConnectorOverlayOut {
   0% {
