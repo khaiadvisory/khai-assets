@@ -995,9 +995,9 @@ function bindContactModal() {
 
 /* =========================================================
    11C. WHYWORK DIAGRAM: LOOP ON ENTER
-   phase 1 static no connectors
-   phase 2 connector draw
-   phase 3 final svg handoff
+   phase 0 start desktop svg
+   phase 1 connector draw
+   phase 2 final svg handoff
    ========================================================= */
 
 function initWhyworkDiagramAnimation() {
