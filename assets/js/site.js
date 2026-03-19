@@ -995,7 +995,9 @@ function bindContactModal() {
 
 /* =========================================================
    11C. WHYWORK DIAGRAM: LOOP ON ENTER
-   desktop motion scene + final SVG handoff
+   phase 1 static no connectors
+   phase 2 connector draw
+   phase 3 final svg handoff
    ========================================================= */
 
 function initWhyworkDiagramAnimation() {
@@ -1007,8 +1009,8 @@ function initWhyworkDiagramAnimation() {
 
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var mobileBreakpoint = 719;
-  var totalDuration = 3150;
-  var repeatDelay = 650;
+  var totalDuration = 2300;
+  var repeatDelay = 700;
   var playTimer = null;
   var loopTimer = null;
   var isLoopActive = false;
