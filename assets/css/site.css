@@ -1546,6 +1546,25 @@ WHY WORK WITH US
   margin: 0 auto;
 }
 
+.ka-whyworkBaseSceneMobile {
+  display: none;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.ka-whyworkBaseSceneMobile__img {
+  display: block;
+  width: 100%;
+  max-width: 1080px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.ka-whyworkConnectorSvg--mobile {
+  display: none;
+}
+
 /* LAYER 2 */
 .ka-whyworkConnectorOverlay {
   position: absolute;
@@ -1704,19 +1723,72 @@ WHY WORK WITH US
 
 /* MOBILE FALLBACK STATIC */
 @media (max-width: 719px) {
-  .ka-flowSvgFinal {
-    position: relative;
-    inset: auto;
-    opacity: 1;
-    pointer-events: auto;
+  .ka-whyworkBaseScene {
+    display: none;
+  }
+
+  .ka-whyworkBaseSceneMobile {
+    display: block;
   }
 
   .ka-whyworkConnectorOverlay {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .ka-whyworkConnectorSvg {
+    max-width: 100%;
+    height: 100%;
+  }
+
+  .ka-whyworkConnectorSvg:not(.ka-whyworkConnectorSvg--mobile) {
     display: none;
   }
 
-  .ka-whyworkBaseScene {
-    display: none;
+  .ka-whyworkConnectorSvg--mobile {
+    display: block;
+  }
+
+  .ka-flowSvgFinal {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .ka-whyworkDiagram.is-playing .ka-whyworkConnectorLine--mTopLeft,
+  .ka-whyworkDiagram.is-playing .ka-whyworkConnectorLine--mTopRight {
+    animation: kaDiagramLineDraw 620ms ease forwards;
+    animation-delay: 180ms;
+  }
+
+  .ka-whyworkDiagram.is-playing .ka-whyworkConnectorDot--mTopLeft,
+  .ka-whyworkDiagram.is-playing .ka-whyworkConnectorDot--mTopRight {
+    animation: kaDiagramDotShow 1ms linear forwards;
+    animation-delay: 800ms;
+  }
+
+  .ka-whyworkDiagram.is-playing .ka-whyworkConnectorLine--mBottomLeft,
+  .ka-whyworkDiagram.is-playing .ka-whyworkConnectorLine--mBottomRight {
+    animation: kaDiagramLineDraw 760ms ease forwards;
+    animation-delay: 980ms;
+  }
+
+  .ka-whyworkDiagram.is-playing .ka-whyworkConnectorDot--mBottomLeft,
+  .ka-whyworkDiagram.is-playing .ka-whyworkConnectorDot--mBottomRight {
+    animation: kaDiagramDotShow 1ms linear forwards;
+    animation-delay: 1740ms;
+  }
+
+  .ka-whyworkDiagram.is-playing .ka-flowSvgFinal {
+    animation: kaDiagramFinalReveal 80ms linear forwards;
+    animation-delay: 1700ms;
+  }
+
+  .ka-whyworkDiagram.is-playing .ka-whyworkConnectorOverlay {
+    animation: kaConnectorOverlayOut 80ms linear forwards;
+    animation-delay: 1700ms;
   }
 }
 /* -------------------------
