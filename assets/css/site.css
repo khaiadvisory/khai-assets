@@ -1756,6 +1756,46 @@ WHY WORK WITH US
   stroke-opacity: 1;
 }
 
+  .ka-whyworkConnectorSvg--mobile .ka-whyworkConnectorLine--mTopLeft,
+.ka-whyworkConnectorSvg--mobile .ka-whyworkConnectorLine--mTopRight {
+  stroke: #0f4c5c;
+  stroke-width: 2.0393700787401574;
+  stroke-linecap: butt;
+  stroke-linejoin: round;
+  shape-rendering: geometricPrecision;
+  stroke-opacity: 1;
+}
+
+.ka-whyworkConnectorSvg--mobile .ka-whyworkConnectorLine--mBottomLeft,
+.ka-whyworkConnectorSvg--mobile .ka-whyworkConnectorLine--mBottomRight {
+  stroke: #0f4c5c;
+  stroke-width: 2;
+  stroke-linecap: butt;
+  stroke-linejoin: round;
+  shape-rendering: geometricPrecision;
+  stroke-opacity: 1;
+}
+
+.ka-whyworkConnectorSvg--mobile .ka-whyworkConnectorDot--mTopLeft,
+.ka-whyworkConnectorSvg--mobile .ka-whyworkConnectorDot--mTopRight {
+  fill: #0f4c5c;
+  stroke: #0f4c5c;
+  stroke-width: 2.0393700787401574;
+  stroke-linecap: butt;
+  shape-rendering: geometricPrecision;
+  opacity: 0;
+}
+
+.ka-whyworkConnectorSvg--mobile .ka-whyworkConnectorDot--mBottomLeft,
+.ka-whyworkConnectorSvg--mobile .ka-whyworkConnectorDot--mBottomRight {
+  fill: #0f4c5c;
+  stroke: #0f4c5c;
+  stroke-width: 2;
+  stroke-linecap: butt;
+  shape-rendering: geometricPrecision;
+  opacity: 0;
+}
+
   .ka-flowSvgFinal {
     position: absolute;
     inset: 0;
