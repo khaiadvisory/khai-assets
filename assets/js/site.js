@@ -1009,7 +1009,7 @@ function initWhyworkDiagramAnimation() {
 
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var mobileBreakpoint = 719;
-  var totalDuration = 2300;
+  var totalDuration = 1950;
   var repeatDelay = 700;
   var playTimer = null;
   var loopTimer = null;
