@@ -1753,7 +1753,6 @@ WHY WORK WITH US
   .ka-whyworkConnectorSvg--mobile .ka-whyworkConnectorLine {
   stroke-linecap: butt;
   shape-rendering: geometricPrecision;
-  stroke-opacity: 1;
 }
 
   .ka-whyworkConnectorSvg--mobile .ka-whyworkConnectorLine--mTopLeft,
