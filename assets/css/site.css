@@ -1614,13 +1614,13 @@ WHY WORK WITH US
 }
 
 .ka-whyworkDiagram.is-playing .ka-flowSvgFinal {
-  animation: kaDiagramFinalReveal 180ms linear forwards;
-  animation-delay: 1740ms;
+  animation: kaDiagramFinalReveal 80ms linear forwards;
+  animation-delay: 1700ms;
 }
 
 .ka-whyworkDiagram.is-playing .ka-whyworkConnectorOverlay {
   animation: kaConnectorOverlayOut 80ms linear forwards;
-  animation-delay: 1740ms;
+  animation-delay: 1680ms;
 }
 
 .ka-whyworkDiagram.is-played .ka-flowSvgFinal {
