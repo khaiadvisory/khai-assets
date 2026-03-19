@@ -1500,9 +1500,9 @@ WHY WORK WITH US
 
 /* -------------------------
    WHYWORK / DIAGRAM MODULE
-   phase 1 = final layout without connectors
-   phase 2 = connector draw
-   phase 3 = final svg handoff
+   phase 0 = start desktop svg without connectors
+   phase 1 = connector draw
+   phase 2 = final svg handoff
    ------------------------- */
 .ka-whywork__subsection--diagram {
   margin-top: 40px;
@@ -1554,7 +1554,7 @@ WHY WORK WITH US
   visibility: visible;
 }
 
-.ka-whyworkMotionScene {
+.ka-whyworkStartScene {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -1564,14 +1564,25 @@ WHY WORK WITH US
   left: 0;
   right: 0;
   z-index: 2;
-  opacity: 0;
+  opacity: 1;
+}
+
+.ka-whyworkStartScene__img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .ka-whyworkMotionLines {
   position: absolute;
   inset: 0;
   width: 100%;
+  max-width: 1120px;
   height: 100%;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  z-index: 3;
   overflow: visible;
 }
 
@@ -1593,47 +1604,6 @@ WHY WORK WITH US
   transform-origin: center;
 }
 
-.ka-whyworkMotionPiece {
-  position: absolute;
-  display: block;
-  height: auto;
-  max-width: none;
-  user-select: none;
-  -webkit-user-drag: none;
-  opacity: 1;
-}
-
-/* exact final layout without connectors */
-.ka-whyworkMotionPiece--client {
-  left: 33.94946%;
-  top: 1.80116%;
-  width: 2.76317%;
-}
-
-.ka-whyworkMotionPiece--briefcase {
-  left: 62.63989%;
-  top: 1.80116%;
-  width: 3.92857%;
-}
-
-.ka-whyworkMotionPiece--logo {
-  left: 33.90697%;
-  top: 43.40156%;
-  width: 28.33371%;
-}
-
-.ka-whyworkMotionPiece--factory {
-  left: 16.50825%;
-  top: 66.50121%;
-  width: 3.72193%;
-}
-
-.ka-whyworkMotionPiece--building {
-  left: 65.91769%;
-  top: 68.11283%;
-  width: 3.06618%;
-}
-
 /* states */
 .ka-whyworkDiagram.is-armed .ka-flowSvgFinal {
   opacity: var(--ka-diagram-final-opacity-start);
@@ -1644,18 +1614,10 @@ WHY WORK WITH US
   visibility: visible;
 }
 
-.ka-whyworkDiagram.is-armed .ka-whyworkMotionScene {
-  opacity: 1;
-}
-
-.ka-whyworkDiagram.is-playing .ka-whyworkMotionScene {
-  opacity: 1;
-}
-
 .ka-whyworkDiagram.is-playing .ka-whyworkMotionLine--topLeft,
 .ka-whyworkDiagram.is-playing .ka-whyworkMotionLine--topRight {
   animation: kaDiagramLineDraw 620ms ease forwards;
-  animation-delay: 220ms;
+  animation-delay: 180ms;
 }
 
 .ka-whyworkDiagram.is-playing .ka-whyworkMotionDot--topLeft,
@@ -1681,8 +1643,8 @@ WHY WORK WITH US
   animation-delay: 1980ms;
 }
 
-.ka-whyworkDiagram.is-playing .ka-whyworkMotionScene {
-  animation: kaMotionSceneOut 120ms ease forwards;
+.ka-whyworkDiagram.is-playing .ka-whyworkDiagram__overlay {
+  animation: kaDiagramOverlayOut 120ms ease forwards;
   animation-delay: 1980ms;
 }
 
@@ -1718,12 +1680,14 @@ WHY WORK WITH US
   }
 }
 
-@keyframes kaMotionSceneOut {
+@keyframes kaDiagramOverlayOut {
   0% {
     opacity: 1;
+    visibility: visible;
   }
   100% {
     opacity: 0;
+    visibility: hidden;
   }
 }
 
@@ -1741,6 +1705,11 @@ WHY WORK WITH US
   .ka-flowSvgFinal__img {
     max-width: 100%;
   }
+
+  .ka-whyworkMotionLines,
+  .ka-whyworkStartScene {
+    max-width: 100%;
+  }
 }
 
 /* mobile fallback static */
@@ -1750,10 +1719,6 @@ WHY WORK WITH US
   }
 
   .ka-whyworkDiagram .ka-whyworkDiagram__overlay {
-    display: none;
-  }
-
-  .ka-whyworkDiagram .ka-whyworkMotionScene {
     display: none;
   }
 }
