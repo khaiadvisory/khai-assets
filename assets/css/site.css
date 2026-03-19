@@ -1662,7 +1662,7 @@ WHY WORK WITH US
 .ka-whyworkDiagram.is-playing .ka-whyworkMotionScene {
   opacity: 1;
   animation: kaMotionSceneOut 120ms ease forwards;
-  animation-delay: 1860ms;
+  animation-delay: 2760ms;
 }
 
 .ka-whyworkDiagram.is-playing .ka-whyworkIntroScene {
@@ -1690,18 +1690,18 @@ WHY WORK WITH US
 }
 
 .ka-whyworkDiagram.is-playing .ka-whyworkMotionLine {
-  animation: kaDiagramLineDraw 920ms ease forwards;
-  animation-delay: 980ms;
+  animation: kaDiagramLineDraw 700ms ease forwards;
+  animation-delay: 1850ms;
 }
 
 .ka-whyworkDiagram.is-playing .ka-whyworkMotionDot {
-  animation: kaDiagramDotIn 280ms ease forwards;
-  animation-delay: 1720ms;
+  animation: kaDiagramDotIn 220ms ease forwards;
+  animation-delay: 2550ms;
 }
 
 .ka-whyworkDiagram.is-playing .ka-flowSvgFinal {
-  animation: kaDiagramFinalReveal 1100ms ease forwards;
-  animation-delay: 1860ms;
+  animation: kaDiagramFinalReveal 260ms ease forwards;
+  animation-delay: 2760ms;
 }
 
 .ka-whyworkDiagram.is-played .ka-flowSvgFinal {
@@ -1735,7 +1735,7 @@ WHY WORK WITH US
   100% {
     left: 33.94946%;
     top: 1.80116%;
-    width: 2.76317%;
+    width: 9.13393%;
     opacity: 1;
   }
 }
@@ -1750,27 +1750,12 @@ WHY WORK WITH US
   100% {
     left: 62.63989%;
     top: 1.80116%;
-    width: 3.92857%;
+    width: 12.98629%;
     opacity: 1;
   }
 }
 
 @keyframes kaPieceFactory {
-  0% {
-    left: 67.25811%;
-    top: 35.34815%;
-    width: 14.16686%;
-    opacity: 1;
-  }
-  100% {
-    left: 16.50825%;
-    top: 66.50121%;
-    width: 3.72193%;
-    opacity: 1;
-  }
-}
-
-@keyframes kaPieceBuilding {
   0% {
     left: 86.44240%;
     top: 39.78115%;
@@ -1778,9 +1763,24 @@ WHY WORK WITH US
     opacity: 1;
   }
   100% {
+    left: 16.50825%;
+    top: 66.50121%;
+    width: 11.80571%;
+    opacity: 1;
+  }
+}
+
+@keyframes kaPieceBuilding {
+  0% {
+    left: 67.25811%;
+    top: 35.34815%;
+    width: 14.16686%;
+    opacity: 1;
+  }
+  100% {
     left: 65.91769%;
     top: 68.11283%;
-    width: 3.06618%;
+    width: 14.16686%;
     opacity: 1;
   }
 }
