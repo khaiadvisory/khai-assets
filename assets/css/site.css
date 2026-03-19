@@ -1750,6 +1750,12 @@ WHY WORK WITH US
     display: block;
   }
 
+  .ka-whyworkConnectorSvg--mobile .ka-whyworkConnectorLine {
+  stroke-linecap: butt;
+  shape-rendering: geometricPrecision;
+  stroke-opacity: 1;
+}
+
   .ka-flowSvgFinal {
     position: absolute;
     inset: 0;
