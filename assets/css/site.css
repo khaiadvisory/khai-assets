@@ -1620,7 +1620,7 @@ WHY WORK WITH US
 
 .ka-whyworkDiagram.is-playing .ka-whyworkConnectorOverlay {
   animation: kaConnectorOverlayOut 80ms linear forwards;
-  animation-delay: 1680ms;
+  animation-delay: 1700ms;
 }
 
 .ka-whyworkDiagram.is-played .ka-flowSvgFinal {
